@@ -391,7 +391,12 @@ em {
 .slide {
     background-color: inherit;
 }
+
+.example {
+    background-color: #3f3f3f;
+}
   </style>
+    <script async src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
     <div class="progress">
@@ -399,16 +404,482 @@ em {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="hello-world-">Hello, world!</h1>
-<h2 id="this-is-my-slideshow">This is my slideshow</h2>
+    <section class="slide-content"><h3 id="pulling-up-your-legacy-app-by-its-bootstraps">Pulling Up Your Legacy App by Its Bootstraps</h3>
+<p>by Emily Stamey</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h3 id="how-many-widgets-can-we-sell-">How many widgets can we sell?</h3>
-<p>Based on our factors, we can sell <strong>20 million</strong> widgets.</p>
+    <section class="slide-content"><p><img src="https://en.gravatar.com/userimage/30647603/9b0f0abbf75bafcf32232913fb3654a9.png" alt="Emily Stamey"></p>
+<h3 id="emily-stamey">Emily Stamey</h3>
+<p>Application Developer @ North Carolina State University</p>
+<p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
+<p>Blog: <a href="http://www.elstamey.com/">elstamey.com</a></p>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-3">
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><p><img src="https://en.gravatar.com/userimage/30647603/9b0f0abbf75bafcf32232913fb3654a9.png" alt="Emily Stamey"></p>
+<h3 id="emily-stamey">Emily Stamey</h3>
+<ul>
+<li><p>Developing PHP applications since 1999.  </p>
+</li>
+<li><p>Primarily supporting legacy applications.</p>
+</li>
+</ul>
+<p>Application Developer @ North Carolina State University</p>
+<ul>
+<li>My department supports about 80 applications that support business processes of the College of Engineering</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-4">
+    <section class="slide-content"><h3 id="why-bootstrapping-is-important">Why Bootstrapping is important</h3>
+<ul>
+<li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
+<ul>
+<li>Supporting legacy is a challenge, but it is worthwhile to learn and master!  </li>
+</ul>
+</li>
+<li><p>It is HARD to justify <strong>refactoring</strong>  </p>
+</li>
+<li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p>
+</li>
+</ul>
+<p>CodeWisdom: &quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky
+<a href="https://twitter.com/codewisdom/status/711858225528901633">https://twitter.com/codewisdom/status/711858225528901633</a></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h3 id="let-s-review-some-terminology">Let&#39;s review some terminology</h3>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h3 id="legacy">Legacy</h3>
+<p>Software that has been developed using older technologies and practices.  It can be difficult to replace because of its wide use.</p>
+<p>Often a pejorative term, referencing a system as &quot;legacy&quot; often implies that the system is out of date or in need of replacement.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h3 id="spaghetti-code">Spaghetti Code</h3>
+<p>The relationships between the pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something somewhere else.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h3 id="lasagna-code">Lasagna code</h3>
+<p>Lasagna code is code that has way too many layers.  </p>
+<p>In Object Oriented programming, this means code that has many really small classes when a few slightly larger classes would have done the trick.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h3 id="refactor">Refactor</h3>
+<p>Technique for restructuring an existing body of code, altering its internal structure <strong>without changing its external behavior</strong>. A series of small behavior preserving transformations.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h3 id="technical-debt">Technical Debt</h3>
+<p><a href="http://marketing.intracto.com/paying-technical-debt-how-to-rescue-legacy-code-through-refactoring?utm_content=26784583&amp;utm_medium=social&amp;utm_source=linkedin">http://marketing.intracto.com/paying-technical-debt-how-to-rescue-legacy-code-through-refactoring?utm_content=26784583&amp;utm_medium=social&amp;utm_source=linkedin</a></p>
+<!-- background: #fefe79 -->
+<!-- color: #b13ad0 -->
+<!-- font: univers --></section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h3 id="bootstrapping">Bootstrapping</h3>
+<p>A business term referring to a self-starter; or a self-starting process that proceeds without any external input, or minimal input. </p>
+<p>In software this usually means, building onto an existing system for the purpose of improving the software with the least amount of sweat equity and development cost in the process.</p>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-12">
+    <section class="slide-content"><h3 id="the-project-scholarships">The Project: Scholarships</h3>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-13">
+    <section class="slide-content"><h3 id="the-project-scholarships">The Project: Scholarships</h3>
+<ul>
+<li><p>Engineering <strong>Foundation</strong> receives money from donors to give to <strong>students</strong></p>
+</li>
+<li><p>Students apply each year giving information about themselves</p>
+</li>
+<li><p><strong>Donors</strong> specify criteria/rules for students to receive money</p>
+<ul>
+<li>The information in a student&#39;s application helps them match to scholarships</li>
+</ul>
+</li>
+<li><p><strong>Selection Committee</strong> selects Candidates to receive money</p>
+</li>
+<li><p><strong>Scholarship Coordinator</strong> reports these Recipients to Financial Aid</p>
+</li>
+<li><p><strong>Financial Aid</strong> awards the money</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h3 id="how-to-bootstrap">How to Bootstrap</h3>
+<ol>
+<li><p>Survey Your Application</p>
+<p> Legacy projects have business value baked in, that you must preserve.</p>
+</li>
+<li><p>Organize the Work to be done</p>
+<p> Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.</p>
+</li>
+</ol>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-15">
+    <section class="slide-content"><h3 id="survey-your-application">Survey Your Application</h3>
+<ol>
+<li><p>Talk to customers and users of the application </p>
+</li>
+<li><p>Study the codebase</p>
+</li>
+<li><p>Examine the new feature requests; investigate how they might be implemented</p>
+</li>
+</ol>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><h3 id="talk-to-users">Talk to Users</h3>
+<ul>
+<li><strong>don’t rely exclusively on developer (different concerns)</strong></li>
+</ul>
+<ul>
+<li><p>Is their process consistent with the current application?  </p>
+</li>
+<li><p>Identify the pain points</p>
+</li>
+<li><p>Do they have concerns with the current application?</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-17">
+    <section class="slide-content"><h3 id="user-feedback-scholarship-process">User Feedback: Scholarship Process</h3>
+<ul>
+<li><strong>Process was inconsistent with the application</strong></li>
+</ul>
+<pre><code>Selection Committee used a spreadsheet of scholarships and money available; Selected candidates were added to a spreadsheet Student ID and Amount and Term of award (high margin of error)  **PAIN POINT**</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-18">
+    <section class="slide-content"><h3 id="user-feedback-scholarship-concerns">User Feedback: Scholarship Concerns</h3>
+<p><strong>They didn’t trust that Selection Committee was choosing the best candidates</strong></p>
+<ul>
+<li><p>Problems using spreadsheets to assign awards</p>
+</li>
+<li><p>The Scoring algorithm was not clear/effective</p>
+</li>
+<li><p>NOT ALL MONEY WAS BEING AWARDED</p>
+</li>
+<li><p>MONEY LEFT UN-GIVEN ⇒ ANGRY DONORS</p>
+</li>
+<li><p>Students weren&#39;t always considered when they had multiple majors</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><h3 id="study-the-codebase">Study the codebase</h3>
+<ul>
+<li><p>Talk to past/current developers</p>
+</li>
+<li><p>Verify that key functionality does what everyone thinks it does</p>
+</li>
+<li><p>Look for entanglements</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><h3 id="codebase-of-scholarship">Codebase of Scholarship</h3>
+<ul>
+<li><p>Large App model</p>
+<ul>
+<li><p>most of the functionality was here</p>
+</li>
+<li><p>SQL queries, only slightly dynamic</p>
+</li>
+<li><p>Functions weren’t single-purpose</p>
+</li>
+<li><p>No Bounded Contexts between Students, Selection, and Foundation</p>
+</li>
+</ul>
+</li>
+<li><p>Student data was a single row in table</p>
+<ul>
+<li>Academic information wasn’t updated when it changed</li>
+</ul>
+</li>
+</ul>
+<!-- background: #e4dadf -->
+<!-- color: #774c43 -->
+<!-- font: univers --></section>
+  </div>
+  <div class="slide hidden" id="slide-21">
+    <section class="slide-content"><h3 id="new-features">New Features</h3>
+<ul>
+<li><p>Examine the new feature requests </p>
+</li>
+<li><p>Investigate how they might be implemented</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-22">
+    <section class="slide-content"><h3 id="new-features-scholarships">New Features: Scholarships</h3>
+<ul>
+<li><p>Explicit criteria matching, excluded non-matching applicants</p>
+</li>
+<li><p>Current student data, query their GPA, Major, etc at time of selection</p>
+</li>
+<li><p>Students have multiple majors</p>
+</li>
+</ul>
+<!-- background: #e4dadf -->
+<!-- color: #774c43 -->
+<!-- font: univers --></section>
+  </div>
+  <div class="slide hidden" id="slide-23">
+    <section class="slide-content"><h3 id="get-organized-">Get Organized...</h3>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-24">
+    <section class="slide-content"><h3 id="organize-the-work-because-">Organize the Work because...</h3>
+<ul>
+<li><p>Bootstrapping grows FAST!</p>
+</li>
+<li><p>Large projects wear people down</p>
+<ul>
+<li><p>requires more people</p>
+</li>
+<li><p>developers and users must remain engaged in the process</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-25">
+    <section class="slide-content"><h3 id="organize-the-work-because-">Organize the work because...</h3>
+<ul>
+<li><p>Build Trust</p>
+<ul>
+<li><p>Explain why this work is necessary</p>
+</li>
+<li><p>Be open about errors in the application.</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-26">
+    <section class="slide-content"><h3 id="organize-the-work-because-">Organize the work because...</h3>
+<ul>
+<li><p>It helps decide whether bootstrapping is a worthwhile investment.</p>
+</li>
+<li><p>It helps decide whether this Legacy is worth saving.</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-27">
+    <section class="slide-content"><h3 id="how-to-organize-the-work">How to Organize the work</h3>
+<ul>
+<li><p>Research shows all that can/should to be done</p>
+</li>
+<li><p>Scope the work you are agreeing to do</p>
+</li>
+<li><p>Set expectations</p>
+<ul>
+<li><p>Customer has an open door to you </p>
+<ul>
+<li>add work from the side </li>
+<li>processes change</li>
+</ul>
+</li>
+<li><p>Keep the door open anyway!</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-28">
+    <section class="slide-content"><h3 id="plan-features-for-scholarships">Plan Features for Scholarships</h3>
+<p>Divided the application based on first need in the process</p>
+<ol>
+<li><p>Student Application</p>
+</li>
+<li><p>Funding</p>
+</li>
+<li><p>Selection</p>
+</li>
+<li><p>Reports for Funding and Scholarship Coordinator</p>
+</li>
+</ol>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-29">
+    <section class="slide-content"></section>
+  </div>
+  <div class="slide hidden" id="slide-30">
+    <section class="slide-content"><h3 id="mitigate-risk">Mitigate Risk</h3>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-31">
+    <section class="slide-content"><h3 id="control-risk-in-bootstrapping">Control Risk in Bootstrapping</h3>
+<ul>
+<li><p>Version control</p>
+<p>  Stabilize the code base and preserves history</p>
+</li>
+<li><p>Development and Staging environments (w/ Fake data)</p>
+<p>  <strong>No more developing in production!!!!</strong></p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-32">
+    <section class="slide-content"><h3 id="control-risk-in-bootstrapping">Control Risk in Bootstrapping</h3>
+<ul>
+<li><p>Write Tests to verify that you aren&#39;t breaking key functionality</p>
+</li>
+<li><p>Involve Users to work through the process</p>
+<ul>
+<li>constant feedback loop</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-33">
+    <section class="slide-content"><h3 id="bootstrap">Bootstrap</h3>
+<ul>
+<li><p>Initial Bootstrapping</p>
+</li>
+<li><p>Ongoing Bootstrapping</p>
+</li>
+</ul>
+<p>Customize to the needs of your project.</p>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-34">
+    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
+<ul>
+<li><p>new code in <code>/src</code> alongside the <code>/app</code> directory</p>
+</li>
+<li><p>Create a configuration file</p>
+<ul>
+<li><p>manage DB connections, details in the app</p>
+</li>
+<li><p>specified paths to base_url, templates, etc</p>
+</li>
+<li><p>notices to show specific messages on the application</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-35">
+    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
+<ul>
+<li>Composer<ul>
+<li>autoloaded our namespaced code in <code>/src</code></li>
+<li>use of moneyphp for handling currency</li>
+<li>Phinx for database migrations</li>
+<li>Pimple containers</li>
+<li>Illuminate database</li>
+<li>Twig templates</li>
+<li>Testing packages (Codeception, PHPUnit, Mockery)</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-36">
+    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
+<ul>
+<li><p>Acceptance tests stabilize functionality you need</p>
+<ul>
+<li><p>added hooks for testing interfaces </p>
+</li>
+<li><p>Codeception needed to view contents of the pages</p>
+</li>
+</ul>
+</li>
+<li><p>Unit and Functional tests for everything you build</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-37">
+    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
+<p>Within CodeIgniter</p>
+<ul>
+<li><p>New Controllers for new functionality</p>
+</li>
+<li><p>Bindings for CodeIgniter to find the new code</p>
+</li>
+<li><p>New Twig templates beside the existing Views in <code>/app</code></p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-38">
+    <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
+<ul>
+<li><p>SUCCESS!</p>
+<ul>
+<li><p>Restored confidence in selection process!</p>
+</li>
+<li><p>Fewer awards were rejected!</p>
+</li>
+<li><p>More Scholarship Money was awarded than ever before!</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>By May 2015:  Approximately $1,074,394 Awarded for 2015-16</strong></p>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-39">
+    <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
+<ul>
+<li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete.  </p>
+</li>
+<li><p>Over time we lost participation because we have too many other projects needing attention.</p>
+</li>
+<li><p>Tight deadlines with un-scoped work, we created technical debt that we would have to address in the next academic year</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-40">
+    <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
+<ul>
+<li><p><strong>University is replacing it this year</strong></p>
+</li>
+<li><p>We learned a lot of new techniques</p>
+<ul>
+<li>bootstrap  </li>
+<li>event sourcing</li>
+<li>Domain-Driven Design</li>
+<li>Command Query Response Segregation</li>
+<li>managing projects</li>
+<li>A LOT!</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-41">
+    <section class="slide-content"><h3 id="questions-">QUESTIONS?</h3>
+<p>Emily Stamey
+Application Developer @ North Carolina State University</p>
+<p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
+<p>Blog with Bootstrapping details: <a href="http://www.elstamey.com/">elstamey.com</a></p>
+</section>
+  </div>
+  <div class="slide hidden author-slide" id="slide-42">
     <section class="slide-content"><div class="author">
   <h1 class="name">Emily Stamey</h1>
     <h3 class="twitter">
