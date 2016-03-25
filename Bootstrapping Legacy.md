@@ -13,13 +13,7 @@ style: my-style.css
 by Emily Stamey
 
 
---
-
-
-
-
-
-![Emily Stamey](https://en.gravatar.com/userimage/30647603/9b0f0abbf75bafcf32232913fb3654a9.png)
+-- slide-me
 
 ### Emily Stamey
 Application Developer @ North Carolina State University
@@ -28,11 +22,7 @@ Twitter: [@elstamey](https://twitter.com/elstamey)
 
 Blog: [elstamey.com](http://www.elstamey.com/)
 
---
-
-
-
-![Emily Stamey](https://en.gravatar.com/userimage/30647603/9b0f0abbf75bafcf32232913fb3654a9.png)
+-- slide-me
 
 ### Emily Stamey
 

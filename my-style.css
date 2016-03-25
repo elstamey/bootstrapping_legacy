@@ -5,3 +5,11 @@
 .example {
     background-color: #3f3f3f;
 }
+
+.slide-me {
+    color: #eee;
+    background: url('img/emily-purple-elephpant.jpg');
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
