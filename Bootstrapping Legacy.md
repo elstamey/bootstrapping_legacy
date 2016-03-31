@@ -35,31 +35,30 @@ Blog: [elstamey.com](http://www.elstamey.com/)
 ![Emily Stamey](https://en.gravatar.com/userimage/30647603/9b0f0abbf75bafcf32232913fb3654a9.png)
 
 ### Emily Stamey
+Application Developer @ North Carolina State University
 
 - Developing PHP applications since 1999.  
 
 - Primarily supporting legacy applications.
-
-Application Developer @ North Carolina State University
 
 - My department supports about 80 applications that support business processes of the College of Engineering
 
 --
 
 
-
 ### Why Bootstrapping is important
 
 - A lot of web development work involves supporting **legacy** applications
 
-    - Supporting legacy is a challenge, but it is worthwhile to learn and master!  
+ <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/711858225528901633">March 21, 2016</a></blockquote>
+ <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!--- Supporting legacy is a challenge, but it is worthwhile to learn and master!  -->
 
 - It is HARD to justify **refactoring**  
 
 - **Bootstrapping** gives you flexibility to support your application
 
-CodeWisdom: "It's harder to read code than to write it. This is why code reuse is so hard." - Joel Spolsky
-https://twitter.com/codewisdom/status/711858225528901633
+
 
 --
 
