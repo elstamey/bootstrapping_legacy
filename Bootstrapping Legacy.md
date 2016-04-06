@@ -169,7 +169,6 @@ In software this usually means, **building onto an existing system** for the pur
 --
 
 
-
 ### Survey Your Application
 
 1. Talk to customers and users of the application 
@@ -178,51 +177,113 @@ In software this usually means, **building onto an existing system** for the pur
 
 3. Examine the new feature requests; investigate how they might be implemented
 
+-- choose1
+
+
+### Survey Your Application
+
+1. Talk to users of the application 
+
+2. Study the codebase
+
+3. Examine the new feature requests; investigate how they might be implemented
+
 --
 
 
+### Talk to Users of the Application
 
-### Talk to Users 
+**Don’t rely on developer feedback**
 
-- **don’t rely exclusively on developer (different concerns)**
+- Is their process consistent with the application?  
+
+- What are the pain points?
+
+- Do they have concerns with the application?
+
+-- choose1 
 
 
-- Is their process consistent with the current application?  
+### Talk to Users of the Application
 
-- Identify the pain points
+**Don’t rely on developer feedback**
 
-- Do they have concerns with the current application?
+- Is their process consistent with the application?  
+
+- What are the pain points?
+
+- Do they have concerns with the application?
 
 -- example
 
 ### User Feedback: Scholarship Process
 
+**Process was inconsistent with the application**
 
-- **Process was inconsistent with the application**
+- Selection Committee used a spreadsheet of available scholarship money 
+ 
+- Selected Candidates were added to a spreadsheet Student ID and Amount and Term of award 
 
+-- choose2
 
+### Talk to Users of the Application
 
-    Selection Committee used a spreadsheet of scholarships and money available; Selected candidates were added to a spreadsheet Student ID and Amount and Term of award (high margin of error)  **PAIN POINT**
+**Don’t rely on developer feedback**
+
+- Is their process consistent with the application?  
+
+- What are the pain points?
+
+- Do they have concerns with the application?
+
+-- example
+
+### User Feedback: Scholarship Pain Points
+
+**High Margin of Error**  
+
+Their process was exiting and re-entering the system through spreadsheets
+
+-- choose3
+
+### Talk to Users of the Application
+
+**Don’t rely on developer feedback**
+
+- Is their process consistent with the application?  
+
+- What are the pain points?
+
+- Do they have concerns with the application?
 
 -- example
 
 ### User Feedback: Scholarship Concerns
 
-**They didn’t trust that Selection Committee was choosing the best candidates**
-
-- Problems using spreadsheets to assign awards
+- They didn’t trust that Selection Committee was choosing the best candidates
 
 - The Scoring algorithm was not clear/effective
 
-- NOT ALL MONEY WAS BEING AWARDED
+- Multiple majors weren't allowed by our system
 
-- MONEY LEFT UN-GIVEN ⇒ ANGRY DONORS
+- **NOT ALL MONEY WAS BEING AWARDED**
 
-- Students weren't always considered when they had multiple majors
+- **MONEY LEFT UN-GIVEN ⇒ ANGRY DONORS**
+
+
+
+-- choose2
+
+
+### Survey Your Application
+
+1. Talk to users of the application 
+
+2. Study the codebase
+
+3. Examine the new feature requests; investigate how they might be implemented
 
 --
-
-
 
 ### Study the codebase
 
@@ -232,9 +293,7 @@ In software this usually means, **building onto an existing system** for the pur
 
 - Look for entanglements 
 
---
-
-
+-- example
 
 ### Codebase of Scholarship
 
@@ -250,13 +309,17 @@ In software this usually means, **building onto an existing system** for the pur
 - Student data was a single row in table
    - Academic information wasn’t updated when it changed
 
-<!-- background: #e4dadf -->
-<!-- color: #774c43 -->
-<!-- font: univers -->
+-- choose3
+
+### Survey Your Application
+
+1. Talk to users of the application 
+
+2. Study the codebase
+
+3. Examine the new feature requests; investigate how they might be implemented
 
 --
-
-
 
 ### New Features
 
