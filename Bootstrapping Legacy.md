@@ -36,33 +36,32 @@ Application Developer @ North Carolina State University
 --
 
 
+### Learning to support Legacy is important
+
+
+ <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/711858225528901633">March 21, 2016</a></blockquote>
+ <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+--
+
 ### Why Bootstrapping is important
 
 - A lot of web development work involves supporting **legacy** applications
 
- <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/711858225528901633">March 21, 2016</a></blockquote>
- <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!--- Supporting legacy is a challenge, but it is worthwhile to learn and master!  -->
-
-- It is HARD to justify **refactoring**  
+- It is HARD to justify **refactoring**
 
 - **Bootstrapping** gives you flexibility to support your application
 
 
+**Let's review some terminology... (source: wikipedia)**
 
 --
 
 
 
-### Let's review some terminology
+### Legacy Software
 
---
-
-
-
-### Legacy 
-
-Software that has been developed using older technologies and practices.  It can be difficult to replace because of its wide use.
+Software developed using older technologies and practices.  It can be difficult to replace because of its wide use.
 
 Often a pejorative term, referencing a system as "legacy" often implies that the system is out of date or in need of replacement.
 
@@ -72,7 +71,7 @@ Often a pejorative term, referencing a system as "legacy" often implies that the
 
 ### Spaghetti Code
 
-The relationships between the pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something somewhere else.
+The relationships between pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something.
 
 --
 
@@ -90,19 +89,15 @@ In Object Oriented programming, this means code that has many really small class
 
 ### Refactor
 
-Technique for restructuring an existing body of code, altering its internal structure **without changing its external behavior**. A series of small behavior preserving transformations.
+Technique for restructuring an existing body of code, altering its internal structure **without changing its external behavior**.
 
 --
 
-
-
 ### Technical Debt
 
-http://marketing.intracto.com/paying-technical-debt-how-to-rescue-legacy-code-through-refactoring?utm_content=26784583&utm_medium=social&utm_source=linkedin
+A metaphor referring to the eventual consequences of any system design, software architecture or software development within a codebase.
 
-<!-- background: #fefe79 -->
-<!-- color: #b13ad0 -->
-<!-- font: univers -->
+
 
 --
 
@@ -110,9 +105,18 @@ http://marketing.intracto.com/paying-technical-debt-how-to-rescue-legacy-code-th
 
 ### Bootstrapping
 
-A business term referring to a self-starter; or a self-starting process that proceeds without any external input, or minimal input. 
+In software this usually means, **building onto an existing system** for the purpose of improvement with the least amount of sweat equity and development cost in the process.
 
-In software this usually means, building onto an existing system for the purpose of improving the software with the least amount of sweat equity and development cost in the process.
+--
+
+### Why Bootstrapping is important
+
+- A lot of web development work involves supporting **legacy** applications
+
+- It is HARD to justify **refactoring**
+
+- **Bootstrapping** gives you flexibility to support your application
+
 
 -- example
 
