@@ -193,26 +193,26 @@ In software this usually means, **building onto an existing system** for the pur
 
 ### Talk to Users of the Application
 
+1. Is their process consistent with the application?  
+
+2. What are the pain points?
+
+3. Do they have concerns with the application?
+
 **Don’t rely on developer feedback**
 
-- Is their process consistent with the application?  
-
-- What are the pain points?
-
-- Do they have concerns with the application?
 
 -- choose1 
 
 
 ### Talk to Users of the Application
 
-**Don’t rely on developer feedback**
+1. Is their process consistent with the application?  
 
-- Is their process consistent with the application?  
+2. What are the pain points?
 
-- What are the pain points?
+3. Do they have concerns with the application?
 
-- Do they have concerns with the application?
 
 -- example
 
@@ -228,13 +228,12 @@ In software this usually means, **building onto an existing system** for the pur
 
 ### Talk to Users of the Application
 
-**Don’t rely on developer feedback**
+1. Is their process consistent with the application?  
 
-- Is their process consistent with the application?  
+2. What are the pain points?
 
-- What are the pain points?
+3. Do they have concerns with the application?
 
-- Do they have concerns with the application?
 
 -- example
 
@@ -248,13 +247,12 @@ Their process was exiting and re-entering the system through spreadsheets
 
 ### Talk to Users of the Application
 
-**Don’t rely on developer feedback**
+1. Is their process consistent with the application?  
 
-- Is their process consistent with the application?  
+2. What are the pain points?
 
-- What are the pain points?
+3. Do they have concerns with the application?
 
-- Do they have concerns with the application?
 
 -- example
 

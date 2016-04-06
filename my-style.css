@@ -20,3 +20,8 @@
     background-color: #9c9491;
     color: #000;
 }
+
+ul {
+    padding-left: 40px;
+    padding-top: 0;
+}
