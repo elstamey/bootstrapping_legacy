@@ -48,7 +48,7 @@ Application Developer @ North Carolina State University
 
 - A lot of web development work involves supporting **legacy** applications
 
-- It is HARD to justify **refactoring**
+- It is HARD to justify **refactoring**  
 
 - **Bootstrapping** gives you flexibility to support your application
 
@@ -113,7 +113,7 @@ In software this usually means, **building onto an existing system** for the pur
 
 - A lot of web development work involves supporting **legacy** applications
 
-- It is HARD to justify **refactoring**
+- It is HARD to justify **refactoring**  
 
 - **Bootstrapping** gives you flexibility to support your application
 
@@ -144,6 +144,17 @@ In software this usually means, **building onto an existing system** for the pur
 
 
 
+### How to Bootstrap
+
+1. Survey Your Application
+
+    Legacy projects have business value baked in, that you must preserve.
+
+2. Organize the Work to be done
+
+    Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.
+
+-- choose1
 ### How to Bootstrap
 
 1. Survey Your Application
