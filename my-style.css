@@ -3,7 +3,8 @@
 }
 
 .example {
-    background-color: #3f3f3f;
+    background-color: #FF5E99;
+    color: white;
 }
 
 .slide-me {
@@ -17,8 +18,7 @@
 .choose1 li:nth-child(1)  p:first-of-type ,
 .choose2 li:nth-child(2) p:first-of-type  ,
 .choose3 li:nth-child(3) p:first-of-type  {
-    background-color: #9c9491;
-    color: #000;
+    color: #1b91ff;
 }
 
 ul {

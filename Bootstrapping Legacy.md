@@ -4,7 +4,7 @@ author:
     twitter: elstamey
     url: http://elstamey.com
 output: slideshow.html
-theme: elstamey/cleaver-reveal-theme
+theme: elstamey/cleaver-retro-theme
 style: my-style.css
 ----------------
 
@@ -171,7 +171,7 @@ In software this usually means, **building onto an existing system** for the pur
 
 ### Survey Your Application
 
-1. Talk to customers and users of the application 
+1. Talk to users of the application 
 
 2. Study the codebase
 
