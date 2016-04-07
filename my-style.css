@@ -3,8 +3,13 @@
 }
 
 .example {
-    background-color: #FF5E99;
-    color: white;
+    background-color: #E42269;
+    color: white !important;
+}
+
+.example h3,
+.example h1 {
+    color: white !important;
 }
 
 .slide-me {
