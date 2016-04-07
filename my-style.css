@@ -2,6 +2,10 @@
     background-color: inherit;
 }
 
+.tweet {
+    background-color: rgba(228, 34, 105, 0.34);;
+}
+
 .example {
     background-color: rgba(228, 34, 105, 0.34);;
 }

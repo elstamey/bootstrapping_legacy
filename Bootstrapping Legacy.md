@@ -33,7 +33,7 @@ Application Developer @ North Carolina State University
 
 - My department supports about 80 applications that support business processes of the College of Engineering
 
---
+-- tweet
 
 
 ### Learning to support Legacy is important
@@ -56,8 +56,6 @@ Application Developer @ North Carolina State University
 **Let's review some terminology... (source: wikipedia)**
 
 --
-
-
 
 ### Legacy Software
 
