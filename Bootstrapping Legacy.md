@@ -6,7 +6,7 @@ author:
 output: slideshow.html
 theme: elstamey/cleaver-retro-theme
 style: my-style.css
-----------------
+-------------------
 
 
 ### Pulling Up Your Legacy App by Its Bootstraps
