@@ -39,7 +39,7 @@ Application Developer @ North Carolina State University
 ### Supporting Legacy is Hard
 
 
- <blockquote data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky</p>&mdash;</blockquote>
+ <blockquote data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky</p></blockquote>
 
 --
 
