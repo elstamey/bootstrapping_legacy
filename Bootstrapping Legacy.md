@@ -39,8 +39,7 @@ Application Developer @ North Carolina State University
 ### Supporting Legacy is Hard
 
 
- <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky</p>&mdash; Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/711858225528901633">March 21, 2016</a></blockquote>
- <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+ <blockquote data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky</p>&mdash;</blockquote>
 
 --
 
