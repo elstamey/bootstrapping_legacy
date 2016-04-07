@@ -3,14 +3,9 @@
 }
 
 .example {
-    background-color: #E42269;
-    color: white !important;
+    background-color: rgba(228, 34, 105, 0.34);;
 }
 
-.example h3,
-.example h1 {
-    color: white !important;
-}
 
 .slide-me {
     color: #eee;
