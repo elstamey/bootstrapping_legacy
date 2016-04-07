@@ -4,9 +4,9 @@ author:
     twitter: elstamey
     url: http://elstamey.com
 output: slideshow.html
-theme: jdan/cleaver-retro
+theme: elstamey/cleaver-reveal-theme
 style: my-style.css
---
+----------------
 
 
 ### Pulling Up Your Legacy App by Its Bootstraps
