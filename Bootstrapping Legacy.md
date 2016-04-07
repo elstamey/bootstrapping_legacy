@@ -175,7 +175,7 @@ In software this usually means, **building onto an existing system** for the pur
 
 2. Study the codebase
 
-3. Examine the new feature requests; investigate how they might be implemented
+3. Examine the new feature requests
 
 -- choose1
 
@@ -186,7 +186,7 @@ In software this usually means, **building onto an existing system** for the pur
 
 2. Study the codebase
 
-3. Examine the new feature requests; investigate how they might be implemented
+3. Examine the new feature requests
 
 --
 
@@ -279,7 +279,7 @@ Their process was exiting and re-entering the system through spreadsheets
 
 2. Study the codebase
 
-3. Examine the new feature requests; investigate how they might be implemented
+3. Examine the new feature requests
 
 --
 
@@ -315,17 +315,17 @@ Their process was exiting and re-entering the system through spreadsheets
 
 2. Study the codebase
 
-3. Examine the new feature requests; investigate how they might be implemented
+3. Examine the new feature requests
 
 --
 
-### New Features
+### Examine New Feature Requests
 
-- Examine the new feature requests 
+- What new features are needed?  
 
-- Investigate how they might be implemented
+- How they might be implemented?
 
---
+-- example
 
 ### New Features: Scholarships
 
@@ -335,9 +335,6 @@ Their process was exiting and re-entering the system through spreadsheets
 
 - Students have multiple majors
 
-<!-- background: #e4dadf -->
-<!-- color: #774c43 -->
-<!-- font: univers -->
 
 --
 
@@ -347,39 +344,44 @@ Their process was exiting and re-entering the system through spreadsheets
 
 --
 
+### Decision Time
 
+- Is there another application that can do what it does?  Is it better?
 
-### Organize the Work because...
+- Is this a worthwhile investment?
+
+- If so, what are the Most Valuable Features?
+
+--
+
+### Build Trust with Users
+
+- Explain why this work is necessary
+
+- Be open about errors in the application
+
+--
+
+### Set Expectations
+
+- Customer has an open door to you 
+    - add work from the side 
+    - change processes
+
+- Keep the door open anyway!
+
+--
+
+### Scope the work to be done
 - Bootstrapping grows FAST!
 
-- Large projects wear people down
+- Large projects 
 
-    - requires more people
-
-    - developers and users must remain engaged in the process
-
---
+    - require more people to be engaged in the process
+    
+    - wear people down over time
 
 
-
-### Organize the work because...
-
-
-- Build Trust
-
-    - Explain why this work is necessary
-
-    - Be open about errors in the application.
-
---
-
-
-
-### Organize the work because...
-
-- It helps decide whether bootstrapping is a worthwhile investment.
-
-- It helps decide whether this Legacy is worth saving.
 
 --
 
@@ -391,13 +393,7 @@ Their process was exiting and re-entering the system through spreadsheets
 
 - Scope the work you are agreeing to do
 
-- Set expectations
 
-    - Customer has an open door to you 
-        - add work from the side 
-        - processes change
-
-    - Keep the door open anyway!
 
 -- example
 
