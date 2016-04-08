@@ -367,7 +367,9 @@ Their process was exiting and re-entering the system through spreadsheets
 ### Set Expectations
 
 - Customer has an open door to you 
+
     - add work from the side 
+
     - change processes
 
 - Keep the door open anyway!
@@ -411,19 +413,13 @@ Divided the application based on first need in the process
 
 4. Reports for Funding and Scholarship Coordinator
 
--- example
+-- one-thing
+
+ Mitigate Risk 
 
 --
 
-
-
-### Mitigate Risk 
-
---
-
-
-
-### Control Risk in Bootstrapping
+### Control Risk Before Bootstrapping
 
 - Version control
 
@@ -437,7 +433,7 @@ Divided the application based on first need in the process
 
 
 
-### Control Risk in Bootstrapping
+### Control Risk Before Bootstrapping
 
 - Write Tests to verify that you aren't breaking key functionality
 
@@ -446,8 +442,6 @@ Divided the application based on first need in the process
     - constant feedback loop
 
 --
-
-
 
 ### Bootstrap
 
@@ -463,6 +457,11 @@ Customize to the needs of your project.
 
 - new code in `/src` alongside the `/app` directory
 
+![File tree](img/FileTree.png)
+
+-- example
+
+### Bootstrap the application
 - Create a configuration file
 
     - manage DB connections, details in the app

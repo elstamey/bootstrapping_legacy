@@ -483,6 +483,11 @@ ul {
     padding-left: 40px;
     padding-top: 0;
 }
+
+img {
+    align-items: center;
+    width: auto;
+}
   </style>
     <script async src="http://localhost:35729/livereload.js"></script>
 </head>
@@ -856,8 +861,10 @@ ul {
 <ul>
 <li><p>Customer has an open door to you </p>
 <ul>
-<li>add work from the side </li>
-<li>change processes</li>
+<li><p>add work from the side </p>
+</li>
+<li><p>change processes</p>
+</li>
 </ul>
 </li>
 <li><p>Keep the door open anyway!</p>
@@ -906,15 +913,12 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-39">
-    <section class="slide-content"></section>
-  </div>
-  <div class="slide hidden" id="slide-40">
-    <section class="slide-content"><h3 id="mitigate-risk">Mitigate Risk</h3>
+  <div class="slide hidden  one-thing" id="slide-39">
+    <section class="slide-content"><p>Mitigate Risk</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-41">
-    <section class="slide-content"><h3 id="control-risk-in-bootstrapping">Control Risk in Bootstrapping</h3>
+  <div class="slide hidden" id="slide-40">
+    <section class="slide-content"><h3 id="control-risk-before-bootstrapping">Control Risk Before Bootstrapping</h3>
 <ul>
 <li><p>Version control</p>
 <p>  Stabilize the code base and preserves history</p>
@@ -925,8 +929,8 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-42">
-    <section class="slide-content"><h3 id="control-risk-in-bootstrapping">Control Risk in Bootstrapping</h3>
+  <div class="slide hidden" id="slide-41">
+    <section class="slide-content"><h3 id="control-risk-before-bootstrapping">Control Risk Before Bootstrapping</h3>
 <ul>
 <li><p>Write Tests to verify that you aren&#39;t breaking key functionality</p>
 </li>
@@ -938,7 +942,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-43">
+  <div class="slide hidden" id="slide-42">
     <section class="slide-content"><h3 id="bootstrap">Bootstrap</h3>
 <ul>
 <li><p>Initial Bootstrapping</p>
@@ -949,11 +953,17 @@ ul {
 <p>Customize to the needs of your project.</p>
 </section>
   </div>
+  <div class="slide hidden  example" id="slide-43">
+    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
+<ul>
+<li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
+</ul>
+<p><img src="img/FileTree.png" alt="File tree"></p>
+</section>
+  </div>
   <div class="slide hidden  example" id="slide-44">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
-<li><p>new code in <code>/src</code> alongside the <code>/app</code> directory</p>
-</li>
 <li><p>Create a configuration file</p>
 <ul>
 <li><p>manage DB connections, details in the app</p>
