@@ -16,7 +16,7 @@ by Emily Stamey
 -- slide-me
 
 ### Emily Stamey
-Application Developer @ North Carolina State University
+Application Developer @ NC State University
 
 Twitter: [@elstamey](https://twitter.com/elstamey)
 
@@ -25,7 +25,7 @@ Blog: [elstamey.com](http://www.elstamey.com/)
 <!---- slide-me-->
 
 <!--### Emily Stamey-->
-<!--Application Developer @ North Carolina State University-->
+<!--Application Developer @ NC State University-->
 
 <!--- Developing PHP applications since 1999.  -->
 
@@ -778,7 +778,7 @@ Within CodeIgniter
 ### QUESTIONS?
 
 Emily Stamey
-Application Developer @ North Carolina State University
+Application Developer @ NC State University
 
 Twitter: [@elstamey](https://twitter.com/elstamey)
 
