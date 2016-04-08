@@ -69,3 +69,21 @@ pre {
     height: 600px;
     width: 800px;
 }
+
+.slide#slide-1 {
+    background: url('img/shoelaces.jpg')  transparent;
+    background-size: cover;
+    z-index: -1;
+}
+
+#slide-1 .slide-content h3{
+    position: relative;
+    top: -.7em;
+    left: -.7em;
+}
+
+#slide-1 .slide-content p {
+    position: relative;
+    top: -.9em;
+    left: -.8em;
+}
