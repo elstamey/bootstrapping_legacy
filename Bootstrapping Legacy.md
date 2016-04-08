@@ -4,7 +4,7 @@ author:
     twitter: elstamey
     url: http://elstamey.com
 output: slideshow.html
-theme: elstamey/cleaver-retro-theme
+theme: elstamey/cleaver-reveal-theme
 style: my-style.css
 -------------------
 
