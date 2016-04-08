@@ -440,11 +440,21 @@ Divided the application based on first need in the process
 
 ### Control Risk Before Bootstrapping
 
-- Write Tests to verify that you aren't breaking key functionality
-
 - Involve Users to work through the process
 
-    - constant feedback loop
+- Keep the constant feedback loop
+
+-- 
+
+### Test Everything You Need
+
+- Acceptance tests stabilize functionality you need
+
+    - added hooks for testing interfaces 
+
+    - Codeception needed to view contents of the pages
+
+- Unit and Functional tests for everything you build
 
 <!------>
 
@@ -647,7 +657,7 @@ defined and configured twig, database, et al
 
 -- one-thing
 
-### Containers
+Containers
 
 -- example
 
@@ -713,17 +723,7 @@ Controllers
          return $scholDetails;
         }
         ?>
--- example
 
-### Test Everything You Need
-
-- Acceptance tests stabilize functionality you need
-
-    - added hooks for testing interfaces 
-
-    - Codeception needed to view contents of the pages
-
-- Unit and Functional tests for everything you build
 
 -- example
 
@@ -739,32 +739,30 @@ Within CodeIgniter
 
 -- example
 
-### Lessons Learned: Scholarship Summary
+### Summary: Scholarship Wins!
 
-- SUCCESS!
+- Restored confidence in selection process!
 
-    - Restored confidence in selection process!
+- Fewer awards were rejected!
 
-    - Fewer awards were rejected!
-
-    - More Scholarship Money was awarded than ever before!
+- More Scholarship Money was awarded than ever before!
 
 **By May 2015:  Approximately $1,074,394 Awarded for 2015-16**
 
 -- example
-### Lessons Learned: Scholarship Summary
+### Summary: Lessons Learned
 
-- Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete.  
+- Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete
 
-- Over time we lost participation because we have too many other projects needing attention.
+- Over time we lost participation because we have too many other projects needing attention
 
 - Tight deadlines with un-scoped work, we created technical debt that we would have to address in the next academic year
 
 -- example
 
-### Lessons Learned: Scholarship Summary
+### Summary: Was It Worth It?
 
-- **University is replacing it this year**
+**University is replacing it this year**
 
 - We learned a lot of new techniques
     - bootstrap  
@@ -775,9 +773,6 @@ Within CodeIgniter
     - A LOT!
 
 --
-
-
-
 
 
 ### QUESTIONS?

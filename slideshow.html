@@ -973,12 +973,25 @@ h5.attrib a {
   <div class="slide hidden" id="slide-41">
     <section class="slide-content"><h3 id="control-risk-before-bootstrapping">Control Risk Before Bootstrapping</h3>
 <ul>
-<li><p>Write Tests to verify that you aren&#39;t breaking key functionality</p>
-</li>
 <li><p>Involve Users to work through the process</p>
-<ul>
-<li>constant feedback loop</li>
+</li>
+<li><p>Keep the constant feedback loop</p>
+</li>
 </ul>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-42">
+    <section class="slide-content"><h3 id="test-everything-you-need">Test Everything You Need</h3>
+<ul>
+<li><p>Acceptance tests stabilize functionality you need</p>
+<ul>
+<li><p>added hooks for testing interfaces </p>
+</li>
+<li><p>Codeception needed to view contents of the pages</p>
+</li>
+</ul>
+</li>
+<li><p>Unit and Functional tests for everything you build</p>
 </li>
 </ul>
 <!------>
@@ -991,7 +1004,7 @@ h5.attrib a {
 
 <!--Customize to the needs of your project.--></section>
   </div>
-  <div class="slide hidden  " id="slide-42">
+  <div class="slide hidden  " id="slide-43">
     <section class="slide-content"><h3 id="database-migrations-phinx">Database Migrations: Phinx</h3>
 <ul>
 <li><p>Allows you to change DB across evironments</p>
@@ -1002,7 +1015,7 @@ h5.attrib a {
 <p><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-43">
+  <div class="slide hidden  example" id="slide-44">
     <section class="slide-content"><p>&lt;?php</p>
 <pre><code>use Phinx\Migration\AbstractMigration;
 
@@ -1040,13 +1053,13 @@ class CreateUserLoginsTable extends AbstractMigration
 }</code></pre>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-44">
+  <div class="slide hidden  " id="slide-45">
     <section class="slide-content"><h3 id="database-migrations-phinx">Database Migrations: Phinx</h3>
 <p><code>$ vendor/bin/phinx migrate</code></p>
 <p><code>$ vendor/bin/phinx rollback</code></p>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-45">
+  <div class="slide hidden  " id="slide-46">
     <section class="slide-content"><h3 id="configuration-file">Configuration file</h3>
 <ul>
 <li><p>DB connections</p>
@@ -1062,7 +1075,7 @@ class CreateUserLoginsTable extends AbstractMigration
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-46">
+  <div class="slide hidden  example" id="slide-47">
     <section class="slide-content"><p>&lt;?php</p>
 <pre><code>    return array(
         &#39;app&#39; =&gt; array(
@@ -1133,7 +1146,7 @@ class CreateUserLoginsTable extends AbstractMigration
     ?&gt;</code></pre>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-47">
+  <div class="slide hidden  example" id="slide-48">
     <section class="slide-content"><h3 id="bootstrapping-scholarships-filetree">Bootstrapping Scholarships: Filetree</h3>
 <ul>
 <li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
@@ -1141,7 +1154,7 @@ class CreateUserLoginsTable extends AbstractMigration
 <p><img src="img/FileTree.png" alt="File tree"></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-48">
+  <div class="slide hidden  example" id="slide-49">
     <section class="slide-content"><h3 id="bootstrapping-scholarships-composer">Bootstrapping Scholarships: Composer</h3>
 <ul>
 <li><p><code>/src</code> is given a namespace</p>
@@ -1152,7 +1165,7 @@ class CreateUserLoginsTable extends AbstractMigration
 <p><img src="img/composer.json.png" alt="Composer File"></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-49">
+  <div class="slide hidden  example" id="slide-50">
     <section class="slide-content"><h3 id="composer-packages">Composer packages</h3>
 <ul>
 <li>Phinx for database migrations</li>
@@ -1164,7 +1177,7 @@ class CreateUserLoginsTable extends AbstractMigration
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-50">
+  <div class="slide hidden  example" id="slide-51">
     <section class="slide-content"><h3 id="bootstrapping-scholarships-connecting-the-dots">Bootstrapping Scholarships: Connecting the Dots</h3>
 <ul>
 <li><p><code>/app/bindings.php</code> 
@@ -1178,11 +1191,11 @@ defined and configured twig, database, et al</p>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  one-thing" id="slide-51">
-    <section class="slide-content"><h3 id="containers">Containers</h3>
+  <div class="slide hidden  one-thing" id="slide-52">
+    <section class="slide-content"><p>Containers</p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-52">
+  <div class="slide hidden  example" id="slide-53">
     <section class="slide-content"><h3 id="containers">Containers</h3>
 <p><code>/app/bindings.php</code></p>
 <pre><code>    &lt;?php
@@ -1200,11 +1213,11 @@ defined and configured twig, database, et al</p>
     ); };</code></pre>
 </section>
   </div>
-  <div class="slide hidden  one-thing" id="slide-53">
+  <div class="slide hidden  one-thing" id="slide-54">
     <section class="slide-content"><p>Controllers</p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-54">
+  <div class="slide hidden  example" id="slide-55">
     <section class="slide-content"><h3 id="controllers">Controllers</h3>
 <pre><code>    class Selectionnext extends BaseController
     {
@@ -1244,22 +1257,6 @@ defined and configured twig, database, et al</p>
     ?&gt;</code></pre>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-55">
-    <section class="slide-content"><h3 id="test-everything-you-need">Test Everything You Need</h3>
-<ul>
-<li><p>Acceptance tests stabilize functionality you need</p>
-<ul>
-<li><p>added hooks for testing interfaces </p>
-</li>
-<li><p>Codeception needed to view contents of the pages</p>
-</li>
-</ul>
-</li>
-<li><p>Unit and Functional tests for everything you build</p>
-</li>
-</ul>
-</section>
-  </div>
   <div class="slide hidden  example" id="slide-56">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <p>Within CodeIgniter</p>
@@ -1274,9 +1271,7 @@ defined and configured twig, database, et al</p>
 </section>
   </div>
   <div class="slide hidden  example" id="slide-57">
-    <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
-<ul>
-<li><p>SUCCESS!</p>
+    <section class="slide-content"><h3 id="summary-scholarship-wins-">Summary: Scholarship Wins!</h3>
 <ul>
 <li><p>Restored confidence in selection process!</p>
 </li>
@@ -1285,17 +1280,15 @@ defined and configured twig, database, et al</p>
 <li><p>More Scholarship Money was awarded than ever before!</p>
 </li>
 </ul>
-</li>
-</ul>
 <p><strong>By May 2015:  Approximately $1,074,394 Awarded for 2015-16</strong></p>
 </section>
   </div>
   <div class="slide hidden  example" id="slide-58">
-    <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
+    <section class="slide-content"><h3 id="summary-lessons-learned">Summary: Lessons Learned</h3>
 <ul>
-<li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete.  </p>
+<li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete</p>
 </li>
-<li><p>Over time we lost participation because we have too many other projects needing attention.</p>
+<li><p>Over time we lost participation because we have too many other projects needing attention</p>
 </li>
 <li><p>Tight deadlines with un-scoped work, we created technical debt that we would have to address in the next academic year</p>
 </li>
@@ -1303,12 +1296,10 @@ defined and configured twig, database, et al</p>
 </section>
   </div>
   <div class="slide hidden  example" id="slide-59">
-    <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
+    <section class="slide-content"><h3 id="summary-was-it-worth-it-">Summary: Was It Worth It?</h3>
+<p><strong>University is replacing it this year</strong></p>
 <ul>
-<li><p><strong>University is replacing it this year</strong></p>
-</li>
-<li><p>We learned a lot of new techniques</p>
-<ul>
+<li>We learned a lot of new techniques<ul>
 <li>bootstrap  </li>
 <li>event sourcing</li>
 <li>Domain-Driven Design</li>
