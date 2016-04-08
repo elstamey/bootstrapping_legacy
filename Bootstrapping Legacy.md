@@ -513,72 +513,19 @@ Divided the application based on first need in the process
 
 ` $ vendor/bin/phinx rollback`
 
--- example
+-- 
 
-### Bootstrap the application
+### Configuration file
 
-- new code in `/src` alongside the `/app` directory
+- DB connections
 
-![File tree](img/FileTree.png) 
+- Base URL 
 
--- example
+- Set paths to twig templates
 
-### Bootstrap the application
+- Customize Notice messages
 
-- new code in `/src` would use namespaces
-
-- used composer to autoload those namespaces
-
-![Composer File](img/composer.json.png)
-
--- example
-
-### Composer
-- autoloaded our namespaces code in `/src`
-- use of moneyphp for handling currency
-- Phinx for database migrations
-- Pimple containers
-- Illuminate database
-- Twig templates
-- Testing packages (Codeception, PHPUnit, Mockery)
-
--- example
-
-### Containers
-
-`/app/bindings.php`
-
-        <?php
-        
-        use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
-        
-        $container['/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository'] = function($c) {
-            return new HybridSourcedScholarshipRepository(
-                $c['ScholarshipsSupportEventsEventStore'],
-                $c['database'],
-                $c['ScholarshipsCommonServicesDepartmentsService'],
-                $c['ScholarshipsCommonServicesResidenciesService'],
-                $c['ScholarshipsCommonServicesAcademicPlansService'],
-                $c['ScholarshipsSelectionDomainCollaborationsService']
-        ); };
-
--- example
-
-### Controllers
-
--- example
-
-### Create a configuration file
-
-- manage DB connections
-
-- specified paths to base_url, templates, etc
-
-- set paths to twig templates
-
-- notices to show specific messages on the application
-
-- set configuration variables for services
+- Set config variables for services
 
 -- example
 
@@ -609,9 +556,9 @@ Divided the application based on first need in the process
             ),
         
             'authorization' => array(
-                'funding' => array('elstamey', 'smhill6'),
+                'funding' => array('elstamey', 'person2'),
                 'developers' => array('elstamey'),
-                'coordinators' => array('ajackson')
+                'coordinators' => array('person3')
             ),
         
             'notice' => array(
@@ -653,13 +600,122 @@ Divided the application based on first need in the process
         ?>
         
 
+-- example
 
+### Bootstrapping Scholarships: Filetree
+
+- new code in `/src` alongside the `/app` directory
+
+![File tree](img/FileTree.png) 
+
+-- example
+
+### Bootstrapping Scholarships: Composer
+
+- `/src` is given a namespace
+
+- namespaces are autoloaded in composer
+
+![Composer File](img/composer.json.png)
+
+-- example
+
+### Composer packages
+
+- Phinx for database migrations
+- Illuminate database
+- Twig templates
+- Testing packages (Codeception, PHPUnit, Mockery)
+- Moneyphp for handling currency
+- Pimple containers
 
 
 
 -- example
 
-### Bootstrap the application
+### Bootstrapping Scholarships: Connecting the Dots
+ 
+- `/app/bindings.php` 
+define containers for each of the new Services, Repositories, Projections
+
+- `/app/controllers`  
+new controllers for the new functionality
+
+- `/app/services.php` 
+defined and configured twig, database, et al 
+
+
+-- one-thing
+
+### Containers
+
+-- example
+
+### Containers
+
+`/app/bindings.php`
+
+        <?php
+        
+        use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
+        
+        $container['/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository'] = function($c) {
+            return new HybridSourcedScholarshipRepository(
+                $c['ScholarshipsSupportEventsEventStore'],
+                $c['database'],
+                $c['ScholarshipsCommonServicesDepartmentsService'],
+                $c['ScholarshipsCommonServicesResidenciesService'],
+                $c['ScholarshipsCommonServicesAcademicPlansService'],
+                $c['Scholarships/Selection/Domain/CollaborationsService']
+        ); };
+
+-- one-thing
+
+Controllers
+
+-- example
+
+### Controllers
+
+        class Selectionnext extends BaseController
+        {
+            public function Selectionnext()
+            {
+                parent::BaseController();
+        
+                $this->scholarshipRepository = $this->container['Scholarships/Selection/Domain/Scholarship/ScholarshipRepository'];
+            }
+        protected function scholarshipsDashboard($scholarshipId)
+        {
+            $committeeMember = $this->getCommitteeMember();
+        
+            $scholDetails = $this->getScholarshipDashboard($scholarshipId);
+        
+            $this->render('pages/scholarship-details.twig', array("scholarship" => $scholDetails)));
+        }
+        
+        
+        private function getScholarshipDashboard($scholarshipId,$keepItLight=false)
+        {
+         $committeeMember = $this->getCommitteeMember();
+        
+         $presenter = new ScholarshipDashboardPresenter(
+         $committeeMember,
+         ScholarshipId::fromString($scholarshipId),
+         $this->events,
+         $this->scholarshipRepository,
+         $this->container['Scholarships/Selection/Domain/ApplicantQueryService']
+         );
+        
+         $scholDetails = $presenter->asArrayForJson();
+         $scholDetails['json_string'] = json_encode($scholDetails);
+        
+         return $scholDetails;
+        }
+        ?>
+-- example
+
+### Test Everything You Need
 
 - Acceptance tests stabilize functionality you need
 

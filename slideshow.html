@@ -1046,77 +1046,23 @@ class CreateUserLoginsTable extends AbstractMigration
 <p><code>$ vendor/bin/phinx rollback</code></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-45">
-    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
+  <div class="slide hidden  " id="slide-45">
+    <section class="slide-content"><h3 id="configuration-file">Configuration file</h3>
 <ul>
-<li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
+<li><p>DB connections</p>
+</li>
+<li><p>Base URL </p>
+</li>
+<li><p>Set paths to twig templates</p>
+</li>
+<li><p>Customize Notice messages</p>
+</li>
+<li><p>Set config variables for services</p>
+</li>
 </ul>
-<p><img src="img/FileTree.png" alt="File tree"></p>
 </section>
   </div>
   <div class="slide hidden  example" id="slide-46">
-    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
-<ul>
-<li><p>new code in <code>/src</code> would use namespaces</p>
-</li>
-<li><p>used composer to autoload those namespaces</p>
-</li>
-</ul>
-<p><img src="img/composer.json.png" alt="Composer File"></p>
-</section>
-  </div>
-  <div class="slide hidden  example" id="slide-47">
-    <section class="slide-content"><h3 id="composer">Composer</h3>
-<ul>
-<li>autoloaded our namespaces code in <code>/src</code></li>
-<li>use of moneyphp for handling currency</li>
-<li>Phinx for database migrations</li>
-<li>Pimple containers</li>
-<li>Illuminate database</li>
-<li>Twig templates</li>
-<li>Testing packages (Codeception, PHPUnit, Mockery)</li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden  example" id="slide-48">
-    <section class="slide-content"><h3 id="containers">Containers</h3>
-<p><code>/app/bindings.php</code></p>
-<pre><code>    &lt;?php
-
-    use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
-
-    $container[&#39;/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;] = function($c) {
-        return new HybridSourcedScholarshipRepository(
-            $c[&#39;ScholarshipsSupportEventsEventStore&#39;],
-            $c[&#39;database&#39;],
-            $c[&#39;ScholarshipsCommonServicesDepartmentsService&#39;],
-            $c[&#39;ScholarshipsCommonServicesResidenciesService&#39;],
-            $c[&#39;ScholarshipsCommonServicesAcademicPlansService&#39;],
-            $c[&#39;ScholarshipsSelectionDomainCollaborationsService&#39;]
-    ); };</code></pre>
-</section>
-  </div>
-  <div class="slide hidden  example" id="slide-49">
-    <section class="slide-content"><h3 id="controllers">Controllers</h3>
-</section>
-  </div>
-  <div class="slide hidden  example" id="slide-50">
-    <section class="slide-content"><h3 id="create-a-configuration-file">Create a configuration file</h3>
-<ul>
-<li><p>manage DB connections</p>
-</li>
-<li><p>specified paths to base_url, templates, etc</p>
-</li>
-<li><p>set paths to twig templates</p>
-</li>
-<li><p>notices to show specific messages on the application</p>
-</li>
-<li><p>set configuration variables for services</p>
-</li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden  example" id="slide-51">
     <section class="slide-content"><p>&lt;?php</p>
 <pre><code>    return array(
         &#39;app&#39; =&gt; array(
@@ -1143,9 +1089,9 @@ class CreateUserLoginsTable extends AbstractMigration
         ),
 
         &#39;authorization&#39; =&gt; array(
-            &#39;funding&#39; =&gt; array(&#39;elstamey&#39;, &#39;smhill6&#39;),
+            &#39;funding&#39; =&gt; array(&#39;elstamey&#39;, &#39;person2&#39;),
             &#39;developers&#39; =&gt; array(&#39;elstamey&#39;),
-            &#39;coordinators&#39; =&gt; array(&#39;ajackson&#39;)
+            &#39;coordinators&#39; =&gt; array(&#39;person3&#39;)
         ),
 
         &#39;notice&#39; =&gt; array(
@@ -1187,8 +1133,119 @@ class CreateUserLoginsTable extends AbstractMigration
     ?&gt;</code></pre>
 </section>
   </div>
+  <div class="slide hidden  example" id="slide-47">
+    <section class="slide-content"><h3 id="bootstrapping-scholarships-filetree">Bootstrapping Scholarships: Filetree</h3>
+<ul>
+<li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
+</ul>
+<p><img src="img/FileTree.png" alt="File tree"></p>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-48">
+    <section class="slide-content"><h3 id="bootstrapping-scholarships-composer">Bootstrapping Scholarships: Composer</h3>
+<ul>
+<li><p><code>/src</code> is given a namespace</p>
+</li>
+<li><p>namespaces are autoloaded in composer</p>
+</li>
+</ul>
+<p><img src="img/composer.json.png" alt="Composer File"></p>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-49">
+    <section class="slide-content"><h3 id="composer-packages">Composer packages</h3>
+<ul>
+<li>Phinx for database migrations</li>
+<li>Illuminate database</li>
+<li>Twig templates</li>
+<li>Testing packages (Codeception, PHPUnit, Mockery)</li>
+<li>Moneyphp for handling currency</li>
+<li>Pimple containers</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-50">
+    <section class="slide-content"><h3 id="bootstrapping-scholarships-connecting-the-dots">Bootstrapping Scholarships: Connecting the Dots</h3>
+<ul>
+<li><p><code>/app/bindings.php</code> 
+define containers for each of the new Services, Repositories, Projections</p>
+</li>
+<li><p><code>/app/controllers</code><br>new controllers for the new functionality</p>
+</li>
+<li><p><code>/app/services.php</code> 
+defined and configured twig, database, et al</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  one-thing" id="slide-51">
+    <section class="slide-content"><h3 id="containers">Containers</h3>
+</section>
+  </div>
   <div class="slide hidden  example" id="slide-52">
-    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
+    <section class="slide-content"><h3 id="containers">Containers</h3>
+<p><code>/app/bindings.php</code></p>
+<pre><code>    &lt;?php
+
+    use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
+
+    $container[&#39;/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;] = function($c) {
+        return new HybridSourcedScholarshipRepository(
+            $c[&#39;ScholarshipsSupportEventsEventStore&#39;],
+            $c[&#39;database&#39;],
+            $c[&#39;ScholarshipsCommonServicesDepartmentsService&#39;],
+            $c[&#39;ScholarshipsCommonServicesResidenciesService&#39;],
+            $c[&#39;ScholarshipsCommonServicesAcademicPlansService&#39;],
+            $c[&#39;Scholarships/Selection/Domain/CollaborationsService&#39;]
+    ); };</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  one-thing" id="slide-53">
+    <section class="slide-content"><p>Controllers</p>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-54">
+    <section class="slide-content"><h3 id="controllers">Controllers</h3>
+<pre><code>    class Selectionnext extends BaseController
+    {
+        public function Selectionnext()
+        {
+            parent::BaseController();
+
+            $this-&gt;scholarshipRepository = $this-&gt;container[&#39;Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;];
+        }
+    protected function scholarshipsDashboard($scholarshipId)
+    {
+        $committeeMember = $this-&gt;getCommitteeMember();
+
+        $scholDetails = $this-&gt;getScholarshipDashboard($scholarshipId);
+
+        $this-&gt;render(&#39;pages/scholarship-details.twig&#39;, array(&quot;scholarship&quot; =&gt; $scholDetails)));
+    }
+
+
+    private function getScholarshipDashboard($scholarshipId,$keepItLight=false)
+    {
+     $committeeMember = $this-&gt;getCommitteeMember();
+
+     $presenter = new ScholarshipDashboardPresenter(
+     $committeeMember,
+     ScholarshipId::fromString($scholarshipId),
+     $this-&gt;events,
+     $this-&gt;scholarshipRepository,
+     $this-&gt;container[&#39;Scholarships/Selection/Domain/ApplicantQueryService&#39;]
+     );
+
+     $scholDetails = $presenter-&gt;asArrayForJson();
+     $scholDetails[&#39;json_string&#39;] = json_encode($scholDetails);
+
+     return $scholDetails;
+    }
+    ?&gt;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-55">
+    <section class="slide-content"><h3 id="test-everything-you-need">Test Everything You Need</h3>
 <ul>
 <li><p>Acceptance tests stabilize functionality you need</p>
 <ul>
@@ -1203,7 +1260,7 @@ class CreateUserLoginsTable extends AbstractMigration
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-53">
+  <div class="slide hidden  example" id="slide-56">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <p>Within CodeIgniter</p>
 <ul>
@@ -1216,7 +1273,7 @@ class CreateUserLoginsTable extends AbstractMigration
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-54">
+  <div class="slide hidden  example" id="slide-57">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p>SUCCESS!</p>
@@ -1233,7 +1290,7 @@ class CreateUserLoginsTable extends AbstractMigration
 <p><strong>By May 2015:  Approximately $1,074,394 Awarded for 2015-16</strong></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-55">
+  <div class="slide hidden  example" id="slide-58">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete.  </p>
@@ -1245,7 +1302,7 @@ class CreateUserLoginsTable extends AbstractMigration
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-56">
+  <div class="slide hidden  example" id="slide-59">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p><strong>University is replacing it this year</strong></p>
@@ -1263,7 +1320,7 @@ class CreateUserLoginsTable extends AbstractMigration
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-57">
+  <div class="slide hidden" id="slide-60">
     <section class="slide-content"><h3 id="questions-">QUESTIONS?</h3>
 <p>Emily Stamey
 Application Developer @ North Carolina State University</p>
@@ -1271,7 +1328,7 @@ Application Developer @ North Carolina State University</p>
 <p>Blog with Bootstrapping details: <a href="http://www.elstamey.com/">elstamey.com</a></p>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-58">
+  <div class="slide hidden author-slide" id="slide-61">
     <section class="slide-content"><div class="author">
   <h1 class="name">Emily Stamey</h1>
     <h3 class="twitter">
