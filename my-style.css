@@ -2,13 +2,15 @@
     background-color: inherit;
 }
 
-.quote {
-    background-color: rgba(228, 34, 105, 0.34);
+.quote, .quote h3 {
+    background-color: #F05B62;
+    color: white;
 }
 
 .quote blockquote {
 
     background-color: white;
+    color: black;
     padding: 15px 30px;
 }
 
@@ -19,15 +21,27 @@ blockquote p {
 }
 
 .example {
-    background-color: rgba(228, 34, 105, 0.34);;
+    background-color: rgba(240, 91, 98, 0.45);
+}
+
+.one-thing {
+    background-color: #F05B62;
+    color: white;
+    font-size: 3.77em;
 }
 
 .slide-me {
-    color: #eee;
-    background: url('img/emily-purple-elephpant.jpg');
-    background-size: cover;
-    opacity: 0.3;
-    z-index: -1;
+    /*color: #eee;*/
+    /*background: url('img/emily-purple-elephpant.jpg');*/
+    /*background-size: cover;*/
+    background-color: #F05B62;
+    color: white;
+    /*opacity: 0.3;*/
+    /*z-index: -1;*/
+}
+
+.slide-me h3, .slide-me a {
+    color: white;
 }
 
 .choose1 li:nth-child(1)  p:first-of-type ,

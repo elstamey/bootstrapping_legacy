@@ -431,13 +431,15 @@ em {
     background-color: inherit;
 }
 
-.quote {
-    background-color: rgba(228, 34, 105, 0.34);
+.quote, .quote h3 {
+    background-color: #F05B62;
+    color: white;
 }
 
 .quote blockquote {
 
     background-color: white;
+    color: black;
     padding: 15px 30px;
 }
 
@@ -448,15 +450,27 @@ blockquote p {
 }
 
 .example {
-    background-color: rgba(228, 34, 105, 0.34);;
+    background-color: rgba(240, 91, 98, 0.45);
+}
+
+.one-thing {
+    background-color: #F05B62;
+    color: white;
+    font-size: 3.77em;
 }
 
 .slide-me {
-    color: #eee;
-    background: url('img/emily-purple-elephpant.jpg');
-    background-size: cover;
-    opacity: 0.3;
-    z-index: -1;
+    /*color: #eee;*/
+    /*background: url('img/emily-purple-elephpant.jpg');*/
+    /*background-size: cover;*/
+    background-color: #F05B62;
+    color: white;
+    /*opacity: 0.3;*/
+    /*z-index: -1;*/
+}
+
+.slide-me h3, .slide-me a {
+    color: white;
 }
 
 .choose1 li:nth-child(1)  p:first-of-type ,
@@ -487,27 +501,23 @@ ul {
 <p>Application Developer @ North Carolina State University</p>
 <p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
 <p>Blog: <a href="http://www.elstamey.com/">elstamey.com</a></p>
-</section>
+<!---- slide-me-->
+
+<!--### Emily Stamey-->
+<!--Application Developer @ North Carolina State University-->
+
+<!--- Developing PHP applications since 1999.  -->
+
+<!--- Primarily supporting legacy applications.-->
+
+<!--- My department supports about 80 applications that support business processes of the College of Engineering--></section>
   </div>
-  <div class="slide hidden  slide-me" id="slide-3">
-    <section class="slide-content"><h3 id="emily-stamey">Emily Stamey</h3>
-<p>Application Developer @ North Carolina State University</p>
-<ul>
-<li><p>Developing PHP applications since 1999.  </p>
-</li>
-<li><p>Primarily supporting legacy applications.</p>
-</li>
-<li><p>My department supports about 80 applications that support business processes of the College of Engineering</p>
-</li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden  quote" id="slide-4">
+  <div class="slide hidden  quote" id="slide-3">
     <section class="slide-content"><h3 id="supporting-legacy-is-hard">Supporting Legacy is Hard</h3>
  <blockquote><p>&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; 
  <br>- Joel Spolsky</p></blockquote></section>
   </div>
-  <div class="slide hidden" id="slide-5">
+  <div class="slide hidden" id="slide-4">
     <section class="slide-content"><h3 id="why-bootstrapping-is-important">Why Bootstrapping is important</h3>
 <ul>
 <li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
@@ -520,39 +530,39 @@ ul {
 <p><strong>Let&#39;s review some terminology... (source: wikipedia)</strong></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-6">
+  <div class="slide hidden" id="slide-5">
     <section class="slide-content"><h3 id="legacy-software">Legacy Software</h3>
 <p>Software developed using older technologies and practices.  It can be difficult to replace because of its wide use.</p>
 <p>Often a pejorative term, referencing a system as &quot;legacy&quot; often implies that the system is out of date or in need of replacement.</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
+  <div class="slide hidden" id="slide-6">
     <section class="slide-content"><h3 id="spaghetti-code">Spaghetti Code</h3>
 <p>The relationships between pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something.</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-8">
+  <div class="slide hidden" id="slide-7">
     <section class="slide-content"><h3 id="lasagna-code">Lasagna code</h3>
 <p>Lasagna code is code that has way too many layers.  </p>
 <p>In Object Oriented programming, this means code that has many really small classes when a few slightly larger classes would have done the trick.</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-9">
+  <div class="slide hidden" id="slide-8">
     <section class="slide-content"><h3 id="refactor">Refactor</h3>
 <p>Technique for restructuring an existing body of code, altering its internal structure <strong>without changing its external behavior</strong>.</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-10">
+  <div class="slide hidden" id="slide-9">
     <section class="slide-content"><h3 id="technical-debt">Technical Debt</h3>
 <p>A metaphor referring to the eventual consequences of any system design, software architecture or software development within a codebase.</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden" id="slide-10">
     <section class="slide-content"><h3 id="bootstrapping">Bootstrapping</h3>
 <p>In software this usually means, <strong>building onto an existing system</strong> for the purpose of improvement with the least amount of sweat equity and development cost in the process.</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-12">
+  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><h3 id="why-bootstrapping-is-important">Why Bootstrapping is important</h3>
 <ul>
 <li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
@@ -564,11 +574,11 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-13">
-    <section class="slide-content"><h3 id="the-project-scholarships">The Project: Scholarships</h3>
+  <div class="slide hidden  one-thing" id="slide-12">
+    <section class="slide-content"><p>The Project: Scholarships</p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-14">
+  <div class="slide hidden  example" id="slide-13">
     <section class="slide-content"><h3 id="the-project-scholarships">The Project: Scholarships</h3>
 <ul>
 <li><p>Engineering <strong>Foundation</strong> receives money from donors to give to <strong>students</strong></p>
@@ -589,7 +599,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-14">
     <section class="slide-content"><h3 id="how-to-bootstrap">How to Bootstrap</h3>
 <ol>
 <li><p>Survey Your Application</p>
@@ -601,7 +611,7 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden  choose1" id="slide-16">
+  <div class="slide hidden  choose1" id="slide-15">
     <section class="slide-content"><h3 id="how-to-bootstrap">How to Bootstrap</h3>
 <ol>
 <li><p>Survey Your Application</p>
@@ -613,7 +623,7 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden" id="slide-17">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h3 id="survey-your-application">Survey Your Application</h3>
 <ol>
 <li><p>Talk to users of the application </p>
@@ -625,7 +635,7 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden  choose1" id="slide-18">
+  <div class="slide hidden  choose1" id="slide-17">
     <section class="slide-content"><h3 id="survey-your-application">Survey Your Application</h3>
 <ol>
 <li><p>Talk to users of the application </p>
@@ -637,7 +647,7 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden" id="slide-19">
+  <div class="slide hidden" id="slide-18">
     <section class="slide-content"><h3 id="talk-to-users-of-the-application">Talk to Users of the Application</h3>
 <ol>
 <li><p>Is their process consistent with the application?  </p>
@@ -650,7 +660,7 @@ ul {
 <p><strong>Don’t rely on developer feedback</strong></p>
 </section>
   </div>
-  <div class="slide hidden  choose1 " id="slide-20">
+  <div class="slide hidden  choose1 " id="slide-19">
     <section class="slide-content"><h3 id="talk-to-users-of-the-application">Talk to Users of the Application</h3>
 <ol>
 <li><p>Is their process consistent with the application?  </p>
@@ -662,7 +672,7 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-21">
+  <div class="slide hidden  example" id="slide-20">
     <section class="slide-content"><h3 id="user-feedback-scholarship-process">User Feedback: Scholarship Process</h3>
 <p><strong>Process was inconsistent with the application</strong></p>
 <ul>
@@ -673,7 +683,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  choose2" id="slide-22">
+  <div class="slide hidden  choose2" id="slide-21">
     <section class="slide-content"><h3 id="talk-to-users-of-the-application">Talk to Users of the Application</h3>
 <ol>
 <li><p>Is their process consistent with the application?  </p>
@@ -685,13 +695,13 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-23">
+  <div class="slide hidden  example" id="slide-22">
     <section class="slide-content"><h3 id="user-feedback-scholarship-pain-points">User Feedback: Scholarship Pain Points</h3>
 <p><strong>High Margin of Error</strong>  </p>
 <p>Their process was exiting and re-entering the system through spreadsheets</p>
 </section>
   </div>
-  <div class="slide hidden  choose3" id="slide-24">
+  <div class="slide hidden  choose3" id="slide-23">
     <section class="slide-content"><h3 id="talk-to-users-of-the-application">Talk to Users of the Application</h3>
 <ol>
 <li><p>Is their process consistent with the application?  </p>
@@ -703,7 +713,7 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-25">
+  <div class="slide hidden  example" id="slide-24">
     <section class="slide-content"><h3 id="user-feedback-scholarship-concerns">User Feedback: Scholarship Concerns</h3>
 <ul>
 <li><p>They didn’t trust that Selection Committee was choosing the best candidates</p>
@@ -719,7 +729,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  choose2" id="slide-26">
+  <div class="slide hidden  choose2" id="slide-25">
     <section class="slide-content"><h3 id="survey-your-application">Survey Your Application</h3>
 <ol>
 <li><p>Talk to users of the application </p>
@@ -731,7 +741,7 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden" id="slide-27">
+  <div class="slide hidden" id="slide-26">
     <section class="slide-content"><h3 id="study-the-codebase">Study the codebase</h3>
 <ul>
 <li><p>Talk to past/current developers</p>
@@ -743,7 +753,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-28">
+  <div class="slide hidden  example" id="slide-27">
     <section class="slide-content"><h3 id="codebase-of-scholarship">Codebase of Scholarship</h3>
 <ul>
 <li><p>Large App model</p>
@@ -766,7 +776,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  choose3" id="slide-29">
+  <div class="slide hidden  choose3" id="slide-28">
     <section class="slide-content"><h3 id="survey-your-application">Survey Your Application</h3>
 <ol>
 <li><p>Talk to users of the application </p>
@@ -778,7 +788,7 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden" id="slide-30">
+  <div class="slide hidden" id="slide-29">
     <section class="slide-content"><h3 id="examine-new-feature-requests">Examine New Feature Requests</h3>
 <ul>
 <li><p>What new features are needed?  </p>
@@ -788,7 +798,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-31">
+  <div class="slide hidden  example" id="slide-30">
     <section class="slide-content"><h3 id="new-features-scholarships">New Features: Scholarships</h3>
 <ul>
 <li><p>Explicit criteria matching, excluded non-matching applicants</p>
@@ -800,11 +810,19 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-32">
-    <section class="slide-content"><h3 id="get-organized-">Get Organized...</h3>
+  <div class="slide hidden  choose2" id="slide-31">
+    <section class="slide-content"><h3 id="how-to-bootstrap">How to Bootstrap</h3>
+<ol>
+<li><p>Survey Your Application</p>
+<p> Legacy projects have business value baked in, that you must preserve.</p>
+</li>
+<li><p>Organize the Work to be done</p>
+<p> Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.</p>
+</li>
+</ol>
 </section>
   </div>
-  <div class="slide hidden" id="slide-33">
+  <div class="slide hidden" id="slide-32">
     <section class="slide-content"><h3 id="decision-time">Decision Time</h3>
 <ul>
 <li><p>Is there another application that can do what it does?  Is it better?</p>
@@ -816,7 +834,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-34">
+  <div class="slide hidden" id="slide-33">
     <section class="slide-content"><h3 id="build-trust-with-users">Build Trust with Users</h3>
 <ul>
 <li><p>Explain why this work is necessary</p>
@@ -826,7 +844,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-35">
+  <div class="slide hidden" id="slide-34">
     <section class="slide-content"><h3 id="set-expectations">Set Expectations</h3>
 <ul>
 <li><p>Customer has an open door to you </p>
@@ -840,7 +858,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-36">
+  <div class="slide hidden" id="slide-35">
     <section class="slide-content"><h3 id="scope-the-work-to-be-done">Scope the work to be done</h3>
 <ul>
 <li><p>Bootstrapping grows FAST!</p>
@@ -856,7 +874,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-37">
+  <div class="slide hidden" id="slide-36">
     <section class="slide-content"><h3 id="how-to-organize-the-work">How to Organize the work</h3>
 <ul>
 <li><p>Research shows all that can/should to be done</p>
@@ -866,7 +884,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-38">
+  <div class="slide hidden  example" id="slide-37">
     <section class="slide-content"><h3 id="plan-features-for-scholarships">Plan Features for Scholarships</h3>
 <p>Divided the application based on first need in the process</p>
 <ol>
@@ -881,14 +899,14 @@ ul {
 </ol>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-39">
+  <div class="slide hidden  example" id="slide-38">
     <section class="slide-content"></section>
   </div>
-  <div class="slide hidden" id="slide-40">
+  <div class="slide hidden" id="slide-39">
     <section class="slide-content"><h3 id="mitigate-risk">Mitigate Risk</h3>
 </section>
   </div>
-  <div class="slide hidden" id="slide-41">
+  <div class="slide hidden" id="slide-40">
     <section class="slide-content"><h3 id="control-risk-in-bootstrapping">Control Risk in Bootstrapping</h3>
 <ul>
 <li><p>Version control</p>
@@ -900,7 +918,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-42">
+  <div class="slide hidden" id="slide-41">
     <section class="slide-content"><h3 id="control-risk-in-bootstrapping">Control Risk in Bootstrapping</h3>
 <ul>
 <li><p>Write Tests to verify that you aren&#39;t breaking key functionality</p>
@@ -913,7 +931,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-43">
+  <div class="slide hidden" id="slide-42">
     <section class="slide-content"><h3 id="bootstrap">Bootstrap</h3>
 <ul>
 <li><p>Initial Bootstrapping</p>
@@ -924,7 +942,7 @@ ul {
 <p>Customize to the needs of your project.</p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-44">
+  <div class="slide hidden  example" id="slide-43">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li><p>new code in <code>/src</code> alongside the <code>/app</code> directory</p>
@@ -942,7 +960,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-45">
+  <div class="slide hidden  example" id="slide-44">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li>Composer<ul>
@@ -958,7 +976,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-46">
+  <div class="slide hidden  example" id="slide-45">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li><p>Acceptance tests stabilize functionality you need</p>
@@ -974,7 +992,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-47">
+  <div class="slide hidden  example" id="slide-46">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <p>Within CodeIgniter</p>
 <ul>
@@ -987,7 +1005,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-48">
+  <div class="slide hidden  example" id="slide-47">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p>SUCCESS!</p>
@@ -1004,7 +1022,7 @@ ul {
 <p><strong>By May 2015:  Approximately $1,074,394 Awarded for 2015-16</strong></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-49">
+  <div class="slide hidden  example" id="slide-48">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete.  </p>
@@ -1016,7 +1034,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-50">
+  <div class="slide hidden  example" id="slide-49">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p><strong>University is replacing it this year</strong></p>
@@ -1034,7 +1052,7 @@ ul {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-51">
+  <div class="slide hidden" id="slide-50">
     <section class="slide-content"><h3 id="questions-">QUESTIONS?</h3>
 <p>Emily Stamey
 Application Developer @ North Carolina State University</p>
@@ -1042,7 +1060,7 @@ Application Developer @ North Carolina State University</p>
 <p>Blog with Bootstrapping details: <a href="http://www.elstamey.com/">elstamey.com</a></p>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-52">
+  <div class="slide hidden author-slide" id="slide-51">
     <section class="slide-content"><div class="author">
   <h1 class="name">Emily Stamey</h1>
     <h3 class="twitter">

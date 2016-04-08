@@ -21,16 +21,16 @@ Twitter: [@elstamey](https://twitter.com/elstamey)
 
 Blog: [elstamey.com](http://www.elstamey.com/)
 
--- slide-me
+<!---- slide-me-->
 
-### Emily Stamey
-Application Developer @ North Carolina State University
+<!--### Emily Stamey-->
+<!--Application Developer @ North Carolina State University-->
 
-- Developing PHP applications since 1999.  
+<!--- Developing PHP applications since 1999.  -->
 
-- Primarily supporting legacy applications.
+<!--- Primarily supporting legacy applications.-->
 
-- My department supports about 80 applications that support business processes of the College of Engineering
+<!--- My department supports about 80 applications that support business processes of the College of Engineering-->
 
 -- quote
 
@@ -109,9 +109,9 @@ In software this usually means, **building onto an existing system** for the pur
 - **Bootstrapping** gives you flexibility to support your application
 
 
--- example
+-- one-thing
 
-### The Project: Scholarships
+ The Project: Scholarships
 
 -- example
 
@@ -326,12 +326,17 @@ Their process was exiting and re-entering the system through spreadsheets
 
 - Students have multiple majors
 
+-- choose2
 
---
+### How to Bootstrap
 
+1. Survey Your Application
 
+    Legacy projects have business value baked in, that you must preserve.
 
-### Get Organized...
+2. Organize the Work to be done
+
+    Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.
 
 --
 
