@@ -32,13 +32,12 @@ Application Developer @ North Carolina State University
 
 - My department supports about 80 applications that support business processes of the College of Engineering
 
--- tweet
-
+-- 
 
 ### Supporting Legacy is Hard
 
-
- <blockquote data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot; - Joel Spolsky</p></blockquote>
+ <blockquote><p>"It's harder to read code than to write it. This is why code reuse is so hard." 
+ <br>- Joel Spolsky</p></blockquote>
 
 --
 
@@ -67,12 +66,10 @@ Often a pejorative term, referencing a system as "legacy" often implies that the
 The relationships between pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something.
 
 <aside class="notes">
-        Oh hey, these afsdfsre some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
     </aside>
-notes
------
-
-
+    
+--
 
 ### Lasagna code
 

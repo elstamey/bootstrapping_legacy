@@ -2,16 +2,13 @@
     background-color: inherit;
 }
 
-.tweet {
-    background-color: rgba(228, 34, 105, 0.34);;
+ blockquote {
+    background-color: rgba(228, 34, 105, 0.34);
+    font-family: Gotham-Italic serif;
 }
 
 .example {
     background-color: rgba(228, 34, 105, 0.34);;
-}
-
-blockquote {
-    font-family: Gotham-Italic serif;
 }
 
 .slide-me {
