@@ -11,6 +11,7 @@ style: my-style.css
 ### Pulling Up Your Legacy App by Its Bootstraps
 by Emily Stamey
 
+<h5 class="attrib">&copy; photo by Gen Gibler </h5>
 
 -- slide-me
 

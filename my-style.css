@@ -87,3 +87,9 @@ pre {
     top: -.9em;
     left: -.8em;
 }
+
+h5.attrib  {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
