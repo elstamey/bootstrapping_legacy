@@ -4,10 +4,9 @@ author:
     twitter: elstamey
     url: http://elstamey.com
 output: slideshow.html
-theme: elstamey/cleaver-retro-theme
+theme: elstamey/cleaver-reveal-theme
 style: my-style.css
 -------------------
-
 
 ### Pulling Up Your Legacy App by Its Bootstraps
 by Emily Stamey
@@ -51,7 +50,6 @@ Application Developer @ North Carolina State University
 
 - **Bootstrapping** gives you flexibility to support your application
 
-
 **Let's review some terminology... (source: wikipedia)**
 
 --
@@ -64,13 +62,15 @@ Often a pejorative term, referencing a system as "legacy" often implies that the
 
 --
 
-
-
 ### Spaghetti Code
 
 The relationships between pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something.
 
---
+<aside class="notes">
+        Oh hey, these afsdfsre some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+    </aside>
+notes
+-----
 
 
 
