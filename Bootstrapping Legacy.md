@@ -394,10 +394,11 @@ Their process was exiting and re-entering the system through spreadsheets
 
 ### How to Organize the work
 
-- Research shows all that can/should to be done
+- Use your Research 
+
+- Prioritize the needs
 
 - Scope the work you are agreeing to do
-
 
 
 -- example
@@ -413,6 +414,9 @@ Divided the application based on first need in the process
 3. Selection
 
 4. Reports for Funding and Scholarship Coordinator
+
+    **we didn't scope the work**
+
 
 -- one-thing
 
@@ -442,15 +446,15 @@ Divided the application based on first need in the process
 
     - constant feedback loop
 
---
+<!------>
 
-### Bootstrap
+<!--### Bootstrap-->
 
-- Initial Bootstrapping
+<!--- Initial Bootstrapping-->
 
-- Ongoing Bootstrapping
+<!--- Ongoing Bootstrapping-->
 
-Customize to the needs of your project.
+<!--Customize to the needs of your project.-->
 
 -- example
 
@@ -458,7 +462,31 @@ Customize to the needs of your project.
 
 - new code in `/src` alongside the `/app` directory
 
-![File tree](img/FileTree.png)
+![File tree](img/FileTree.png) 
+
+-- example
+
+### Bootstrap the application
+
+- new code in `/src` would use namespaces
+
+- used composer to autoload those namespaces
+
+![Composer File](img/composer.json.png)
+
+-- example
+
+### Create a configuration file
+
+- manage DB connections
+
+- specified paths to base_url, templates, etc
+
+- set paths to twig templates
+
+- notices to show specific messages on the application
+
+- set configuration variables for services
 
 -- example
 
@@ -533,16 +561,7 @@ Customize to the needs of your project.
         ?>
         
 
--- example
 
-### Bootstrap the application
-- Create a configuration file
-
-    - manage DB connections, details in the app
-
-    - specified paths to base_url, templates, etc
-    
-    - notices to show specific messages on the application
 
 -- example
 

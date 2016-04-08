@@ -495,8 +495,8 @@ pre {
     position: absolute;
     left: 10px;
     top: 10px;
-    height: 600px;
-    width: 800px;
+    height: 90%;
+    width: 90%;
 }
 
 .slide#slide-1 {
@@ -929,7 +929,9 @@ h5.attrib a {
   <div class="slide hidden" id="slide-37">
     <section class="slide-content"><h3 id="how-to-organize-the-work">How to Organize the work</h3>
 <ul>
-<li><p>Research shows all that can/should to be done</p>
+<li><p>Use your Research </p>
+</li>
+<li><p>Prioritize the needs</p>
 </li>
 <li><p>Scope the work you are agreeing to do</p>
 </li>
@@ -947,6 +949,7 @@ h5.attrib a {
 <li><p>Selection</p>
 </li>
 <li><p>Reports for Funding and Scholarship Coordinator</p>
+<p> <strong>we didn&#39;t scope the work</strong></p>
 </li>
 </ol>
 </section>
@@ -978,20 +981,17 @@ h5.attrib a {
 </ul>
 </li>
 </ul>
-</section>
+<!------>
+
+<!--### Bootstrap-->
+
+<!--- Initial Bootstrapping-->
+
+<!--- Ongoing Bootstrapping-->
+
+<!--Customize to the needs of your project.--></section>
   </div>
-  <div class="slide hidden" id="slide-42">
-    <section class="slide-content"><h3 id="bootstrap">Bootstrap</h3>
-<ul>
-<li><p>Initial Bootstrapping</p>
-</li>
-<li><p>Ongoing Bootstrapping</p>
-</li>
-</ul>
-<p>Customize to the needs of your project.</p>
-</section>
-  </div>
-  <div class="slide hidden  example" id="slide-43">
+  <div class="slide hidden  example" id="slide-42">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
@@ -999,7 +999,34 @@ h5.attrib a {
 <p><img src="img/FileTree.png" alt="File tree"></p>
 </section>
   </div>
+  <div class="slide hidden  example" id="slide-43">
+    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
+<ul>
+<li><p>new code in <code>/src</code> would use namespaces</p>
+</li>
+<li><p>used composer to autoload those namespaces</p>
+</li>
+</ul>
+<p><img src="img/composer.json.png" alt="Composer File"></p>
+</section>
+  </div>
   <div class="slide hidden  example" id="slide-44">
+    <section class="slide-content"><h3 id="create-a-configuration-file">Create a configuration file</h3>
+<ul>
+<li><p>manage DB connections</p>
+</li>
+<li><p>specified paths to base_url, templates, etc</p>
+</li>
+<li><p>set paths to twig templates</p>
+</li>
+<li><p>notices to show specific messages on the application</p>
+</li>
+<li><p>set configuration variables for services</p>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-45">
     <section class="slide-content"><p>&lt;?php</p>
 <pre><code>    return array(
         &#39;app&#39; =&gt; array(
@@ -1068,22 +1095,6 @@ h5.attrib a {
     );
 
     ?&gt;</code></pre>
-</section>
-  </div>
-  <div class="slide hidden  example" id="slide-45">
-    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
-<ul>
-<li><p>Create a configuration file</p>
-<ul>
-<li><p>manage DB connections, details in the app</p>
-</li>
-<li><p>specified paths to base_url, templates, etc</p>
-</li>
-<li><p>notices to show specific messages on the application</p>
-</li>
-</ul>
-</li>
-</ul>
 </section>
   </div>
   <div class="slide hidden  example" id="slide-46">
