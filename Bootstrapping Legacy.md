@@ -11,7 +11,7 @@ style: my-style.css
 ### Pulling Up Your Legacy App by Its Bootstraps
 by Emily Stamey
 
-<h5 class="attrib">&copy; photo by Gen Gibler </h5>
+<h5 class="attrib">&copy; photo by <a href="https://www.flickr.com/photos/ggibler/4070373493/in/photolist-7cFJek-5SeNsa-9bKCsn-jAddUm-oQTJ1b-5xLYZQ-9uQ8J4-awGnN5-4nN74L-eJjEv8-5vDSaf-njhZp-5gV2QB-4rXHzY-bKE51V-i7X2F-67eTGL-bnZX5v-5zzPjz-bnJAgv-9ocin7-nTm8j7-8Pomnt-cCzauh-7RFQfh-hSqL2M-63XhHS-q9XQBM-aTB4Ja-e37i45-86dSn5-8rXdjL-euUJvR-9Bn6uy-3aV2Br-5VehE9-9XQqCu-4oM4aH-5HYm4m-co9wos-c56rfL-Ai7Gda-4LoKmo-k4XtQx-b9K47z-7CyrYp-86aHf6-4mpuHn-86aT2v-yiP7zp">Gen Gibler</a> </h5>
 
 -- slide-me
 

@@ -93,3 +93,7 @@ h5.attrib  {
     bottom: 1em;
     right: 1em;
 }
+
+h5.attrib a {
+    color: black;
+}
