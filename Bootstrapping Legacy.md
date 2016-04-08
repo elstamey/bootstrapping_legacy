@@ -461,6 +461,79 @@ Customize to the needs of your project.
 
 -- example
 
+    &lt;?php
+            
+        return array(
+            'app' => array(
+                'base_url' => sprintf('http://localhost:%s/', isset($_SERVER['SERVER_PORT']) ? $_SERVER['SERVER_PORT'] : ''),
+                'index_page' => 'index.php/',
+                'debug'    => FALSE
+            ),
+        
+            'db' => array(
+                'default' => array(
+                    'hostname' => "local__server",
+                    'port'     => "3306",
+                    'username' => "uname",
+                    'password' => "pword",
+                    'database' => "db_name_"
+                )
+            ),
+        
+            'twig' => array(
+                'template_path' => array(
+                    __DIR__ . '/templates',
+                    __DIR__ . '/templates/dashboard',
+                )
+            ),
+        
+            'authorization' => array(
+                'funding' => array('elstamey', 'smhill6'),
+                'developers' => array('elstamey'),
+                'coordinators' => array('ajackson')
+            ),
+        
+            'notice' => array(
+                'enabled' => false,
+                'type' => 'info',
+                'headline' => null,
+                'message' => null,
+                'syslink' => null
+            ),
+        
+            'errorHandling' => array(
+                'emailExceptions' => false
+            ),
+        
+            'awardLetters' => array(
+                'letterhead' => '_itecs/notification-samples/ncsu_coe_aa_letterhead.pdf',
+                'academicYears' => '2015-2016',
+                'respondByDate' => 'May 11, 2015',
+                'templates' => array(
+                    'awardLetter' => 'layouts/letters/award-letter.twig',
+                    'awardEmail' => 'layouts/letters/award-email-body.twig'
+                ),
+                'fixedAttachments' => array(
+                    '_itecs/notification-samples/thank_you_template.pdf'
+                ),
+                'signatureImagePath' => '_uploads/tmp/deans_signature.png',
+                'outputPath' => '_uploads/awardLetters/'
+            ),
+        
+            'emailService' => array(
+                'sendLimit' => 5,
+                'retries'      => 3,
+                'throttleTime' => 2, // seconds
+                'fromAddress'  => 'Scholarships Application <engr-webmaster@ncsu.edu>',
+                'replyToAddress'=>'College of Engineering <engineering@ncsu.edu>'
+            )
+        );
+        
+        ?>
+        
+
+-- example
+
 ### Bootstrap the application
 - Create a configuration file
 

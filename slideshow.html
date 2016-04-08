@@ -488,6 +488,16 @@ img {
     align-items: center;
     width: auto;
 }
+
+pre {
+    background-color: black;
+    overflow: scroll;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 600px;
+    width: 800px;
+}
   </style>
     <script async src="http://localhost:35729/livereload.js"></script>
 </head>
@@ -962,6 +972,77 @@ img {
 </section>
   </div>
   <div class="slide hidden  example" id="slide-44">
+    <section class="slide-content"><p>&lt;?php</p>
+<pre><code>    return array(
+        &#39;app&#39; =&gt; array(
+            &#39;base_url&#39; =&gt; sprintf(&#39;http://localhost:%s/&#39;, isset($_SERVER[&#39;SERVER_PORT&#39;]) ? $_SERVER[&#39;SERVER_PORT&#39;] : &#39;&#39;),
+            &#39;index_page&#39; =&gt; &#39;index.php/&#39;,
+            &#39;debug&#39;    =&gt; FALSE
+        ),
+
+        &#39;db&#39; =&gt; array(
+            &#39;default&#39; =&gt; array(
+                &#39;hostname&#39; =&gt; &quot;local__server&quot;,
+                &#39;port&#39;     =&gt; &quot;3306&quot;,
+                &#39;username&#39; =&gt; &quot;uname&quot;,
+                &#39;password&#39; =&gt; &quot;pword&quot;,
+                &#39;database&#39; =&gt; &quot;db_name_&quot;
+            )
+        ),
+
+        &#39;twig&#39; =&gt; array(
+            &#39;template_path&#39; =&gt; array(
+                __DIR__ . &#39;/templates&#39;,
+                __DIR__ . &#39;/templates/dashboard&#39;,
+            )
+        ),
+
+        &#39;authorization&#39; =&gt; array(
+            &#39;funding&#39; =&gt; array(&#39;elstamey&#39;, &#39;smhill6&#39;),
+            &#39;developers&#39; =&gt; array(&#39;elstamey&#39;),
+            &#39;coordinators&#39; =&gt; array(&#39;ajackson&#39;)
+        ),
+
+        &#39;notice&#39; =&gt; array(
+            &#39;enabled&#39; =&gt; false,
+            &#39;type&#39; =&gt; &#39;info&#39;,
+            &#39;headline&#39; =&gt; null,
+            &#39;message&#39; =&gt; null,
+            &#39;syslink&#39; =&gt; null
+        ),
+
+        &#39;errorHandling&#39; =&gt; array(
+            &#39;emailExceptions&#39; =&gt; false
+        ),
+
+        &#39;awardLetters&#39; =&gt; array(
+            &#39;letterhead&#39; =&gt; &#39;_itecs/notification-samples/ncsu_coe_aa_letterhead.pdf&#39;,
+            &#39;academicYears&#39; =&gt; &#39;2015-2016&#39;,
+            &#39;respondByDate&#39; =&gt; &#39;May 11, 2015&#39;,
+            &#39;templates&#39; =&gt; array(
+                &#39;awardLetter&#39; =&gt; &#39;layouts/letters/award-letter.twig&#39;,
+                &#39;awardEmail&#39; =&gt; &#39;layouts/letters/award-email-body.twig&#39;
+            ),
+            &#39;fixedAttachments&#39; =&gt; array(
+                &#39;_itecs/notification-samples/thank_you_template.pdf&#39;
+            ),
+            &#39;signatureImagePath&#39; =&gt; &#39;_uploads/tmp/deans_signature.png&#39;,
+            &#39;outputPath&#39; =&gt; &#39;_uploads/awardLetters/&#39;
+        ),
+
+        &#39;emailService&#39; =&gt; array(
+            &#39;sendLimit&#39; =&gt; 5,
+            &#39;retries&#39;      =&gt; 3,
+            &#39;throttleTime&#39; =&gt; 2, // seconds
+            &#39;fromAddress&#39;  =&gt; &#39;Scholarships Application &lt;engr-webmaster@ncsu.edu&gt;&#39;,
+            &#39;replyToAddress&#39;=&gt;&#39;College of Engineering &lt;engineering@ncsu.edu&gt;&#39;
+        )
+    );
+
+    ?&gt;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-45">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li><p>Create a configuration file</p>
@@ -977,7 +1058,7 @@ img {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-45">
+  <div class="slide hidden  example" id="slide-46">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li>Composer<ul>
@@ -993,7 +1074,7 @@ img {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-46">
+  <div class="slide hidden  example" id="slide-47">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li><p>Acceptance tests stabilize functionality you need</p>
@@ -1009,7 +1090,7 @@ img {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-47">
+  <div class="slide hidden  example" id="slide-48">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <p>Within CodeIgniter</p>
 <ul>
@@ -1022,7 +1103,7 @@ img {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-48">
+  <div class="slide hidden  example" id="slide-49">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p>SUCCESS!</p>
@@ -1039,7 +1120,7 @@ img {
 <p><strong>By May 2015:  Approximately $1,074,394 Awarded for 2015-16</strong></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-49">
+  <div class="slide hidden  example" id="slide-50">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete.  </p>
@@ -1051,7 +1132,7 @@ img {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-50">
+  <div class="slide hidden  example" id="slide-51">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p><strong>University is replacing it this year</strong></p>
@@ -1069,7 +1150,7 @@ img {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-51">
+  <div class="slide hidden" id="slide-52">
     <section class="slide-content"><h3 id="questions-">QUESTIONS?</h3>
 <p>Emily Stamey
 Application Developer @ North Carolina State University</p>
@@ -1077,7 +1158,7 @@ Application Developer @ North Carolina State University</p>
 <p>Blog with Bootstrapping details: <a href="http://www.elstamey.com/">elstamey.com</a></p>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-52">
+  <div class="slide hidden author-slide" id="slide-53">
     <section class="slide-content"><div class="author">
   <h1 class="name">Emily Stamey</h1>
     <h3 class="twitter">

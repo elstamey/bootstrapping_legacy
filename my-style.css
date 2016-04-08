@@ -59,3 +59,13 @@ img {
     align-items: center;
     width: auto;
 }
+
+pre {
+    background-color: black;
+    overflow: scroll;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 600px;
+    width: 800px;
+}
