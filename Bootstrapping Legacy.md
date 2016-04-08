@@ -287,7 +287,6 @@ Their process was exiting and re-entering the system through spreadsheets
 ### Codebase of Scholarship
 
 - Large App model
-    - most of the functionality was here
 
     - SQL queries, only slightly dynamic
 
@@ -295,8 +294,15 @@ Their process was exiting and re-entering the system through spreadsheets
 
     - No Bounded Contexts between Students, Selection, and Foundation
 
+-- example
+
+### Codebase of Scholarship
+
 - Student data was a single row in table
+
    - Academic information wasn’t updated when it changed
+   
+   - Major was a single column in that row
 
 -- choose3
 
