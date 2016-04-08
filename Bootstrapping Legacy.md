@@ -456,6 +456,63 @@ Divided the application based on first need in the process
 
 <!--Customize to the needs of your project.-->
 
+-- 
+
+### Database Migrations: Phinx
+
+- Allows you to change DB across evironments
+
+- Gives you power to undo the change if there is a problem
+
+` $ vendor/bin/phinx create CreateUserLoginsTable`
+
+-- example
+
+    <?php
+    
+    use Phinx\Migration\AbstractMigration;
+    
+    class CreateUserLoginsTable extends AbstractMigration
+    {
+        /**
+        * Example One: Change
+        */
+        public function change()
+        {
+            // create the table
+            $table = $this->table('user_logins');
+            $table->addColumn('user_id', 'integer')
+                  ->addColumn('created', 'datetime')
+                  ->create();
+        }
+    
+        /**
+        * Example Two: Up/Down with Migrate/Rollback
+        */
+        public function up()
+        {
+            $table = $this->table('users');
+                    $table->renameColumn('bio', 'biography');
+        }
+    
+        /**
+         * Migrate Down.
+         */
+        public function down()
+        {
+             $table = $this->table('users');
+                    $table->renameColumn('biography', 'bio');
+        }
+    }
+
+-- 
+
+### Database Migrations: Phinx
+
+` $ vendor/bin/phinx migrate`
+
+` $ vendor/bin/phinx rollback`
+
 -- example
 
 ### Bootstrap the application
@@ -473,6 +530,41 @@ Divided the application based on first need in the process
 - used composer to autoload those namespaces
 
 ![Composer File](img/composer.json.png)
+
+-- example
+
+### Composer
+- autoloaded our namespaces code in `/src`
+- use of moneyphp for handling currency
+- Phinx for database migrations
+- Pimple containers
+- Illuminate database
+- Twig templates
+- Testing packages (Codeception, PHPUnit, Mockery)
+
+-- example
+
+### Containers
+
+`/app/bindings.php`
+
+        <?php
+        
+        use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
+        
+        $container['/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository'] = function($c) {
+            return new HybridSourcedScholarshipRepository(
+                $c['ScholarshipsSupportEventsEventStore'],
+                $c['database'],
+                $c['ScholarshipsCommonServicesDepartmentsService'],
+                $c['ScholarshipsCommonServicesResidenciesService'],
+                $c['ScholarshipsCommonServicesAcademicPlansService'],
+                $c['ScholarshipsSelectionDomainCollaborationsService']
+        ); };
+
+-- example
+
+### Controllers
 
 -- example
 
@@ -563,18 +655,7 @@ Divided the application based on first need in the process
 
 
 
--- example
 
-### Bootstrap the application
-
-- Composer
-    - autoloaded our namespaced code in `/src`
-    - use of moneyphp for handling currency
-    - Phinx for database migrations
-    - Pimple containers
-    - Illuminate database
-    - Twig templates
-    - Testing packages (Codeception, PHPUnit, Mockery)
 
 -- example
 

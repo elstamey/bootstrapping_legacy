@@ -991,7 +991,62 @@ h5.attrib a {
 
 <!--Customize to the needs of your project.--></section>
   </div>
-  <div class="slide hidden  example" id="slide-42">
+  <div class="slide hidden  " id="slide-42">
+    <section class="slide-content"><h3 id="database-migrations-phinx">Database Migrations: Phinx</h3>
+<ul>
+<li><p>Allows you to change DB across evironments</p>
+</li>
+<li><p>Gives you power to undo the change if there is a problem</p>
+</li>
+</ul>
+<p><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></p>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-43">
+    <section class="slide-content"><p>&lt;?php</p>
+<pre><code>use Phinx\Migration\AbstractMigration;
+
+class CreateUserLoginsTable extends AbstractMigration
+{
+    /**
+    * Example One: Change
+    */
+    public function change()
+    {
+        // create the table
+        $table = $this-&gt;table(&#39;user_logins&#39;);
+        $table-&gt;addColumn(&#39;user_id&#39;, &#39;integer&#39;)
+              -&gt;addColumn(&#39;created&#39;, &#39;datetime&#39;)
+              -&gt;create();
+    }
+
+    /**
+    * Example Two: Up/Down with Migrate/Rollback
+    */
+    public function up()
+    {
+        $table = $this-&gt;table(&#39;users&#39;);
+                $table-&gt;renameColumn(&#39;bio&#39;, &#39;biography&#39;);
+    }
+
+    /**
+     * Migrate Down.
+     */
+    public function down()
+    {
+         $table = $this-&gt;table(&#39;users&#39;);
+                $table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
+    }
+}</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-44">
+    <section class="slide-content"><h3 id="database-migrations-phinx">Database Migrations: Phinx</h3>
+<p><code>$ vendor/bin/phinx migrate</code></p>
+<p><code>$ vendor/bin/phinx rollback</code></p>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-45">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
@@ -999,7 +1054,7 @@ h5.attrib a {
 <p><img src="img/FileTree.png" alt="File tree"></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-43">
+  <div class="slide hidden  example" id="slide-46">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li><p>new code in <code>/src</code> would use namespaces</p>
@@ -1010,7 +1065,42 @@ h5.attrib a {
 <p><img src="img/composer.json.png" alt="Composer File"></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-44">
+  <div class="slide hidden  example" id="slide-47">
+    <section class="slide-content"><h3 id="composer">Composer</h3>
+<ul>
+<li>autoloaded our namespaces code in <code>/src</code></li>
+<li>use of moneyphp for handling currency</li>
+<li>Phinx for database migrations</li>
+<li>Pimple containers</li>
+<li>Illuminate database</li>
+<li>Twig templates</li>
+<li>Testing packages (Codeception, PHPUnit, Mockery)</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-48">
+    <section class="slide-content"><h3 id="containers">Containers</h3>
+<p><code>/app/bindings.php</code></p>
+<pre><code>    &lt;?php
+
+    use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
+
+    $container[&#39;/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;] = function($c) {
+        return new HybridSourcedScholarshipRepository(
+            $c[&#39;ScholarshipsSupportEventsEventStore&#39;],
+            $c[&#39;database&#39;],
+            $c[&#39;ScholarshipsCommonServicesDepartmentsService&#39;],
+            $c[&#39;ScholarshipsCommonServicesResidenciesService&#39;],
+            $c[&#39;ScholarshipsCommonServicesAcademicPlansService&#39;],
+            $c[&#39;ScholarshipsSelectionDomainCollaborationsService&#39;]
+    ); };</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-49">
+    <section class="slide-content"><h3 id="controllers">Controllers</h3>
+</section>
+  </div>
+  <div class="slide hidden  example" id="slide-50">
     <section class="slide-content"><h3 id="create-a-configuration-file">Create a configuration file</h3>
 <ul>
 <li><p>manage DB connections</p>
@@ -1026,7 +1116,7 @@ h5.attrib a {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-45">
+  <div class="slide hidden  example" id="slide-51">
     <section class="slide-content"><p>&lt;?php</p>
 <pre><code>    return array(
         &#39;app&#39; =&gt; array(
@@ -1097,23 +1187,7 @@ h5.attrib a {
     ?&gt;</code></pre>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-46">
-    <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
-<ul>
-<li>Composer<ul>
-<li>autoloaded our namespaced code in <code>/src</code></li>
-<li>use of moneyphp for handling currency</li>
-<li>Phinx for database migrations</li>
-<li>Pimple containers</li>
-<li>Illuminate database</li>
-<li>Twig templates</li>
-<li>Testing packages (Codeception, PHPUnit, Mockery)</li>
-</ul>
-</li>
-</ul>
-</section>
-  </div>
-  <div class="slide hidden  example" id="slide-47">
+  <div class="slide hidden  example" id="slide-52">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <ul>
 <li><p>Acceptance tests stabilize functionality you need</p>
@@ -1129,7 +1203,7 @@ h5.attrib a {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-48">
+  <div class="slide hidden  example" id="slide-53">
     <section class="slide-content"><h3 id="bootstrap-the-application">Bootstrap the application</h3>
 <p>Within CodeIgniter</p>
 <ul>
@@ -1142,7 +1216,7 @@ h5.attrib a {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-49">
+  <div class="slide hidden  example" id="slide-54">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p>SUCCESS!</p>
@@ -1159,7 +1233,7 @@ h5.attrib a {
 <p><strong>By May 2015:  Approximately $1,074,394 Awarded for 2015-16</strong></p>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-50">
+  <div class="slide hidden  example" id="slide-55">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete.  </p>
@@ -1171,7 +1245,7 @@ h5.attrib a {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  example" id="slide-51">
+  <div class="slide hidden  example" id="slide-56">
     <section class="slide-content"><h3 id="lessons-learned-scholarship-summary">Lessons Learned: Scholarship Summary</h3>
 <ul>
 <li><p><strong>University is replacing it this year</strong></p>
@@ -1189,7 +1263,7 @@ h5.attrib a {
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-52">
+  <div class="slide hidden" id="slide-57">
     <section class="slide-content"><h3 id="questions-">QUESTIONS?</h3>
 <p>Emily Stamey
 Application Developer @ North Carolina State University</p>
@@ -1197,7 +1271,7 @@ Application Developer @ North Carolina State University</p>
 <p>Blog with Bootstrapping details: <a href="http://www.elstamey.com/">elstamey.com</a></p>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-53">
+  <div class="slide hidden author-slide" id="slide-58">
     <section class="slide-content"><div class="author">
   <h1 class="name">Emily Stamey</h1>
     <h3 class="twitter">
