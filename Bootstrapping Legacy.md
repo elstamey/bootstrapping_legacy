@@ -4,7 +4,7 @@ author:
     twitter: elstamey
     url: http://elstamey.com
 output: slideshow.html
-theme: elstamey/cleaver-reveal-theme
+theme: elstamey/cleaver-retro-theme
 style: my-style.css
 -------------------
 
@@ -32,7 +32,7 @@ Application Developer @ North Carolina State University
 
 - My department supports about 80 applications that support business processes of the College of Engineering
 
--- 
+-- quote
 
 ### Supporting Legacy is Hard
 
@@ -65,9 +65,6 @@ Often a pejorative term, referencing a system as "legacy" often implies that the
 
 The relationships between pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something.
 
-<aside class="notes">
-        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-    </aside>
     
 --
 

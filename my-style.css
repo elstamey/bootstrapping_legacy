@@ -2,9 +2,20 @@
     background-color: inherit;
 }
 
- blockquote {
+.quote {
     background-color: rgba(228, 34, 105, 0.34);
+}
+
+.quote blockquote {
+
+    background-color: white;
+    padding: 15px 30px;
+}
+
+blockquote p {
     font-family: Gotham-Italic serif;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .example {
