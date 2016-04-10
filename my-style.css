@@ -78,3 +78,8 @@ h3.title {
     color: #f05b62;
     font-weight: bolder;
 }
+
+h3 {
+    color: #f05b62 !important;
+    font-weight: bold;
+}
