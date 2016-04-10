@@ -31,13 +31,8 @@ blockquote p {
 }
 
 .slide-me {
-    /*color: #eee;*/
-    /*background: url('img/emily-purple-elephpant.jpg');*/
-    /*background-size: cover;*/
     background-color: #F05B62;
     color: white;
-    /*opacity: 0.3;*/
-    /*z-index: -1;*/
 }
 
 .slide-me h3, .slide-me a {
@@ -60,17 +55,8 @@ img {
     width: auto;
 }
 
-pre {
-    background-color: black;
-    overflow: scroll;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    height: 90%;
-    width: 90%;
-}
-
-h5.attrib a {
+h5.attrib a,
+h5.attrib a:hover {
     color: black;
 }
 
