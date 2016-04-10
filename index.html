@@ -52,16 +52,15 @@
 					<p>Application Developer @ NC State University</p>
 					<p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
 					<p>Blog: <a href="http://www.elstamey.com/">elstamey.com</a></p>
-					<!---- slide-me-->
-
-					<!--### Emily Stamey-->
-					<!--Application Developer @ NC State University-->
-
-					<!--- Developing PHP applications since 1999.  -->
-
-					<!--- Primarily supporting legacy applications.-->
-
-					<!--- My department supports about 80 applications that support business processes of the College of Engineering-->
+                </section>
+                <section>
+                    <h3>Emily Stamey</h3>
+                    <p>Application Developer @ NC State University</p>
+                    <ul>
+                        <li>Developing PHP applications since 1999</li>
+                        <li>Primarily supporting legacy applications</li>
+                        <li>My department supports about 80 applications that support business processes of the College of Engineering</li>
+                    </ul>
 				</section>
 				<section>
 					<h3>Supporting Legacy is Hard</h3>
@@ -853,11 +852,14 @@ use Phinx\Migration\AbstractMigration;
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
-				history: true,
-				center: true,
-
+                slideNumber: true,
+                history: true,
+				center: false,
+                loop: false,
+                showNotes: false,
+                viewDistance: 3,
 				transition: 'none', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
