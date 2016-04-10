@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3 id="pulling-up-your-legacy-app-by-its-bootstraps">Pulling Up Your Legacy App by Its Bootstraps</h3>
+					<p>by Emily Stamey</p>
+					<h5 class="attrib">&copy; photo by <a href="https://www.flickr.com/photos/ggibler/4070373493/in/photolist-7cFJek-5SeNsa-9bKCsn-jAddUm-oQTJ1b-5xLYZQ-9uQ8J4-awGnN5-4nN74L-eJjEv8-5vDSaf-njhZp-5gV2QB-4rXHzY-bKE51V-i7X2F-67eTGL-bnZX5v-5zzPjz-bnJAgv-9ocin7-nTm8j7-8Pomnt-cCzauh-7RFQfh-hSqL2M-63XhHS-q9XQBM-aTB4Ja-e37i45-86dSn5-8rXdjL-euUJvR-9Bn6uy-3aV2Br-5VehE9-9XQqCu-4oM4aH-5HYm4m-co9wos-c56rfL-Ai7Gda-4LoKmo-k4XtQx-b9K47z-7CyrYp-86aHf6-4mpuHn-86aT2v-yiP7zp">Gen Gibler</a> </h5>
+				</section>
+				<section>
+					<h3 id="emily-stamey">Emily Stamey</h3>
+					<p>Application Developer @ NC State University</p>
+					<p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
+					<p>Blog: <a href="http://www.elstamey.com/">elstamey.com</a></p>
+					<!---- slide-me-->
+
+					<!--### Emily Stamey-->
+					<!--Application Developer @ NC State University-->
+
+					<!--- Developing PHP applications since 1999.  -->
+
+					<!--- Primarily supporting legacy applications.-->
+
+					<!--- My department supports about 80 applications that support business processes of the College of Engineering-->
+				</section>
+				<section>
+					<h3 id="supporting-legacy-is-hard">Supporting Legacy is Hard</h3>
+					<blockquote><p>&quot;It&#39;s harder to read code than to write it. This is why code reuse is so hard.&quot;
+						<br>- Joel Spolsky</p></blockquote>
+				</section>
+				<section>
+					<h3 id="why-bootstrapping-is-important">Why Bootstrapping is important</h3>
+					<ul>
+						<li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
+						</li>
+						<li><p>It is HARD to justify <strong>refactoring</strong>  </p>
+						</li>
+						<li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p>
+						</li>
+					</ul>
+					<p><strong>Let&#39;s review some terminology... (source: wikipedia)</strong></p>
+
+				</section>
+				<section>
+					<h3 id="legacy-software">Legacy Software</h3>
+					<p>Software developed using older technologies and practices.  It can be difficult to replace because of its wide use.</p>
+					<p>Often a pejorative term, referencing a system as &quot;legacy&quot; often implies that the system is out of date or in need of replacement.</p>
+
+				</section>
+				<section>
+					<h3 id="spaghetti-code">Spaghetti Code</h3>
+					<p>The relationships between pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something.</p>
+
+				</section>
+				<section>
+					<h3 id="lasagna-code">Lasagna code</h3>
+					<p>Lasagna code is code that has way too many layers.  </p>
+					<p>In Object Oriented programming, this means code that has many really small classes when a few slightly larger classes would have done the trick.</p>
+
+				</section>
+				<section>
+					<h3 id="refactor">Refactor</h3>
+					<p>Technique for restructuring an existing body of code, altering its internal structure <strong>without changing its external behavior</strong>.</p>
+
+				</section>
+				<section>
+					<h3 id="technical-debt">Technical Debt</h3>
+					<p>A metaphor referring to the eventual consequences of any system design, software architecture or software development within a codebase.</p>
+
+				</section>
+				<section>
+					<h3 id="bootstrapping">Bootstrapping</h3>
+					<p>In software this usually means, <strong>building onto an existing system</strong> for the purpose of improvement with the least amount of sweat equity and development cost in the process.</p>
+
+				</section>
+				<section>
+					<h3 id="why-bootstrapping-is-important">Why Bootstrapping is important</h3>
+					<ul>
+						<li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
+						</li>
+						<li><p>It is HARD to justify <strong>refactoring</strong>  </p>
+						</li>
+						<li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<p>The Project: Scholarships</p>
+
+				</section>
+				<section>
+					<h3 id="the-project-scholarships">The Project: Scholarships</h3>
+					<ul>
+						<li><p>Engineering <strong>Foundation</strong> receives money from donors to give to <strong>students</strong></p>
+						</li>
+						<li><p>Students apply each year giving information about themselves</p>
+						</li>
+						<li><p><strong>Donors</strong> specify criteria/rules for students to receive money</p>
+							<ul>
+								<li>The information in a student&#39;s application helps them match to scholarships</li>
+							</ul>
+						</li>
+						<li><p><strong>Selection Committee</strong> selects Candidates to receive money</p>
+						</li>
+						<li><p><strong>Scholarship Coordinator</strong> reports these Recipients to Financial Aid</p>
+						</li>
+						<li><p><strong>Financial Aid</strong> awards the money</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="how-to-bootstrap">How to Bootstrap</h3>
+					<ol>
+						<li><p>Survey Your Application</p>
+							<p> Legacy projects have business value baked in, that you must preserve.</p>
+						</li>
+						<li><p>Organize the Work to be done</p>
+							<p> Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="how-to-bootstrap">How to Bootstrap</h3>
+					<ol>
+						<li><p>Survey Your Application</p>
+							<p> Legacy projects have business value baked in, that you must preserve.</p>
+						</li>
+						<li><p>Organize the Work to be done</p>
+							<p> Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="survey-your-application">Survey Your Application</h3>
+					<ol>
+						<li><p>Talk to users of the application </p>
+						</li>
+						<li><p>Study the codebase</p>
+						</li>
+						<li><p>Examine the new feature requests</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="survey-your-application">Survey Your Application</h3>
+					<ol>
+						<li><p>Talk to users of the application </p>
+						</li>
+						<li><p>Study the codebase</p>
+						</li>
+						<li><p>Examine the new feature requests</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="talk-to-users-of-the-application">Talk to Users of the Application</h3>
+					<ol>
+						<li><p>Is their process consistent with the application?  </p>
+						</li>
+						<li><p>What are the pain points?</p>
+						</li>
+						<li><p>Do they have concerns with the application?</p>
+						</li>
+					</ol>
+					<p><strong>Don’t rely on developer feedback</strong></p>
+
+				</section>
+				<section>
+					<h3 id="talk-to-users-of-the-application">Talk to Users of the Application</h3>
+					<ol>
+						<li><p>Is their process consistent with the application?  </p>
+						</li>
+						<li><p>What are the pain points?</p>
+						</li>
+						<li><p>Do they have concerns with the application?</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="user-feedback-scholarship-process">User Feedback: Scholarship Process</h3>
+					<p><strong>Process was inconsistent with the application</strong></p>
+					<ul>
+						<li><p>Selection Committee used a spreadsheet of available scholarship money </p>
+						</li>
+						<li><p>Selected Candidates were added to a spreadsheet Student ID and Amount and Term of award</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="talk-to-users-of-the-application">Talk to Users of the Application</h3>
+					<ol>
+						<li><p>Is their process consistent with the application?  </p>
+						</li>
+						<li><p>What are the pain points?</p>
+						</li>
+						<li><p>Do they have concerns with the application?</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="user-feedback-scholarship-pain-points">User Feedback: Scholarship Pain Points</h3>
+					<p><strong>High Margin of Error</strong>  </p>
+					<p>Their process was exiting and re-entering the system through spreadsheets</p>
+
+				</section>
+				<section>
+					<h3 id="talk-to-users-of-the-application">Talk to Users of the Application</h3>
+					<ol>
+						<li><p>Is their process consistent with the application?  </p>
+						</li>
+						<li><p>What are the pain points?</p>
+						</li>
+						<li><p>Do they have concerns with the application?</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="user-feedback-scholarship-concerns">User Feedback: Scholarship Concerns</h3>
+					<ul>
+						<li><p>They didn’t trust that Selection Committee was choosing the best candidates</p>
+						</li>
+						<li><p>The Scoring algorithm was not clear/effective</p>
+						</li>
+						<li><p>Multiple majors weren&#39;t allowed by our system</p>
+						</li>
+						<li><p><strong>NOT ALL MONEY WAS BEING AWARDED</strong></p>
+						</li>
+						<li><p><strong>MONEY LEFT UN-GIVEN ⇒ ANGRY DONORS</strong></p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="survey-your-application">Survey Your Application</h3>
+					<ol>
+						<li><p>Talk to users of the application </p>
+						</li>
+						<li><p>Study the codebase</p>
+						</li>
+						<li><p>Examine the new feature requests</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="study-the-codebase">Study the codebase</h3>
+					<ul>
+						<li><p>Talk to past/current developers</p>
+						</li>
+						<li><p>Verify that key functionality does what everyone thinks it does</p>
+						</li>
+						<li><p>Look for entanglements</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="codebase-of-scholarship">Codebase of Scholarship</h3>
+					<ul>
+						<li><p>Large App model</p>
+							<ul>
+								<li><p>SQL queries, only slightly dynamic</p>
+								</li>
+								<li><p>Functions weren’t single-purpose</p>
+								</li>
+								<li><p>No Bounded Contexts between Students, Selection, and Foundation</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="codebase-of-scholarship">Codebase of Scholarship</h3>
+					<ul>
+						<li><p>Student data was a single row in table</p>
+							<ul>
+								<li><p>Academic information wasn’t updated when it changed</p>
+								</li>
+								<li><p>Major was a single column in that row</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="survey-your-application">Survey Your Application</h3>
+					<ol>
+						<li><p>Talk to users of the application </p>
+						</li>
+						<li><p>Study the codebase</p>
+						</li>
+						<li><p>Examine the new feature requests</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="examine-new-feature-requests">Examine New Feature Requests</h3>
+					<ul>
+						<li><p>What new features are needed?  </p>
+						</li>
+						<li><p>How they might be implemented?</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="new-features-scholarships">New Features: Scholarships</h3>
+					<ul>
+						<li><p>Explicit criteria matching, excluded non-matching applicants</p>
+						</li>
+						<li><p>Current student data, query their GPA, Major, etc at time of selection</p>
+						</li>
+						<li><p>Students have multiple majors</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="how-to-bootstrap">How to Bootstrap</h3>
+					<ol>
+						<li><p>Survey Your Application</p>
+							<p> Legacy projects have business value baked in, that you must preserve.</p>
+						</li>
+						<li><p>Organize the Work to be done</p>
+							<p> Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.</p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<h3 id="decision-time">Decision Time</h3>
+					<ul>
+						<li><p>Is there another application that can do what it does?  Is it better?</p>
+						</li>
+						<li><p>Is this a worthwhile investment?</p>
+						</li>
+						<li><p>If so, what are the Most Valuable Features?</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="build-trust-with-users">Build Trust with Users</h3>
+					<ul>
+						<li><p>Explain why this work is necessary</p>
+						</li>
+						<li><p>Be open about errors in the application</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="set-expectations">Set Expectations</h3>
+					<ul>
+						<li><p>Customer has an open door to you </p>
+							<ul>
+								<li><p>add work from the side </p>
+								</li>
+								<li><p>change processes</p>
+								</li>
+							</ul>
+						</li>
+						<li><p>Keep the door open anyway!</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="scope-the-work-to-be-done">Scope the work to be done</h3>
+					<ul>
+						<li><p>Bootstrapping grows FAST!</p>
+						</li>
+						<li><p>Large projects </p>
+							<ul>
+								<li><p>require more people to be engaged in the process</p>
+								</li>
+								<li><p>wear people down over time</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="how-to-organize-the-work">How to Organize the work</h3>
+					<ul>
+						<li><p>Use your Research </p>
+						</li>
+						<li><p>Prioritize the needs</p>
+						</li>
+						<li><p>Scope the work you are agreeing to do</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="plan-features-for-scholarships">Plan Features for Scholarships</h3>
+					<p>Divided the application based on first need in the process</p>
+					<ol>
+						<li><p>Student Application</p>
+						</li>
+						<li><p>Funding</p>
+						</li>
+						<li><p>Selection</p>
+						</li>
+						<li><p>Reports for Funding and Scholarship Coordinator</p>
+							<p> <strong>we didn&#39;t scope the work</strong></p>
+						</li>
+					</ol>
+
+				</section>
+				<section>
+					<p>Mitigate Risk</p>
+
+				</section>
+				<section>
+					<h3 id="control-risk-before-bootstrapping">Control Risk Before Bootstrapping</h3>
+					<ul>
+						<li><p>Version control</p>
+							<p>  Stabilize the code base and preserves history</p>
+						</li>
+						<li><p>Development and Staging environments (w/ Fake data)</p>
+							<p>  <strong>No more developing in production!!!!</strong></p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="control-risk-before-bootstrapping">Control Risk Before Bootstrapping</h3>
+					<ul>
+						<li><p>Involve Users to work through the process</p>
+						</li>
+						<li><p>Keep the constant feedback loop</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="test-everything-you-need">Test Everything You Need</h3>
+					<ul>
+						<li><p>Acceptance tests stabilize functionality you need</p>
+							<ul>
+								<li><p>added hooks for testing interfaces </p>
+								</li>
+								<li><p>Codeception needed to view contents of the pages</p>
+								</li>
+							</ul>
+						</li>
+						<li><p>Unit and Functional tests for everything you build</p>
+						</li>
+					</ul>
+					<!------>
+
+					<!--### Bootstrap-->
+
+					<!--- Initial Bootstrapping-->
+
+					<!--- Ongoing Bootstrapping-->
+
+					<!--Customize to the needs of your project.-->
+				</section>
+				<section>
+					<h3 id="database-migrations-phinx">Database Migrations: Phinx</h3>
+					<ul>
+						<li><p>Allows you to change DB across evironments</p>
+						</li>
+						<li><p>Gives you power to undo the change if there is a problem</p>
+						</li>
+					</ul>
+					<p><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></p>
+
+				</section>
+				<section>
+					<p>&lt;?php</p>
+<pre><code>use Phinx\Migration\AbstractMigration;
+
+	class CreateUserLoginsTable extends AbstractMigration
+	{
+	/**
+	* Example One: Change
+	*/
+	public function change()
+	{
+	// create the table
+	$table = $this-&gt;table(&#39;user_logins&#39;);
+	$table-&gt;addColumn(&#39;user_id&#39;, &#39;integer&#39;)
+	-&gt;addColumn(&#39;created&#39;, &#39;datetime&#39;)
+	-&gt;create();
+	}
+
+	/**
+	* Example Two: Up/Down with Migrate/Rollback
+	*/
+	public function up()
+	{
+	$table = $this-&gt;table(&#39;users&#39;);
+	$table-&gt;renameColumn(&#39;bio&#39;, &#39;biography&#39;);
+	}
+
+	/**
+	* Migrate Down.
+	*/
+	public function down()
+	{
+	$table = $this-&gt;table(&#39;users&#39;);
+	$table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
+	}
+	}</code></pre>
+
+				</section>
+				<section>
+					<h3 id="database-migrations-phinx">Database Migrations: Phinx</h3>
+					<p><code>$ vendor/bin/phinx migrate</code></p>
+					<p><code>$ vendor/bin/phinx rollback</code></p>
+
+				</section>
+				<section>
+					<h3 id="configuration-file">Configuration file</h3>
+					<ul>
+						<li><p>DB connections</p>
+						</li>
+						<li><p>Base URL </p>
+						</li>
+						<li><p>Set paths to twig templates</p>
+						</li>
+						<li><p>Customize Notice messages</p>
+						</li>
+						<li><p>Set config variables for services</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<p>&lt;?php</p>
+<pre><code>    return array(
+	&#39;app&#39; =&gt; array(
+	&#39;base_url&#39; =&gt; sprintf(&#39;http://localhost:%s/&#39;, isset($_SERVER[&#39;SERVER_PORT&#39;]) ? $_SERVER[&#39;SERVER_PORT&#39;] : &#39;&#39;),
+	&#39;index_page&#39; =&gt; &#39;index.php/&#39;,
+	&#39;debug&#39;    =&gt; FALSE
+	),
+
+	&#39;db&#39; =&gt; array(
+	&#39;default&#39; =&gt; array(
+	&#39;hostname&#39; =&gt; &quot;local__server&quot;,
+	&#39;port&#39;     =&gt; &quot;3306&quot;,
+	&#39;username&#39; =&gt; &quot;uname&quot;,
+	&#39;password&#39; =&gt; &quot;pword&quot;,
+	&#39;database&#39; =&gt; &quot;db_name_&quot;
+	)
+	),
+
+	&#39;twig&#39; =&gt; array(
+	&#39;template_path&#39; =&gt; array(
+	__DIR__ . &#39;/templates&#39;,
+	__DIR__ . &#39;/templates/dashboard&#39;,
+	)
+	),
+
+	&#39;authorization&#39; =&gt; array(
+	&#39;funding&#39; =&gt; array(&#39;elstamey&#39;, &#39;person2&#39;),
+	&#39;developers&#39; =&gt; array(&#39;elstamey&#39;),
+	&#39;coordinators&#39; =&gt; array(&#39;person3&#39;)
+	),
+
+	&#39;notice&#39; =&gt; array(
+	&#39;enabled&#39; =&gt; false,
+	&#39;type&#39; =&gt; &#39;info&#39;,
+	&#39;headline&#39; =&gt; null,
+	&#39;message&#39; =&gt; null,
+	&#39;syslink&#39; =&gt; null
+	),
+
+	&#39;errorHandling&#39; =&gt; array(
+	&#39;emailExceptions&#39; =&gt; false
+	),
+
+	&#39;awardLetters&#39; =&gt; array(
+	&#39;letterhead&#39; =&gt; &#39;_itecs/notification-samples/ncsu_coe_aa_letterhead.pdf&#39;,
+	&#39;academicYears&#39; =&gt; &#39;2015-2016&#39;,
+	&#39;respondByDate&#39; =&gt; &#39;May 11, 2015&#39;,
+	&#39;templates&#39; =&gt; array(
+	&#39;awardLetter&#39; =&gt; &#39;layouts/letters/award-letter.twig&#39;,
+	&#39;awardEmail&#39; =&gt; &#39;layouts/letters/award-email-body.twig&#39;
+	),
+	&#39;fixedAttachments&#39; =&gt; array(
+	&#39;_itecs/notification-samples/thank_you_template.pdf&#39;
+	),
+	&#39;signatureImagePath&#39; =&gt; &#39;_uploads/tmp/deans_signature.png&#39;,
+	&#39;outputPath&#39; =&gt; &#39;_uploads/awardLetters/&#39;
+	),
+
+	&#39;emailService&#39; =&gt; array(
+	&#39;sendLimit&#39; =&gt; 5,
+	&#39;retries&#39;      =&gt; 3,
+	&#39;throttleTime&#39; =&gt; 2, // seconds
+	&#39;fromAddress&#39;  =&gt; &#39;Scholarships Application &lt;engr-webmaster@ncsu.edu&gt;&#39;,
+	&#39;replyToAddress&#39;=&gt;&#39;College of Engineering &lt;engineering@ncsu.edu&gt;&#39;
+	)
+	);
+
+	?&gt;</code></pre>
+
+				</section>
+				<section>
+					<h3 id="bootstrapping-scholarships-filetree">Bootstrapping Scholarships: Filetree</h3>
+					<ul>
+						<li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
+					</ul>
+					<p><img src="img/FileTree.png" alt="File tree"></p>
+
+				</section>
+				<section>
+					<h3 id="bootstrapping-scholarships-composer">Bootstrapping Scholarships: Composer</h3>
+					<ul>
+						<li><p><code>/src</code> is given a namespace</p>
+						</li>
+						<li><p>namespaces are autoloaded in composer</p>
+						</li>
+					</ul>
+					<p><img src="img/composer.json.png" alt="Composer File"></p>
+
+				</section>
+				<section>
+					<h3 id="composer-packages">Composer packages</h3>
+					<ul>
+						<li>Phinx for database migrations</li>
+						<li>Illuminate database</li>
+						<li>Twig templates</li>
+						<li>Testing packages (Codeception, PHPUnit, Mockery)</li>
+						<li>Moneyphp for handling currency</li>
+						<li>Pimple containers</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="bootstrapping-scholarships-connecting-the-dots">Bootstrapping Scholarships: Connecting the Dots</h3>
+					<ul>
+						<li><p><code>/app/bindings.php</code>
+							define containers for each of the new Services, Repositories, Projections</p>
+						</li>
+						<li><p><code>/app/controllers</code><br>new controllers for the new functionality</p>
+						</li>
+						<li><p><code>/app/services.php</code>
+							defined and configured twig, database, et al</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<p>Containers</p>
+
+				</section>
+				<section>
+					<h3 id="containers">Containers</h3>
+					<p><code>/app/bindings.php</code></p>
+<pre><code>    &lt;?php
+
+	use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
+
+	$container[&#39;/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;] = function($c) {
+	return new HybridSourcedScholarshipRepository(
+	$c[&#39;ScholarshipsSupportEventsEventStore&#39;],
+	$c[&#39;database&#39;],
+	$c[&#39;ScholarshipsCommonServicesDepartmentsService&#39;],
+	$c[&#39;ScholarshipsCommonServicesResidenciesService&#39;],
+	$c[&#39;ScholarshipsCommonServicesAcademicPlansService&#39;],
+	$c[&#39;Scholarships/Selection/Domain/CollaborationsService&#39;]
+	); };</code></pre>
+
+				</section>
+				<section>
+					<p>Controllers</p>
+
+				</section>
+				<section>
+					<h3 id="controllers">Controllers</h3>
+<pre><code>    class Selectionnext extends BaseController
+	{
+	public function Selectionnext()
+	{
+	parent::BaseController();
+
+	$this-&gt;scholarshipRepository = $this-&gt;container[&#39;Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;];
+	}
+	protected function scholarshipsDashboard($scholarshipId)
+	{
+	$committeeMember = $this-&gt;getCommitteeMember();
+
+	$scholDetails = $this-&gt;getScholarshipDashboard($scholarshipId);
+
+	$this-&gt;render(&#39;pages/scholarship-details.twig&#39;, array(&quot;scholarship&quot; =&gt; $scholDetails)));
+	}
+
+
+	private function getScholarshipDashboard($scholarshipId,$keepItLight=false)
+	{
+	$committeeMember = $this-&gt;getCommitteeMember();
+
+	$presenter = new ScholarshipDashboardPresenter(
+	$committeeMember,
+	ScholarshipId::fromString($scholarshipId),
+	$this-&gt;events,
+	$this-&gt;scholarshipRepository,
+	$this-&gt;container[&#39;Scholarships/Selection/Domain/ApplicantQueryService&#39;]
+	);
+
+	$scholDetails = $presenter-&gt;asArrayForJson();
+	$scholDetails[&#39;json_string&#39;] = json_encode($scholDetails);
+
+	return $scholDetails;
+	}
+	?&gt;</code></pre>
+
+				</section>
+				<section>
+					<h3 id="bootstrap-the-application">Bootstrap the application</h3>
+					<p>Within CodeIgniter</p>
+					<ul>
+						<li><p>New Controllers for new functionality</p>
+						</li>
+						<li><p>Bindings for CodeIgniter to find the new code</p>
+						</li>
+						<li><p>New Twig templates beside the existing Views in <code>/app</code></p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="summary-scholarship-wins-">Summary: Scholarship Wins!</h3>
+					<ul>
+						<li><p>Restored confidence in selection process!</p>
+						</li>
+						<li><p>Fewer awards were rejected!</p>
+						</li>
+						<li><p>More Scholarship Money was awarded than ever before!</p>
+						</li>
+					</ul>
+					<p><strong>By May 2015:  Approximately $1,074,394 Awarded for 2015-16</strong></p>
+
+				</section>
+				<section>
+					<h3 id="summary-lessons-learned">Summary: Lessons Learned</h3>
+					<ul>
+						<li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete</p>
+						</li>
+						<li><p>Over time we lost participation because we have too many other projects needing attention</p>
+						</li>
+						<li><p>Tight deadlines with un-scoped work, we created technical debt that we would have to address in the next academic year</p>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="summary-was-it-worth-it-">Summary: Was It Worth It?</h3>
+					<p><strong>University is replacing it this year</strong></p>
+					<ul>
+						<li>We learned a lot of new techniques<ul>
+							<li>bootstrap  </li>
+							<li>event sourcing</li>
+							<li>Domain-Driven Design</li>
+							<li>Command Query Response Segregation</li>
+							<li>managing projects</li>
+							<li>A LOT!</li>
+						</ul>
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3 id="questions-">QUESTIONS?</h3>
+					<p>Emily Stamey
+						Application Developer @ NC State University</p>
+					<p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
+					<p>Blog with Bootstrapping details: <a href="http://www.elstamey.com/">elstamey.com</a></p>
+
+				</section>
+				<section>
+					<div class="author">
+						<h1 class="name">Emily Stamey</h1>
+						<h3 class="twitter">
+							<a href="http://twitter.com/@elstamey">@elstamey</a>
+						</h3>
+						<h3 class="url">
+							<a href="http://elstamey.com">http://elstamey.com</a>
+						</h3>
+					</div>
+
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
