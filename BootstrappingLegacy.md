@@ -110,28 +110,21 @@ In software this usually means, **building onto an existing system** for the pur
 - **Bootstrapping** gives you flexibility to support your application
 
 
--- one-thing
+--
 
- The Project: Scholarships
+The Project: Scholarships
 
--- example
+--
 
 ### The Project: Scholarships
 
 - Engineering **Foundation** receives money from donors to give to **students**
-
 - Students apply each year giving information about themselves
-
 - **Donors** specify criteria/rules for students to receive money
-
     - The information in a student's application helps them match to scholarships
-
 - **Selection Committee** selects Candidates to receive money
-
 - **Scholarship Coordinator** reports these Recipients to Financial Aid
-
 - **Financial Aid** awards the money
-
 --
 
 
@@ -146,7 +139,8 @@ In software this usually means, **building onto an existing system** for the pur
 
     Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.
 
--- choose1
+--
+
 ### How to Bootstrap
 
 1. Survey Your Application
@@ -169,8 +163,7 @@ In software this usually means, **building onto an existing system** for the pur
 
 3. Examine the new feature requests
 
--- choose1
-
+--
 
 ### Survey Your Application
 
@@ -206,8 +199,7 @@ In software this usually means, **building onto an existing system** for the pur
 3. Do they have concerns with the application?
 
 
--- example
-
+--
 ### User Feedback: Scholarship Process
 
 **Process was inconsistent with the application**
@@ -216,7 +208,7 @@ In software this usually means, **building onto an existing system** for the pur
  
 - Selected Candidates were added to a spreadsheet Student ID and Amount and Term of award 
 
--- choose2
+--
 
 ### Talk to Users of the Application
 
@@ -227,15 +219,14 @@ In software this usually means, **building onto an existing system** for the pur
 3. Do they have concerns with the application?
 
 
--- example
-
+--
 ### User Feedback: Scholarship Pain Points
 
 **High Margin of Error**  
 
 Their process was exiting and re-entering the system through spreadsheets
 
--- choose3
+--
 
 ### Talk to Users of the Application
 
@@ -246,8 +237,7 @@ Their process was exiting and re-entering the system through spreadsheets
 3. Do they have concerns with the application?
 
 
--- example
-
+--
 ### User Feedback: Scholarship Concerns
 
 - They didn’t trust that Selection Committee was choosing the best candidates
@@ -262,8 +252,7 @@ Their process was exiting and re-entering the system through spreadsheets
 
 
 
--- choose2
-
+--
 
 ### Survey Your Application
 
@@ -283,8 +272,7 @@ Their process was exiting and re-entering the system through spreadsheets
 
 - Look for entanglements 
 
--- example
-
+--
 ### Codebase of Scholarship
 
 - Large App model
@@ -295,8 +283,7 @@ Their process was exiting and re-entering the system through spreadsheets
 
     - No Bounded Contexts between Students, Selection, and Foundation
 
--- example
-
+--
 ### Codebase of Scholarship
 
 - Student data was a single row in table
@@ -305,7 +292,7 @@ Their process was exiting and re-entering the system through spreadsheets
    
    - Major was a single column in that row
 
--- choose3
+--
 
 ### Survey Your Application
 
@@ -323,8 +310,7 @@ Their process was exiting and re-entering the system through spreadsheets
 
 - How they might be implemented?
 
--- example
-
+--
 ### New Features: Scholarships
 
 - Explicit criteria matching, excluded non-matching applicants
@@ -333,7 +319,7 @@ Their process was exiting and re-entering the system through spreadsheets
 
 - Students have multiple majors
 
--- choose2
+--
 
 ### How to Bootstrap
 
@@ -401,8 +387,7 @@ Their process was exiting and re-entering the system through spreadsheets
 - Scope the work you are agreeing to do
 
 
--- example
-
+--
 ### Plan Features for Scholarships
 
 Divided the application based on first need in the process
@@ -418,9 +403,8 @@ Divided the application based on first need in the process
     **we didn't scope the work**
 
 
--- one-thing
-
- Mitigate Risk 
+--
+Mitigate Risk 
 
 --
 
@@ -476,9 +460,8 @@ Divided the application based on first need in the process
 
 ` $ vendor/bin/phinx create CreateUserLoginsTable`
 
--- example
-
-    <?php
+--
+<?php
     
     use Phinx\Migration\AbstractMigration;
     
@@ -537,9 +520,8 @@ Divided the application based on first need in the process
 
 - Set config variables for services
 
--- example
-
-    &lt;?php
+--
+&lt;?php
             
         return array(
             'app' => array(
@@ -610,16 +592,14 @@ Divided the application based on first need in the process
         ?>
         
 
--- example
-
+--
 ### Bootstrapping Scholarships: Filetree
 
 - new code in `/src` alongside the `/app` directory
 
 ![File tree](img/FileTree.png) 
 
--- example
-
+--
 ### Bootstrapping Scholarships: Composer
 
 - `/src` is given a namespace
@@ -628,8 +608,7 @@ Divided the application based on first need in the process
 
 ![Composer File](img/composer.json.png)
 
--- example
-
+--
 ### Composer packages
 
 - Phinx for database migrations
@@ -641,8 +620,7 @@ Divided the application based on first need in the process
 
 
 
--- example
-
+--
 ### Bootstrapping Scholarships: Connecting the Dots
  
 - `/app/bindings.php` 
@@ -655,12 +633,10 @@ new controllers for the new functionality
 defined and configured twig, database, et al 
 
 
--- one-thing
-
+--
 Containers
 
--- example
-
+--
 ### Containers
 
 `/app/bindings.php`
@@ -679,12 +655,10 @@ Containers
                 $c['Scholarships/Selection/Domain/CollaborationsService']
         ); };
 
--- one-thing
-
+--
 Controllers
 
--- example
-
+--
 ### Controllers
 
         class Selectionnext extends BaseController
@@ -725,8 +699,7 @@ Controllers
         ?>
 
 
--- example
-
+--
 ### Bootstrap the application
 
 Within CodeIgniter
@@ -737,8 +710,7 @@ Within CodeIgniter
 
 - New Twig templates beside the existing Views in `/app`
 
--- example
-
+--
 ### Summary: Scholarship Wins!
 
 - Restored confidence in selection process!
@@ -749,7 +721,7 @@ Within CodeIgniter
 
 **By May 2015:  Approximately $1,074,394 Awarded for 2015-16**
 
--- example
+--
 ### Summary: Lessons Learned
 
 - Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete
@@ -758,8 +730,7 @@ Within CodeIgniter
 
 - Tight deadlines with un-scoped work, we created technical debt that we would have to address in the next academic year
 
--- example
-
+--
 ### Summary: Was It Worth It?
 
 **University is replacing it this year**
