@@ -543,7 +543,12 @@
 							</ul>
 						</li>
 					</ul>
-
+                    <aside class="notes">
+                        Bootstrapping, because are usually a lot of issues in a legacy application, can become a large project quickly
+                        The larger the project, the more developers and users will need to be involved
+                        And when that happens, it can be difficult to keep them engaged for the length of time required.
+                        Creating smaller bites of work is ideal for getting people on board and familiar with the process.
+                    </aside>
 				</section>
 				<section>
 					<h3>How to Organize the work</h3>
@@ -555,6 +560,10 @@
 						<li><p>Scope the work you are agreeing to do</p>
 						</li>
 					</ul>
+                    <aside class="notes">
+                        Make sure when you organize the works into those logical, bite-size tasks, that you're keeping users
+                        informed of what you're agreeing to work on and why.  It can help with the feature creep.
+                    </aside>
                 </section>
 				<section>
 					<h3>Plan Features for Scholarships</h3>
@@ -570,9 +579,21 @@
 							<p> <strong>we didn&#39;t scope the work</strong></p>
 						</li>
 					</ol>
+                    <aside class="notes">
+                        Our plan with Scholarships was to put tasks in the order of the academic year, who would be accessing the system
+                        The goal was to leave the existing application alone as much as possible.
+                        We would develop new features adjacent to the framework and connect that into the framework's routing layer
+                        We wanted to replace the application in pieces, but we didn't want to get stuck rebuilding all of the crud components.
+                    </aside>
                 </section>
 				<section data-background="#f05b62">
 					<h1 style="color: #fafafa;">Mitigate Risk</h1>
+                    <aside class="notes">
+                        Before we could really get underway with development there were a lot of things we needed to do
+                        to sure up our development process.
+
+                        First of all, we were developing in production!
+                    </aside>
 				</section>
 				<section>
 					<h3>Control Risk Before Bootstrapping</h3>
@@ -584,17 +605,26 @@
 							<p>  <strong>No more developing in production!!!!</strong></p>
 						</li>
 					</ul>
-                </section>
-				<section>
-					<h3>Control Risk Before Bootstrapping</h3>
-					<ul>
-						<li><p>Involve Users to work through the process</p>
-						</li>
-						<li><p>Keep the constant feedback loop</p>
-						</li>
-					</ul>
+                    <aside class="notes">
+                        We needed to get the codebase into version control, first
 
-				</section>
+                        Next, we needed develpment environments that closely matched our production web servers.  Staging space
+                        was a fairly easy problem to resolve, we just created another vhost on the server.  But the devlopment environment
+                        required a vagrant box and puppet configuration, which one of my coworkers was able to put together and refine
+
+                        This allowed us to develop changes and have fewer deployment issues than when we were developing using MAMP.
+                    </aside>
+                </section>
+				<!--<section>-->
+					<!--<h3>Control Risk Before Bootstrapping</h3>-->
+					<!--<ul>-->
+						<!--<li><p>Involve Users to work through the process</p>-->
+						<!--</li>-->
+						<!--<li><p>Keep the constant feedback loop</p>-->
+						<!--</li>-->
+					<!--</ul>-->
+
+				<!--</section>-->
 				<section>
 					<h3>Test Everything You Need</h3>
 					<ul>
@@ -609,6 +639,16 @@
 						<li><p>Unit and Functional tests for everything you build</p>
 						</li>
 					</ul>
+                    <aside class="notes">
+                        We were building alongside an existing, untesting application.  There were no "units", individual classeses
+                        with behavior that we could test. But there was functionality we were expecting to keep working while we implemented
+                        new features and restructured how Selection would work.
+
+                        Testing was critical in this process!  We began with a set of Acceptance tests that would allow us to verify that
+                        the data displayed on the student application page remained unchanged.  We changed the usability and user interface of the
+                        application with minor tweaks around what was considered a complete application and questions asked
+                        by some departments in the COE.
+                    </aside>
 				</section>
 				<section>
 					<h3>Database Migrations: Phinx</h3>
