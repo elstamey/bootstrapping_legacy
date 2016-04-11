@@ -2,22 +2,20 @@
     background-color: inherit;
 }
 
-.quote, .quote h3 {
-    background-color: #F05B62;
-    color: white;
-}
-
-.quote blockquote {
-
-    background-color: white;
-    color: black;
-    padding: 15px 30px;
-}
-
-blockquote p {
-    font-family: Gotham-Italic serif;
-    font-size: 1.5em;
-    font-weight: bold;
+blockquote.style4 {
+    font: 1em/1.5em Gotham-Italic serif;
+    padding-left: 70px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-right: 10px;
+    background-color: #dadada;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 5px;
+    background-image: url(img/openquote4.gif);
+    background-position: middle left;
+    background-repeat: no-repeat;
+    text-indent: 23px;
 }
 
 .example {
