@@ -347,6 +347,10 @@
 
                         Our application didn't allow for multiple majors, and this was becomming an issue because their non-engineering major was
                         often the major our application saw and made it difficult for them to match for engineering scholarships.
+
+                        One of the biggest complications and a driving force for a project this large being moved to the top of the queue
+                        was that there had been a lot of money either unarwarded or rejected, which made many donors angry.
+                        The Dean got involved, and everyone understood the priority.
                     </aside>
 				</section>
 				<section>
@@ -606,7 +610,8 @@
 						</li>
 					</ul>
                     <aside class="notes">
-                        We needed to get the codebase into version control, first
+                        We needed to get the codebase into version control, first.  Our department had just bought Github Enterprise,
+                        so the only hurdle we had to overcome was finding all of the PII data that was hidden in small scripts and the code itself.
 
                         Next, we needed develpment environments that closely matched our production web servers.  Staging space
                         was a fairly easy problem to resolve, we just created another vhost on the server.  But the devlopment environment
@@ -648,6 +653,9 @@
                         the data displayed on the student application page remained unchanged.  We changed the usability and user interface of the
                         application with minor tweaks around what was considered a complete application and questions asked
                         by some departments in the COE.
+
+                        The new code we built had units, so We build unit and functional tests of those features using PHPUnit, which was incredibly powerful
+                        working as a team.  We could ensure that we didn't break each other's code if we continued running the full suite of tests before merging our pull requests.
                     </aside>
 				</section>
 				<section>
@@ -659,7 +667,13 @@
 						</li>
 					</ul>
 					<p><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></p>
-
+                    <aside class="notes">
+                        Another criticial tool for us was Phinx.  This gave us the ability to alter our databases using a script.
+                        Migrations give you the ability to do and undo these DB changes.  Any change I made to my DB could
+                        also be made across the team, and in staging or production environments.  And if something unexpected happened, it could be undone.
+                        It basically allowed us to version control DB changes.  And although it isn't recommended, we did have to use it extensively for data migrations in
+                        addition to schema changes.
+                    </aside>
 				</section>
 				<section>
 <pre><code>&lt;?php
@@ -697,7 +711,16 @@ use Phinx\Migration\AbstractMigration;
 			$table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
 		}
 	}</code></pre>
+                    <aside class="notes">
+                        I've included two examples of a Phinx migration:
 
+                        One is the change migration, which is a single function, and Phinx is supposed to know how to undo that change, so you don't have to write a down migration.
+                        However, we had many changes that the change() method wasn't as reliable for us.
+
+                        Example #2 is the type of migration we generally write.  This example renames a DB column from bio to biography.
+                        The down() method undoes this change, renaming the column bio again.  There would probably be a code change to queries of the 'bio' data, and we would submit
+                        those changes together with the migration, so the code was not in a broken state.
+                    </aside>
 				</section>
 				<section>
 					<h3>Database Migrations: Phinx</h3>
