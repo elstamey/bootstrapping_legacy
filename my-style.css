@@ -57,7 +57,18 @@ h3.title {
     font-weight: bolder;
 }
 
+
 h3 {
     color: #f05b62 !important;
     font-weight: bold;
+}
+
+.speaker-controls-notes .value {
+    text-overflow: ellipsis;
+}
+
+section.titleblock {
+    margin-left: -300px;
+    margin-top:300px;
+    background: rgba(255,255,2555,0.8);
 }
