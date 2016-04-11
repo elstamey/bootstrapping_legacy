@@ -726,7 +726,10 @@ use Phinx\Migration\AbstractMigration;
 					<h3>Database Migrations: Phinx</h3>
 					<p><code>$ vendor/bin/phinx migrate</code></p>
 					<p><code>$ vendor/bin/phinx rollback</code></p>
+                    <aside class="notes">
+                        These are the commands you use to either migrate or rollback the changes to your database.
 
+                    </aside>
 				</section>
 				<section>
 					<h3>Configuration file</h3>
@@ -742,18 +745,26 @@ use Phinx\Migration\AbstractMigration;
 						<li><p>Set config variables for services</p>
 						</li>
 					</ul>
-
+                    <aside class="notes">
+                        Another piece that allowed us to support the many environments: development, staging, production
+                        was a configuration file.  This was not version controlled.  But a template was.
+                        We could download that template and fill in our local DB connections, the base_url path
+                        We could set paths to twig templates, custom notice messages and temporary config variables for the
+                        services we implemented that we wanted flexibility for
+                    </aside>
 				</section>
 				<section>
 					<pre><code>
 	&lt;?php
     return array(
+    /* base url for path in the site */
 	&#39;app&#39; =&gt; array(
 	&#39;base_url&#39; =&gt; sprintf(&#39;http://localhost:%s/&#39;, isset($_SERVER[&#39;SERVER_PORT&#39;]) ? $_SERVER[&#39;SERVER_PORT&#39;] : &#39;&#39;),
 	&#39;index_page&#39; =&gt; &#39;index.php/&#39;,
 	&#39;debug&#39;    =&gt; FALSE
 	),
 
+    /* DB configuration */
 	&#39;db&#39; =&gt; array(
 	&#39;default&#39; =&gt; array(
 	&#39;hostname&#39; =&gt; &quot;local__server&quot;,
@@ -814,7 +825,20 @@ use Phinx\Migration\AbstractMigration;
 	);
 
 	?&gt;</code></pre>
+                    <aside class="notes">
+                        in order to support local environment serving to a specific port and production application being in a vhost,
+                        setting the base_url was very helpful!
 
+                        Our project used two DBs and we were able to configure both using this config variable.  The
+                        parts of CodeIgniter that configured the DB could then pull in our config values for 'default' and
+                        'student_info' databases to allow our queries to continue working
+
+                        Some other things we put into our config were paths to twig templates, which were then configured into
+                        CI like the DB connections were
+
+                        We created an authorization array to limit access to the funding and coordinator portions of the app
+                        because this would give us flexibility to turn access on and off when we needed to control changes in the application
+                    </aside>
 				</section>
 				<section>
 					<h3>Bootstrapping Scholarships: Filetree</h3>
