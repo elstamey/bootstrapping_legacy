@@ -1,1078 +1,1246 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-        <title>Pulling Up Your Legacy By Its Bootstraps</title>
+    <title>Pulling Up Your Legacy By Its Bootstraps</title>
 
-        <meta name="description"
-              content="Your mission, should you choose to accept it, is to support an application built on an older framework. Upgrading isn't an option. The code is untested and nowhere near best practices or standards. In this session we'll talk about strategies to incorporate modern PHP coding practices to add features and functionality and retiring the older code in pieces. We'll review specific examples and code from a real project where we bootstrapped an early CodeIgniter app.">
-        <meta name="author" content="Emily Stamey">
+    <meta name="description"
+          content="Your mission, should you choose to accept it, is to support an application built on an older framework. Upgrading isn't an option. The code is untested and nowhere near best practices or standards. In this session we'll talk about strategies to incorporate modern PHP coding practices to add features and functionality and retiring the older code in pieces. We'll review specific examples and code from a real project where we bootstrapped an early CodeIgniter app.">
+    <meta name="author" content="Emily Stamey">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
-		<link rel="stylesheet" href="my-style.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="my-style.css">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section data-background="img/shoelaces.jpg" class="titleblock">
-					<h3 class="title">Pulling Up Your Legacy App by Its Bootstraps</h3>
-					<p>by Emily Stamey</p>
-					<h5 class="attrib">&copy; photo by <a href="https://www.flickr.com/photos/ggibler/4070373493/in/photolist-7cFJek-5SeNsa-9bKCsn-jAddUm-oQTJ1b-5xLYZQ-9uQ8J4-awGnN5-4nN74L-eJjEv8-5vDSaf-njhZp-5gV2QB-4rXHzY-bKE51V-i7X2F-67eTGL-bnZX5v-5zzPjz-bnJAgv-9ocin7-nTm8j7-8Pomnt-cCzauh-7RFQfh-hSqL2M-63XhHS-q9XQBM-aTB4Ja-e37i45-86dSn5-8rXdjL-euUJvR-9Bn6uy-3aV2Br-5VehE9-9XQqCu-4oM4aH-5HYm4m-co9wos-c56rfL-Ai7Gda-4LoKmo-k4XtQx-b9K47z-7CyrYp-86aHf6-4mpuHn-86aT2v-yiP7zp">Gen Gibler</a> </h5>
-                    <aside class="notes">
-                        We are going to talk about Bootstrapping strategies for Legacy PHP applications.  Although we did use
-                        Twitter bootstrap in this project, I am not going to talk about it AT ALL.  I wanted to be sure to let
-                        you know upfront in case that affects your choice to be here.
-                    </aside>
-				</section>
-				<section>
-					<h3>Emily Stamey</h3>
-					<p>Application Developer @ NC State University</p>
-					<p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
-					<p>Blog: <a href="http://www.elstamey.com/">elstamey.com</a></p>
-                    <aside class="notes">
-                        - Hi, this is me.  I'll share these links again at the end.
-                        - My blog has some details about the implementation I'll be describing today.
-                    </aside>
-                </section>
-                <section>
-                    <h3>Emily Stamey</h3>
-                    <p>Application Developer @ NC State University</p>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section data-background="img/shoelaces.jpg" class="titleblock">
+            <h3 class="title">Pulling Up Your Legacy App by Its Bootstraps</h3>
+            <p>by Emily Stamey</p>
+            <h5 class="attrib">&copy; photo by <a
+                    href="https://www.flickr.com/photos/ggibler/4070373493/in/photolist-7cFJek-5SeNsa-9bKCsn-jAddUm-oQTJ1b-5xLYZQ-9uQ8J4-awGnN5-4nN74L-eJjEv8-5vDSaf-njhZp-5gV2QB-4rXHzY-bKE51V-i7X2F-67eTGL-bnZX5v-5zzPjz-bnJAgv-9ocin7-nTm8j7-8Pomnt-cCzauh-7RFQfh-hSqL2M-63XhHS-q9XQBM-aTB4Ja-e37i45-86dSn5-8rXdjL-euUJvR-9Bn6uy-3aV2Br-5VehE9-9XQqCu-4oM4aH-5HYm4m-co9wos-c56rfL-Ai7Gda-4LoKmo-k4XtQx-b9K47z-7CyrYp-86aHf6-4mpuHn-86aT2v-yiP7zp">Gen
+                Gibler</a></h5>
+            <aside class="notes">
+                We are going to talk about Bootstrapping strategies for Legacy PHP applications. Although we did use
+                Twitter bootstrap in this project, I am not going to talk about it AT ALL. I wanted to be sure to let
+                you know upfront in case that affects your choice to be here.
+            </aside>
+        </section>
+        <section>
+            <h3>Emily Stamey</h3>
+            <p>Application Developer @ NC State University</p>
+            <p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
+            <p>Blog: <a href="http://www.elstamey.com/">elstamey.com</a></p>
+            <aside class="notes">
+                - Hi, this is me. I'll share these links again at the end.
+                - My blog has some details about the implementation I'll be describing today.
+            </aside>
+        </section>
+        <section>
+            <h3>Emily Stamey</h3>
+            <p>Application Developer @ NC State University</p>
+            <ul>
+                <li>Developing PHP applications since 1999</li>
+                <li>Primarily supporting legacy applications</li>
+                <li>My department supports about 80 applications that support business processes of the College of
+                    Engineering
+                </li>
+            </ul>
+            <aside class="notes">
+                I began using PHP in 1999. But most of the web applications I have worked on have
+                involved starting with someone else's work
+
+                My group in the College of Engineering manages a pile of PHP applications. Many of these were
+                student-built and are useful to the person or people they were buit for, however they have only been
+                worked on when they have a problem or a new need.
+
+                So now we have a pile of legacy that we must support.
+            </aside>
+        </section>
+        <section>
+            <h3>Supporting Legacy is Hard</h3>
+            <p>&nbsp;</p>
+            <blockquote class="style4">
+                It&#39;s harder to read code than to write it. This is why code reuse is so hard.
+                <p>- Joel Spolsky</p>
+            </blockquote>
+            <aside class="notes">
+                Starting with someone else's code is challenging. Our tendency as developers is to replace it with a
+                more familiar code, our own.
+
+                But many these legacy applications have grown beyond simple CRUD applications and now have a lot of
+                business logic baked in.
+
+                It is important that we develop the skills to begin with someone else's code and fix only what is
+                needed.
+            </aside>
+        </section>
+        <section>
+            <h3>Why Bootstrapping is important</h3>
+            <ul>
+                <li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
+                </li>
+                <li><p>It is HARD to justify <strong>refactoring</strong></p>
+                </li>
+                <li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p>
+                </li>
+            </ul>
+            <p><strong>Let&#39;s review some terminology... (source: wikipedia)</strong></p>
+            <aside class="notes">
+                A lot of our work involves supporting legacy applications. We can't convince managers to let us
+                refactor the code when it isn't broken. Learning to bootstrap the legacy codebase gives you options
+                beyond replacing the entire application using the latest strategies.
+
+                But before we begin, let's review some of these terms and make sure we're on the same page.
+            </aside>
+        </section>
+        <section>
+            <h3>Legacy Software</h3>
+            <p>Software developed using older technologies and practices. It can be difficult to replace because of its
+                wide use.</p>
+            <p>Often a pejorative term, referencing a system as &quot;legacy&quot; often implies that the system is out
+                of date or in need of replacement.</p>
+            <aside class="notes">
+                A legacy application was usually developed using older strategies. In the PHP world, this runs the gamut
+                between
+                code that uses includes for functionality and styling of the page; and go all the way to modern
+                frameworks that were
+                poorly implemented.
+            </aside>
+        </section>
+        <section>
+            <h3>Spaghetti Code</h3>
+            <p>The relationships between pieces of code are so tangled, it’s nearly impossible to add or change
+                something without unpredictably breaking something.</p>
+            <aside class="notes">
+                Spaghetti code is what you would call the older functional PHP programming because the page styling and
+                functionality are intermingled. This also applies to code that doesn't meet the Single Responsibility
+                principle.
+            </aside>
+        </section>
+        <section>
+            <h3>Lasagna code</h3>
+            <p>Lasagna code is code that has way too many layers. </p>
+            <p>In Object Oriented programming, this means code that has many really small classes when a few slightly
+                larger classes would have done the trick.</p>
+            <aside class="notes">
+                I truly believe Lasagna Code was a term made to perpetuate the pasta metaphor, but it generally applies
+                to unbalanced code with classes that are either too large or too small.
+                A good lasagna has balanced layers.
+            </aside>
+        </section>
+        <section>
+            <h3>Refactor</h3>
+            <p>Technique for restructuring an existing body of code, altering its internal structure <strong>without
+                changing its external behavior</strong>.</p>
+            <aside class="notes">
+                Refactoring is a term often misused. It means that you are changing the code without altering the
+                aplication's behavior.
+                You can make your application more secure, improve a Database query, things like that without altering
+                what the user sees
+                and does in the application.
+                Once you change behavior, you're no longer refactoring. This is why managers don't really support
+                refactoring. There is not a visible gain FOR THEM or the user. Charts and benchmarking may help this
+                cause.
+            </aside>
+        </section>
+        <section>
+            <h3>Technical Debt</h3>
+            <p>A metaphor referring to the eventual consequences of any system design, software architecture or software
+                development within a codebase.</p>
+            <aside class="notes">
+                When we develop many simple task apps in our group, we are building technical debt. We know that these
+                tools
+                are useful to someone and we know we're choosing to ignore them for long periods of time because they
+                aren't a squeaky wheel.
+                There is an instant gratification about building a tool that helps someone do their job well. That our
+                dept can't get enough of.
+                But the developers know it will inevitably bite us. That simple CRUD app that one person uses will one
+                day break and be an urgen fix.
+                The student who built it won't be here anymore. These are our adventures!
+                Unfortunately, this technical debt isn't purely on simple CRUD apps. We have many larger applications,
+                as well. And those were student-built but have
+                grown too large to be student-maintained. And the users are too high on the org chart to let them die.
+            </aside>
+        </section>
+        <section>
+            <h3>Bootstrapping</h3>
+            <p>In software this usually means, <strong>building onto an existing system</strong> for the purpose of
+                improvement with the least amount of sweat equity and development cost in the process.</p>
+            <aside class="notes">
+                Bootstrapping is a combination of refactoring and new features; it allows you to modernize your legacy
+                application
+                without necessarily replacing the whole thing.
+            </aside>
+        </section>
+        <section>
+            <h3>Why Bootstrapping is important</h3>
+            <ul>
+                <li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
+                </li>
+                <li><p>It is HARD to justify <strong>refactoring</strong></p>
+                </li>
+                <li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                Now with the definitions fresh in our heads, this statement makes a lot more sense.
+                READ IT
+            </aside>
+        </section>
+        <section data-background="#f05b62">
+            <h1 style="color: #fafafa;">The Project: Scholarships</h1>
+            <aside class="notes">
+                I'm going to be telling you about a project I worked on for the College of Engineering
+                It is a scholarships tool. And when I was given this app to support three years ago, all code was
+                changed in production.
+                The application was in use for most of the Academic year, so that meant I would have about a month at
+                the end of the summer to
+                "FIX THE CODE", test it, and have it ready for the next Academic year. This month was a gift, they
+                really
+                wanted me to do it in two weeks.
+
+                The application was an early version of Code Igniter. But that fact really doesn't mean much.
+                It was an MVC application implemented by a student who didn't really understand how to organize their
+                code in MVC.
+            </aside>
+        </section>
+        <section>
+            <h3>The Project: Scholarships</h3>
+            <ul>
+                <li><p>Engineering <strong>Foundation</strong> receives money from donors to give to
+                    <strong>students</strong></p>
+                </li>
+                <li><p><strong>Students</strong> apply each year giving information about themselves</p>
+                </li>
+                <li><p><strong>Donors</strong> specify criteria/rules for students to receive money</p>
+                </li>
+                <li><p><strong>Selection Committee</strong> selects Candidates to receive money</p>
+                </li>
+                <li><p><strong>Scholarship Coordinator</strong> reports these Recipients to Financial Aid</p>
+                </li>
+                <li><p><strong>Financial Aid</strong> awards the money</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                I want to tell you a bit about how Scholarships work. In the Fall, students began applying for the NEXT
+                academic year.
+                In their application, students tell us things about themselves in order to be a better match for the
+                aide
+
+                Donors tell the College who they want to receive the money, based on majors, gpa, and sometimes clubs
+
+                In the Spring, the selection committee finds out how much money there is to be given and they choose
+                matching candidates to receive money.
+
+                A Scholarship Coordinator sends those candidates, the amount of money, and the term to Financial Aid to
+                be given the following Fall and/or Spring.
+
+                Someone was using this tool at all times during the year. This made a tight support window.
+                It really needed to have the functionality separated into Bounded Contexts, so that the student
+                application could be worksed on
+                when they weren't actively applying.
+                The problem was that almost all of the functionality was in one App model. It was not seperated by
+                Students, Foundation, or Selection
+
+                The code was spaghetti
+
+                We're going to talk about how my team bootstrapped this application by leaving the existing app in place
+                and functioning
+                but adding new code in adjacent space and tying it into the CodeIgniter app
+            </aside>
+        </section>
+        <section>
+            <h3>How to Bootstrap</h3>
+            <ol>
+                <li><p>Survey Your Application</p>
+                    <p> Legacy projects have business value baked in, that you must preserve.</p>
+                </li>
+                <li><p>Organize the Work to be done</p>
+                    <p> Based on the bugs, new features, etc. You have to balance needs vs. wants to deliver this
+                        product.</p>
+                </li>
+            </ol>
+            <aside class="notes">
+                In order to bootstrap an application like this, you have to be well organized. You need to complete a
+                full survery of users and functionality
+                And then you have to plan the work that's most necessary.
+            </aside>
+        </section>
+        <section>
+            <h3>Survey Your Application</h3>
+            <ol>
+                <li><p>Talk to users of the application </p>
+                </li>
+                <li><p>Study the codebase</p>
+                </li>
+                <li><p>Examine the new feature requests</p>
+                </li>
+            </ol>
+            <aside class="notes">
+                For your survey, you want to talk to the users, study the code, and since there are always new features,
+                you want to
+                see how those might fit in. I recommend talking to the users first, because you will need to
+                look at the code again after you talk to them.
+            </aside>
+        </section>
+        <section>
+            <h3>Talk to Users of the Application</h3>
+            <ol>
+                <li><p>Is their process consistent with the application? </p>
+                </li>
+                <li><p>What are the pain points?</p>
+                </li>
+                <li><p>Do they have concerns with the application?</p>
+                </li>
+            </ol>
+            <p><strong>Don’t rely on developer feedback</strong></p>
+            <aside class="notes">
+                Talking to the previous developer does NOT count as talking to your users.
+                When you speak to the users of your application, you want to know about their process, and
+                does it match what they are doing in the application.
+                Identify any pain points they have in using the applciation
+                Finally, do they have concerns? Do they trust it? Hate it?
+                This is all necessary feedback.
+                Listening to your users here allows you to deliver REAL value, so pay attention!
+            </aside>
+        </section>
+        <section>
+            <h3>User Feedback: Scholarship Process</h3>
+            <p><strong>Process was inconsistent with the application</strong></p>
+            <ul>
+                <li><p>Selection Committee used a spreadsheet of available scholarship money </p>
+                </li>
+                <li><p>Selected Candidates were added to a spreadsheet Student ID and Amount and Term of award</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                We found that the application was inconsistent with their process
+                The existing scholarship application gave matching students a score on the Scholarship page. But there
+                was no way to select that student for an award. The Selection Committee received a spreadsheet
+                that said which scholarships had money, and how much was available to be awarded.
+                They used our tool to review the matching applicants and make their selections by
+                building a spreadsheet of the scholarship account number, student id number, amount and term they should
+                receive the money.
+
+            </aside>
+        </section>
+        <section>
+            <h3>User Feedback: Scholarship Pain Points</h3>
+            <p><strong>High Margin of Error</strong></p>
+            <p>Their process was exiting and re-entering the system through spreadsheets</p>
+            <aside class="notes">
+                So they were in and out of the tool with spreadsheets filling the gaps.
+                This had a high margin of error. Manual entry of numbers.
+                It was tedious and painful
+            </aside>
+        </section>
+        <section>
+            <h3>User Feedback: Scholarship Concerns</h3>
+            <ul>
+                <li><p>They didn’t trust that Selection Committee was choosing the best candidates</p>
+                </li>
+                <li><p>The Scoring algorithm was not clear/effective</p>
+                </li>
+                <li><p>Multiple majors weren&#39;t allowed by our system</p>
+                </li>
+                <li><p><strong>NOT ALL MONEY WAS BEING AWARDED</strong></p>
+                </li>
+                <li><p><strong>MONEY LEFT UN-GIVEN ⇒ ANGRY DONORS</strong></p>
+                </li>
+            </ul>
+            <aside class="notes">
+                We also learned they didn't trust the application or that selection committee was choosing valid
+                applicants
+                A student could be rejected by Financial Aid for lack of enrollment, not being in COE, low GPA etc.
+                The application wasn't able to predict those changes. So when FA rejected an award, it created mistrust.
+                And there was no guarantee that a student matched the criteria a donor specified. But that information
+                can change
+                each semester.
+
+                Our scoring algorithm had a problem. Early on, they had decided they didn't want to exclude applicants,
+                even if they didn't match required criteria.
+                But this meant that a student who matched 2 required and 1 optional criteria, had the same score as
+                match against 3 required criteria.
+                A selection committee member had to scrutinize the candidates or choose a bad match.
+
+                Our application didn't allow for multiple majors, and this was becomming an issue because their
+                non-engineering major was
+                often the major our application saw and made it difficult for them to match for engineering
+                scholarships.
+
+                One of the biggest complications and a driving force for a project this large being moved to the top of
+                the queue
+                was that there had been a lot of money either unarwarded or rejected, which made many donors angry.
+                The Dean got involved, and everyone understood the priority.
+            </aside>
+        </section>
+        <section>
+            <h3>Survey Your Application</h3>
+            <ol>
+                <li><p>Talk to users of the application </p>
+                </li>
+                <li><p>Study the codebase</p>
+                </li>
+                <li><p>Examine the new feature requests</p>
+                </li>
+            </ol>
+            <aside class="notes">
+                After you have spoken to your users, it's a great time to review the actual code
+            </aside>
+        </section>
+        <section>
+            <h3>Study the codebase</h3>
+            <ul>
+                <li><p>Talk to past/current developers</p>
+                </li>
+                <li><p>Verify that key functionality does what everyone thinks it does</p>
+                </li>
+                <li><p>Look for entanglements</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                This is where it makes sense to talk to other developers
+                You want to be sure it does what everyone think it does.
+                You want to identify entanglements whether they create places to avoid or room for improvement.
+            </aside>
+        </section>
+        <section>
+            <h3>Codebase of Scholarship</h3>
+            <ul>
+                <li><p>Large App model</p>
                     <ul>
-                        <li>Developing PHP applications since 1999</li>
-                        <li>Primarily supporting legacy applications</li>
-                        <li>My department supports about 80 applications that support business processes of the College of Engineering</li>
+                        <li><p>SQL queries, only slightly dynamic</p>
+                        </li>
+                        <li><p>Functions weren’t single-purpose</p>
+                        </li>
+                        <li><p>No Bounded Contexts between Students, Selection, and Foundation</p>
+                        </li>
                     </ul>
-                    <aside class="notes">
-                        I began using PHP in 1999.  But most of the web applications I have worked on have
-                        involved starting with someone else's work
+                </li>
+            </ul>
+            <aside class="notes">
+                This is where we really saw the danger in our large app model.
+                Functions with large SQL queries were being used in multiple places in the app
+                There were no boundaries between selection and foundation
+            </aside>
+        </section>
+        <section>
+            <h3>Codebase of Scholarship</h3>
+            <ul>
+                <li><p>Student data was a single row in table</p>
+                    <ul>
+                        <li><p>Academic information wasn’t updated when it changed</p>
+                        </li>
+                        <li><p>Major was a single column in that row</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <aside class="notes">
+                We also saw that Student's applications were a single row for each academic year. And their major was
+                one column in that row.
+                At the time the student applied, their GPA, major, etc was saved to the application. And it wasn't
+                uspdated
+                prior to selection This had been causing the students not to match for scholarships or to match when
+                they should not have.
+            </aside>
+        </section>
+        <section>
+            <h3>Survey Your Application</h3>
+            <ol>
+                <li><p>Talk to users of the application </p>
+                </li>
+                <li><p>Study the codebase</p>
+                </li>
+                <li><p>Examine the new feature requests</p>
+                </li>
+            </ol>
+            <aside class="notes">
+                Finally, you're going to have a lot of work to do just to fix the legacy, but there are always new
+                features requested. And you have to see how those fit in.
+            </aside>
+        </section>
+        <section>
+            <h3>Examine New Feature Requests</h3>
+            <ul>
+                <li><p>What new features are needed? </p>
+                </li>
+                <li><p>How they might be implemented?</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                You want to see what those features are and how they might fit into the other work to be done.
+            </aside>
+        </section>
+        <section>
+            <h3>New Features: Scholarships</h3>
+            <ul>
+                <li><p>Explicit criteria matching, excluded non-matching applicants</p>
+                </li>
+                <li><p>Current student data, query their GPA, Major, etc at time of selection</p>
+                </li>
+                <li><p>Students have multiple majors</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                For scholarships they wanted to exclude non-matching applications and to score them based on the
+                optional criteria
+                They wanted student GPA and major to be relevant at the time they were selected, to get a better match
+                And they wanted students with multiple majors to be considered based on all of their engineering majors
+            </aside>
+        </section>
+        <section>
+            <h3>How to Bootstrap</h3>
+            <ol>
+                <li><p>Survey Your Application</p>
+                    <p> Legacy projects have business value baked in, that you must preserve.</p>
+                </li>
+                <li><p>Organize the Work to be done</p>
+                    <p> Based on the bugs, new features, etc. You have to balance needs vs. wants to deliver this
+                        product.</p>
+                </li>
+            </ol>
+            <aside class="notes">
+                This can be a lot of work to consider, and you have to be really organized in how you proceed.
+            </aside>
+        </section>
+        <section>
+            <h3>Decision Time</h3>
+            <ul>
+                <li><p>Is there another application that can do what it does? Is it better?</p>
+                </li>
+                <li><p>Is this a worthwhile investment?</p>
+                </li>
+                <li><p>If so, what are the Most Valuable Features?</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                We had talked to a member of Financial Aide early on in this project because there was a tool for
+                Universities
+                that did all the work our application did and more. But she was having trouble getting buy-in
+                for the largers colleges to switch and said that it was not going to happen.
 
-                        My group in the College of Engineering manages a  pile of PHP applications.  Many of these were student-built and are useful to the person or people they were buit for, however they have only been worked on when they have a problem or a new need.
+                Because of this, we decided we needed to improve the accuracy of our selections and reduce the number of
+                rejected awards.
+            </aside>
+        </section>
+        <section>
+            <h3>Build Trust with Users</h3>
+            <ul>
+                <li><p>Explain why this work is necessary</p>
+                </li>
+                <li><p>Be open about errors in the application</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                Around the time you are deciding which features are more valuable, it's a good time to include userrs to
+                make sure that your decisions are consistent with their needs.
 
-                        So now we have a pile of legacy that we must support.
-                    </aside>
-				</section>
-				<section>
-					<h3>Supporting Legacy is Hard</h3>
-					<p>&nbsp;</p>
-                    <blockquote class="style4">
-                        It&#39;s harder to read code than to write it. This is why code reuse is so hard.
-						<p>- Joel Spolsky</p>
-                    </blockquote>
-                    <aside class="notes">
-                        Starting with someone else's code is challenging.  Our tendency as developers is to replace it with a more familiar code, our own.
+                Be open about errors in the application because this helps them to support the changes. They want
+                the best candidates to be chosen, so they want you to fix the errors above all else.
+            </aside>
+        </section>
+        <section>
+            <h3>Set Expectations</h3>
+            <ul>
+                <li><p>Customer has an open door to you </p>
+                    <ul>
+                        <li><p>add work from the side </p>
+                        </li>
+                        <li><p>change processes</p>
+                        </li>
+                    </ul>
+                </li>
+                <li><p>Keep the door open anyway!</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                You need to keep open communication with your users, which is risky
+                They can add work from the side and ("just one more thing") and processes may change
+                But you need the open line of communication to get their feedback on changes and help with testing
+                It also makes it easier to find out about those process changes
+            </aside>
+        </section>
+        <section>
+            <h3>Scope the work to be done</h3>
+            <ul>
+                <li><p>Bootstrapping grows FAST!</p>
+                </li>
+                <li><p>Large projects </p>
+                    <ul>
+                        <li><p>require more people to be engaged in the process</p>
+                        </li>
+                        <li><p>wear people down over time</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <aside class="notes">
+                Bootstrapping, because are usually a lot of issues in a legacy application, can become a large project
+                quickly
+                The larger the project, the more developers and users will need to be involved
+                And when that happens, it can be difficult to keep them engaged for the length of time required.
+                Creating smaller bites of work is ideal for getting people on board and familiar with the process.
+            </aside>
+        </section>
+        <section>
+            <h3>How to Organize the work</h3>
+            <ul>
+                <li><p>Use your Research </p>
+                </li>
+                <li><p>Prioritize the needs</p>
+                </li>
+                <li><p>Scope the work you are agreeing to do</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                Make sure when you organize the works into those logical, bite-size tasks, that you're keeping users
+                informed of what you're agreeing to work on and why. It can help with the feature creep.
+            </aside>
+        </section>
+        <section>
+            <h3>Plan Features for Scholarships</h3>
+            <p>Divided the application based on first need in the process</p>
+            <ol>
+                <li><p>Student Application</p>
+                </li>
+                <li><p>Funding</p>
+                </li>
+                <li><p>Selection</p>
+                </li>
+                <li><p>Reports for Funding and Scholarship Coordinator</p>
+                    <p><strong>we didn&#39;t scope the work</strong></p>
+                </li>
+            </ol>
+            <aside class="notes">
+                Our plan with Scholarships was to put tasks in the order of the academic year, who would be accessing
+                the system
+                The goal was to leave the existing application alone as much as possible.
+                We would develop new features adjacent to the framework and connect that into the framework's routing
+                layer
+                We wanted to replace the application in pieces, but we didn't want to get stuck rebuilding all of the
+                crud components.
+            </aside>
+        </section>
+        <section data-background="#f05b62">
+            <h1 style="color: #fafafa;">Mitigate Risk</h1>
+            <aside class="notes">
+                Before we could really get underway with development there were a lot of things we needed to do
+                to sure up our development process.
 
-                        But many these legacy applications have grown beyond simple CRUD applications and now have a lot of business logic baked in.
+                First of all, we were developing in production!
+            </aside>
+        </section>
+        <section>
+            <h3>Control Risk Before Bootstrapping</h3>
+            <ul>
+                <li><p>Version control</p>
+                    <p> Stabilize the code base and preserves history</p>
+                </li>
+                <li><p>Development and Staging environments (w/ Fake data)</p>
+                    <p><strong>No more developing in production!!!!</strong></p>
+                </li>
+            </ul>
+            <aside class="notes">
+                We needed to get the codebase into version control, first. Our department had just bought Github
+                Enterprise,
+                so the only hurdle we had to overcome was finding all of the PII data that was hidden in small scripts
+                and the code itself.
 
-                        It is important that we develop the skills to begin with someone else's code and fix only what is needed.
-                    </aside>
-				</section>
-				<section>
-					<h3>Why Bootstrapping is important</h3>
-					<ul>
-						<li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
-						</li>
-						<li><p>It is HARD to justify <strong>refactoring</strong>  </p>
-						</li>
-						<li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p>
-						</li>
-					</ul>
-					<p><strong>Let&#39;s review some terminology... (source: wikipedia)</strong></p>
-                    <aside class="notes">
-                        A lot of our work involves supporting legacy applications.  We can't convince managers to let us
-                        refactor the code when it isn't broken.  Learning to bootstrap the legacy codebase gives you options
-                        beyond replacing the entire application using the latest strategies.
+                Next, we needed develpment environments that closely matched our production web servers. Staging space
+                was a fairly easy problem to resolve, we just created another vhost on the server. But the devlopment
+                environment
+                required a vagrant box and puppet configuration, which one of my coworkers was able to put together and
+                refine
 
-                        But before we begin, let's review some of these terms and make sure we're on the same page.
-                    </aside>
-				</section>
-				<section>
-					<h3>Legacy Software</h3>
-					<p>Software developed using older technologies and practices.  It can be difficult to replace because of its wide use.</p>
-					<p>Often a pejorative term, referencing a system as &quot;legacy&quot; often implies that the system is out of date or in need of replacement.</p>
-                    <aside class="notes">
-                        A legacy application was usually developed using older strategies.  In the PHP world, this runs the gamut between
-                        code that uses includes for functionality and styling of the page; and go all the way to modern frameworks that were
-                        poorly implemented.
-                    </aside>
-				</section>
-				<section>
-					<h3>Spaghetti Code</h3>
-					<p>The relationships between pieces of code are so tangled, it’s nearly impossible to add or change something without unpredictably breaking something.</p>
-                    <aside class="notes">
-                        Spaghetti code is what you would call the older functional PHP programming because the page styling and
-                        functionality are intermingled.  This also applies to code that doesn't meet the Single Responsibility principle.
-                    </aside>
-				</section>
-				<section>
-					<h3>Lasagna code</h3>
-					<p>Lasagna code is code that has way too many layers.  </p>
-					<p>In Object Oriented programming, this means code that has many really small classes when a few slightly larger classes would have done the trick.</p>
-                    <aside class="notes">
-                        I truly believe Lasagna Code was a term made to perpetuate the pasta metaphor, but it generally applies
-                        to unbalanced code with classes that are either too large or too small.
-                        A good lasagna has balanced layers.
-                    </aside>
-				</section>
-				<section>
-					<h3>Refactor</h3>
-					<p>Technique for restructuring an existing body of code, altering its internal structure <strong>without changing its external behavior</strong>.</p>
-                    <aside class="notes">
-                        Refactoring is a term often misused.  It means that you are changing the code without altering the aplication's behavior.
-                        You can make your application more secure, improve a Database query, things like that without altering what the user sees
-                        and does in the application.
-                        Once you change behavior, you're no longer refactoring.  This is why managers don't really support
-                        refactoring.  There is not a visible gain FOR THEM or the user.  Charts and benchmarking may help this cause.
-                    </aside>
-				</section>
-				<section>
-					<h3>Technical Debt</h3>
-					<p>A metaphor referring to the eventual consequences of any system design, software architecture or software development within a codebase.</p>
-                    <aside class="notes">
-                        When we develop many simple task apps in our group, we are building technical debt.  We know that these tools
-                        are useful to someone and we know we're choosing to ignore them for long periods of time because they aren't a squeaky wheel.
-                        There is an instant gratification about building a tool that helps someone do their job well.  That our dept can't get enough of.
-                        But the developers know it will inevitably bite us.  That simple CRUD app that one person uses will one day break and be an urgen fix.
-                        The student who built it won't be here anymore.  These are our adventures!
-                        Unfortunately, this technical debt isn't purely on simple CRUD apps.  We have many larger applications, as well.  And those were student-built but have
-                        grown too large to be student-maintained.  And the users are too high on the org chart to let them die.
-                    </aside>
-				</section>
-				<section>
-					<h3>Bootstrapping</h3>
-					<p>In software this usually means, <strong>building onto an existing system</strong> for the purpose of improvement with the least amount of sweat equity and development cost in the process.</p>
-                    <aside class="notes">
-                        Bootstrapping is a combination of refactoring and new features; it allows you to modernize your legacy application
-                        without necessarily replacing the whole thing.
-                    </aside>
-				</section>
-				<section>
-					<h3>Why Bootstrapping is important</h3>
-					<ul>
-						<li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p>
-						</li>
-						<li><p>It is HARD to justify <strong>refactoring</strong>  </p>
-						</li>
-						<li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        Now with the definitions fresh in our heads, this statement makes a lot more sense.
-                        READ IT
-                    </aside>
-				</section>
-				<section data-background="#f05b62">
-					<h1 style="color: #fafafa;">The Project: Scholarships</h1>
-                    <aside class="notes">
-                        I'm going to be telling you about a project I worked on for the College of Engineering
-                        It is a scholarships tool.  And when I was given this app to support three years ago, all code was changed in production.
-                        The application was in use for most of the Academic year, so that meant I would have about a month at the end of the summer to
-                        "FIX THE CODE", test it, and have it ready for the next Academic year.  This month was a gift, they really
-                        wanted me to do it in two weeks.
+                This allowed us to develop changes and have fewer deployment issues than when we were developing using
+                MAMP.
+            </aside>
+        </section>
+        <!--<section>-->
+        <!--<h3>Control Risk Before Bootstrapping</h3>-->
+        <!--<ul>-->
+        <!--<li><p>Involve Users to work through the process</p>-->
+        <!--</li>-->
+        <!--<li><p>Keep the constant feedback loop</p>-->
+        <!--</li>-->
+        <!--</ul>-->
 
-                        The application was an early version of Code Igniter.  But that fact really doesn't mean much.
-                        It was an MVC application implemented by a student who didn't really understand how to organize their code in MVC.
-                    </aside>
-				</section>
-				<section>
-					<h3>The Project: Scholarships</h3>
-					<ul>
-						<li><p>Engineering <strong>Foundation</strong> receives money from donors to give to <strong>students</strong></p>
-						</li>
-						<li><p><strong>Students</strong> apply each year giving information about themselves</p>
-						</li>
-						<li><p><strong>Donors</strong> specify criteria/rules for students to receive money</p>
-						</li>
-						<li><p><strong>Selection Committee</strong> selects Candidates to receive money</p>
-						</li>
-						<li><p><strong>Scholarship Coordinator</strong> reports these Recipients to Financial Aid</p>
-						</li>
-						<li><p><strong>Financial Aid</strong> awards the money</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        I want to tell you a bit about how Scholarships work.  In the Fall, students began applying for the NEXT academic year.
-                        In their application, students tell us things about themselves in order to be a better match for the aide
+        <!--</section>-->
+        <section>
+            <h3>Test Everything You Need</h3>
+            <ul>
+                <li><p>Acceptance tests stabilize functionality you need</p>
+                    <ul>
+                        <li><p>added hooks for testing interfaces </p>
+                        </li>
+                        <li><p>Codeception needed to view contents of the pages</p>
+                        </li>
+                    </ul>
+                </li>
+                <li><p>Unit and Functional tests for everything you build</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                We were building alongside an existing, untesting application. There were no "units", individual
+                classeses
+                with behavior that we could test. But there was functionality we were expecting to keep working while we
+                implemented
+                new features and restructured how Selection would work.
 
-                        Donors tell the College who they want to receive the money, based on majors, gpa, and sometimes clubs
+                Testing was critical in this process! We began with a set of Acceptance tests that would allow us to
+                verify that
+                the data displayed on the student application page remained unchanged. We changed the usability and user
+                interface of the
+                application with minor tweaks around what was considered a complete application and questions asked
+                by some departments in the COE.
 
-                        In the Spring, the selection committee finds out how much money there is to be given and they choose matching candidates to receive money.
-
-                        A Scholarship Coordinator sends those candidates, the amount of money, and the term to Financial Aid to be given the following Fall and/or Spring.
-
-                        Someone was using this tool at all times during the year.  This made a tight support window.
-                        It really needed to have the functionality separated into Bounded Contexts, so that the student application could be worksed on
-                        when they weren't actively applying.
-                        The problem was that almost all of the functionality was in one App model.  It was not seperated by
-                        Students, Foundation, or Selection
-
-                        The code was spaghetti
-
-                        We're going to talk about how my team bootstrapped this application by leaving the existing app in place and functioning
-                        but adding new code in adjacent space and tying it into the CodeIgniter app
-                    </aside>
-				</section>
-				<section>
-					<h3>How to Bootstrap</h3>
-					<ol>
-						<li><p>Survey Your Application</p>
-							<p> Legacy projects have business value baked in, that you must preserve.</p>
-						</li>
-						<li><p>Organize the Work to be done</p>
-							<p> Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.</p>
-						</li>
-					</ol>
-                    <aside class="notes">
-                        In order to bootstrap an application like this, you have to be well organized.  You need to complete a full survery of users and functionality
-                        And then you have to plan the work that's most necessary.
-                    </aside>
-				</section>
-				<section>
-					<h3>Survey Your Application</h3>
-					<ol>
-						<li><p>Talk to users of the application </p>
-						</li>
-						<li><p>Study the codebase</p>
-						</li>
-						<li><p>Examine the new feature requests</p>
-						</li>
-					</ol>
-                    <aside class="notes">
-                        For your survey, you want to talk to the users, study the code, and since there are always new features, you want to
-                        see how those might fit in.  I recommend talking to the users first, because you will need to
-                        look at the code again after you talk to them.
-                    </aside>
-				</section>
-				<section>
-					<h3>Talk to Users of the Application</h3>
-					<ol>
-						<li><p>Is their process consistent with the application?  </p>
-						</li>
-						<li><p>What are the pain points?</p>
-						</li>
-						<li><p>Do they have concerns with the application?</p>
-						</li>
-					</ol>
-					<p><strong>Don’t rely on developer feedback</strong></p>
-                    <aside class="notes">
-                        Talking to the previous developer does NOT count as talking to your users.
-                        When you speak to the users of your application, you want to know about their process, and
-                        does it match what they are doing in the application.
-                        Identify any pain points they have in using the applciation
-                        Finally, do they have concerns?  Do they trust it?  Hate it?
-                        This is all necessary feedback.
-                        Listening to your users here allows you to deliver REAL value, so pay attention!
-                    </aside>
-				</section>
-				<section>
-					<h3>User Feedback: Scholarship Process</h3>
-					<p><strong>Process was inconsistent with the application</strong></p>
-					<ul>
-						<li><p>Selection Committee used a spreadsheet of available scholarship money </p>
-						</li>
-						<li><p>Selected Candidates were added to a spreadsheet Student ID and Amount and Term of award</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        We found that the application was inconsistent with their process
-                        The existing scholarship application gave matching students a score on the Scholarship page.  But there
-                        was no way to select that student for an award.  The Selection Committee received a spreadsheet
-                        that said which scholarships had money, and how much was available to be awarded.
-                        They used our tool to review the matching applicants and make their selections by
-                        building a spreadsheet of the scholarship account number, student id number, amount and term they should receive the money.
-
-                    </aside>
-				</section>
-				<section>
-					<h3>User Feedback: Scholarship Pain Points</h3>
-					<p><strong>High Margin of Error</strong>  </p>
-					<p>Their process was exiting and re-entering the system through spreadsheets</p>
-                    <aside class="notes">
-                        So they were in and out of the tool with spreadsheets filling the gaps.
-                        This had a high margin of error.  Manual entry of numbers.
-                        It was tedious and painful
-                    </aside>
-				</section>
-				<section>
-					<h3>User Feedback: Scholarship Concerns</h3>
-					<ul>
-						<li><p>They didn’t trust that Selection Committee was choosing the best candidates</p>
-						</li>
-						<li><p>The Scoring algorithm was not clear/effective</p>
-						</li>
-						<li><p>Multiple majors weren&#39;t allowed by our system</p>
-						</li>
-						<li><p><strong>NOT ALL MONEY WAS BEING AWARDED</strong></p>
-						</li>
-						<li><p><strong>MONEY LEFT UN-GIVEN ⇒ ANGRY DONORS</strong></p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        We also learned they didn't trust the application or that selection committee was choosing valid applicants
-                        A student could be rejected by Financial Aid for lack of enrollment, not being in COE, low GPA etc.
-                        The application wasn't able to predict those changes.  So when FA rejected an award, it created mistrust.
-                        And there was no guarantee that a student matched the criteria a donor specified.  But that information can change
-                        each semester.
-
-                        Our scoring algorithm had a problem.  Early on, they had decided they didn't want to exclude applicants, even if they didn't match required criteria.
-                        But this meant that a student who matched 2 required and 1 optional criteria, had the same score as match against 3 required criteria.
-                        A selection committee member had to scrutinize the candidates or choose a bad match.
-
-                        Our application didn't allow for multiple majors, and this was becomming an issue because their non-engineering major was
-                        often the major our application saw and made it difficult for them to match for engineering scholarships.
-
-                        One of the biggest complications and a driving force for a project this large being moved to the top of the queue
-                        was that there had been a lot of money either unarwarded or rejected, which made many donors angry.
-                        The Dean got involved, and everyone understood the priority.
-                    </aside>
-				</section>
-				<section>
-					<h3>Survey Your Application</h3>
-					<ol>
-						<li><p>Talk to users of the application </p>
-						</li>
-						<li><p>Study the codebase</p>
-						</li>
-						<li><p>Examine the new feature requests</p>
-						</li>
-					</ol>
-                    <aside class="notes">
-                        After you have spoken to your users, it's a great time to review the actual code
-                    </aside>
-				</section>
-				<section>
-					<h3>Study the codebase</h3>
-					<ul>
-						<li><p>Talk to past/current developers</p>
-						</li>
-						<li><p>Verify that key functionality does what everyone thinks it does</p>
-						</li>
-						<li><p>Look for entanglements</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        This is where it makes sense to talk to other developers
-                        You want to be sure it does what everyone think it does.
-                        You want to identify entanglements whether they create places to avoid or room for improvement.
-                    </aside>
-				</section>
-				<section>
-					<h3>Codebase of Scholarship</h3>
-					<ul>
-						<li><p>Large App model</p>
-							<ul>
-								<li><p>SQL queries, only slightly dynamic</p>
-								</li>
-								<li><p>Functions weren’t single-purpose</p>
-								</li>
-								<li><p>No Bounded Contexts between Students, Selection, and Foundation</p>
-								</li>
-							</ul>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        This is where we really saw the danger in our large app model.
-                        Functions with large SQL queries were being used in multiple places in the app
-                        There were no boundaries between selection and foundation
-                    </aside>
-				</section>
-				<section>
-					<h3>Codebase of Scholarship</h3>
-					<ul>
-						<li><p>Student data was a single row in table</p>
-							<ul>
-								<li><p>Academic information wasn’t updated when it changed</p>
-								</li>
-								<li><p>Major was a single column in that row</p>
-								</li>
-							</ul>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        We also saw that Student's applications were a single row for each academic year.  And their major was one column in that row.
-                        At the time the student applied, their GPA, major, etc was saved to the application.  And it wasn't uspdated
-                        prior to selection  This had been causing the students not to match for scholarships or to match when they should not have.
-                    </aside>
-				</section>
-				<section>
-					<h3>Survey Your Application</h3>
-					<ol>
-						<li><p>Talk to users of the application </p>
-						</li>
-						<li><p>Study the codebase</p>
-						</li>
-						<li><p>Examine the new feature requests</p>
-						</li>
-					</ol>
-                    <aside class="notes">
-                        Finally, you're going to have a lot of work to do just to fix the legacy, but there are always new
-                        features requested.  And you have to see how those fit in.
-                    </aside>
-				</section>
-				<section>
-					<h3>Examine New Feature Requests</h3>
-					<ul>
-						<li><p>What new features are needed?  </p>
-						</li>
-						<li><p>How they might be implemented?</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        You want to see what those features are and how they might fit into the other work to be done.
-                    </aside>
-				</section>
-				<section>
-					<h3>New Features: Scholarships</h3>
-					<ul>
-						<li><p>Explicit criteria matching, excluded non-matching applicants</p>
-						</li>
-						<li><p>Current student data, query their GPA, Major, etc at time of selection</p>
-						</li>
-						<li><p>Students have multiple majors</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        For scholarships they wanted to exclude non-matching applications and to score them based on the optional criteria
-                        They wanted student GPA and major to be relevant at the time they were selected, to get a better match
-                        And they wanted students with multiple majors to be considered based on all of their engineering majors
-                    </aside>
-				</section>
-				<section>
-					<h3>How to Bootstrap</h3>
-					<ol>
-						<li><p>Survey Your Application</p>
-							<p> Legacy projects have business value baked in, that you must preserve.</p>
-						</li>
-						<li><p>Organize the Work to be done</p>
-							<p> Based on the bugs, new features, etc.  You have to balance needs vs. wants to deliver this product.</p>
-						</li>
-					</ol>
-                    <aside class="notes">
-                        This can be a lot of work to consider, and you have to be really organized in how you proceed.
-                    </aside>
-				</section>
-				<section>
-					<h3>Decision Time</h3>
-					<ul>
-						<li><p>Is there another application that can do what it does?  Is it better?</p>
-						</li>
-						<li><p>Is this a worthwhile investment?</p>
-						</li>
-						<li><p>If so, what are the Most Valuable Features?</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        We had talked to a member of Financial Aide early on in this project because there was a tool for Universities
-                        that did all the work our application did and more.  But she was having trouble getting buy-in
-                        for the largers colleges to switch and said that it was not going to happen.
-
-                        Because of this, we decided we needed to improve the accuracy of our selections and reduce the number of rejected awards.
-                    </aside>
-				</section>
-				<section>
-					<h3>Build Trust with Users</h3>
-					<ul>
-						<li><p>Explain why this work is necessary</p>
-						</li>
-						<li><p>Be open about errors in the application</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        Around the time you are deciding which features are more valuable, it's a good time to include userrs to
-                        make sure that your decisions are consistent with their needs.
-
-                        Be open about errors in the application because this helps them to support the changes.  They want
-                        the best candidates to be chosen, so they want you to fix the errors above all else.
-                    </aside>
-				</section>
-				<section>
-					<h3>Set Expectations</h3>
-					<ul>
-						<li><p>Customer has an open door to you </p>
-							<ul>
-								<li><p>add work from the side </p>
-								</li>
-								<li><p>change processes</p>
-								</li>
-							</ul>
-						</li>
-						<li><p>Keep the door open anyway!</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        You need to keep open communication with your users, which is risky
-                        They can add work from the side and ("just one more thing") and processes may change
-                        But you need the open line of communication to get their feedback on changes and help with testing
-                        It also makes it easier to find out about those process changes
-                    </aside>
-				</section>
-				<section>
-					<h3>Scope the work to be done</h3>
-					<ul>
-						<li><p>Bootstrapping grows FAST!</p>
-						</li>
-						<li><p>Large projects </p>
-							<ul>
-								<li><p>require more people to be engaged in the process</p>
-								</li>
-								<li><p>wear people down over time</p>
-								</li>
-							</ul>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        Bootstrapping, because are usually a lot of issues in a legacy application, can become a large project quickly
-                        The larger the project, the more developers and users will need to be involved
-                        And when that happens, it can be difficult to keep them engaged for the length of time required.
-                        Creating smaller bites of work is ideal for getting people on board and familiar with the process.
-                    </aside>
-				</section>
-				<section>
-					<h3>How to Organize the work</h3>
-					<ul>
-						<li><p>Use your Research </p>
-						</li>
-						<li><p>Prioritize the needs</p>
-						</li>
-						<li><p>Scope the work you are agreeing to do</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        Make sure when you organize the works into those logical, bite-size tasks, that you're keeping users
-                        informed of what you're agreeing to work on and why.  It can help with the feature creep.
-                    </aside>
-                </section>
-				<section>
-					<h3>Plan Features for Scholarships</h3>
-					<p>Divided the application based on first need in the process</p>
-					<ol>
-						<li><p>Student Application</p>
-						</li>
-						<li><p>Funding</p>
-						</li>
-						<li><p>Selection</p>
-						</li>
-						<li><p>Reports for Funding and Scholarship Coordinator</p>
-							<p> <strong>we didn&#39;t scope the work</strong></p>
-						</li>
-					</ol>
-                    <aside class="notes">
-                        Our plan with Scholarships was to put tasks in the order of the academic year, who would be accessing the system
-                        The goal was to leave the existing application alone as much as possible.
-                        We would develop new features adjacent to the framework and connect that into the framework's routing layer
-                        We wanted to replace the application in pieces, but we didn't want to get stuck rebuilding all of the crud components.
-                    </aside>
-                </section>
-				<section data-background="#f05b62">
-					<h1 style="color: #fafafa;">Mitigate Risk</h1>
-                    <aside class="notes">
-                        Before we could really get underway with development there were a lot of things we needed to do
-                        to sure up our development process.
-
-                        First of all, we were developing in production!
-                    </aside>
-				</section>
-				<section>
-					<h3>Control Risk Before Bootstrapping</h3>
-					<ul>
-						<li><p>Version control</p>
-							<p>  Stabilize the code base and preserves history</p>
-						</li>
-						<li><p>Development and Staging environments (w/ Fake data)</p>
-							<p>  <strong>No more developing in production!!!!</strong></p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        We needed to get the codebase into version control, first.  Our department had just bought Github Enterprise,
-                        so the only hurdle we had to overcome was finding all of the PII data that was hidden in small scripts and the code itself.
-
-                        Next, we needed develpment environments that closely matched our production web servers.  Staging space
-                        was a fairly easy problem to resolve, we just created another vhost on the server.  But the devlopment environment
-                        required a vagrant box and puppet configuration, which one of my coworkers was able to put together and refine
-
-                        This allowed us to develop changes and have fewer deployment issues than when we were developing using MAMP.
-                    </aside>
-                </section>
-				<!--<section>-->
-					<!--<h3>Control Risk Before Bootstrapping</h3>-->
-					<!--<ul>-->
-						<!--<li><p>Involve Users to work through the process</p>-->
-						<!--</li>-->
-						<!--<li><p>Keep the constant feedback loop</p>-->
-						<!--</li>-->
-					<!--</ul>-->
-
-				<!--</section>-->
-				<section>
-					<h3>Test Everything You Need</h3>
-					<ul>
-						<li><p>Acceptance tests stabilize functionality you need</p>
-							<ul>
-								<li><p>added hooks for testing interfaces </p>
-								</li>
-								<li><p>Codeception needed to view contents of the pages</p>
-								</li>
-							</ul>
-						</li>
-						<li><p>Unit and Functional tests for everything you build</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        We were building alongside an existing, untesting application.  There were no "units", individual classeses
-                        with behavior that we could test. But there was functionality we were expecting to keep working while we implemented
-                        new features and restructured how Selection would work.
-
-                        Testing was critical in this process!  We began with a set of Acceptance tests that would allow us to verify that
-                        the data displayed on the student application page remained unchanged.  We changed the usability and user interface of the
-                        application with minor tweaks around what was considered a complete application and questions asked
-                        by some departments in the COE.
-
-                        The new code we built had units, so We build unit and functional tests of those features using PHPUnit, which was incredibly powerful
-                        working as a team.  We could ensure that we didn't break each other's code if we continued running the full suite of tests before merging our pull requests.
-                    </aside>
-				</section>
-				<section>
-					<h3>Database Migrations: Phinx</h3>
-					<ul>
-						<li><p>Allows you to change DB across evironments</p>
-						</li>
-						<li><p>Gives you power to undo the change if there is a problem</p>
-						</li>
-					</ul>
-					<p><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></p>
-                    <aside class="notes">
-                        Another criticial tool for us was Phinx.  This gave us the ability to alter our databases using a script.
-                        Migrations give you the ability to do and undo these DB changes.  Any change I made to my DB could
-                        also be made across the team, and in staging or production environments.  And if something unexpected happened, it could be undone.
-                        It basically allowed us to version control DB changes.  And although it isn't recommended, we did have to use it extensively for data migrations in
-                        addition to schema changes.
-                    </aside>
-				</section>
-				<section>
+                The new code we built had units, so We build unit and functional tests of those features using PHPUnit,
+                which was incredibly powerful
+                working as a team. We could ensure that we didn't break each other's code if we continued running the
+                full suite of tests before merging our pull requests.
+            </aside>
+        </section>
+        <section>
+            <h3>Database Migrations: Phinx</h3>
+            <ul>
+                <li><p>Allows you to change DB across evironments</p>
+                </li>
+                <li><p>Gives you power to undo the change if there is a problem</p>
+                </li>
+            </ul>
+            <p><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></p>
+            <aside class="notes">
+                Another criticial tool for us was Phinx. This gave us the ability to alter our databases using a script.
+                Migrations give you the ability to do and undo these DB changes. Any change I made to my DB could
+                also be made across the team, and in staging or production environments. And if something unexpected
+                happened, it could be undone.
+                It basically allowed us to version control DB changes. And although it isn't recommended, we did have to
+                use it extensively for data migrations in
+                addition to schema changes.
+            </aside>
+        </section>
+        <section>
 <pre><code>&lt;?php
-use Phinx\Migration\AbstractMigration;
+    use Phinx\Migration\AbstractMigration;
 
-	class CreateUserLoginsTable extends AbstractMigration
-	{
-		/**
-		* Example One: Change
-		*/
-		public function change()
-		{
-			// create the table
-			$table = $this-&gt;table(&#39;user_logins&#39;);
-			$table-&gt;addColumn(&#39;user_id&#39;, &#39;integer&#39;)
-			-&gt;addColumn(&#39;created&#39;, &#39;datetime&#39;)
-			-&gt;create();
-		}
+    class CreateUserLoginsTable extends AbstractMigration
+    {
+    /**
+    * Example One: Change
+    */
+    public function change()
+    {
+    // create the table
+    $table = $this-&gt;table(&#39;user_logins&#39;);
+    $table-&gt;addColumn(&#39;user_id&#39;, &#39;integer&#39;)
+    -&gt;addColumn(&#39;created&#39;, &#39;datetime&#39;)
+    -&gt;create();
+    }
 
-		/**
-		* Example Two: Up/Down with Migrate/Rollback
-		*/
-		public function up()
-		{
-			$table = $this-&gt;table(&#39;users&#39;);
-			$table-&gt;renameColumn(&#39;bio&#39;, &#39;biography&#39;);
-		}
+    /**
+    * Example Two: Up/Down with Migrate/Rollback
+    */
+    public function up()
+    {
+    $table = $this-&gt;table(&#39;users&#39;);
+    $table-&gt;renameColumn(&#39;bio&#39;, &#39;biography&#39;);
+    }
 
-		/**
-		* Migrate Down.
-		*/
-		public function down()
-		{
-			$table = $this-&gt;table(&#39;users&#39;);
-			$table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
-		}
-	}</code></pre>
-                    <aside class="notes">
-                        I've included two examples of a Phinx migration:
+    /**
+    * Migrate Down.
+    */
+    public function down()
+    {
+    $table = $this-&gt;table(&#39;users&#39;);
+    $table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
+    }
+    }</code></pre>
+            <aside class="notes">
+                I've included two examples of a Phinx migration:
 
-                        One is the change migration, which is a single function, and Phinx is supposed to know how to undo that change, so you don't have to write a down migration.
-                        However, we had many changes that the change() method wasn't as reliable for us.
+                One is the change migration, which is a single function, and Phinx is supposed to know how to undo that
+                change, so you don't have to write a down migration.
+                However, we had many changes that the change() method wasn't as reliable for us.
 
-                        Example #2 is the type of migration we generally write.  This example renames a DB column from bio to biography.
-                        The down() method undoes this change, renaming the column bio again.  There would probably be a code change to queries of the 'bio' data, and we would submit
-                        those changes together with the migration, so the code was not in a broken state.
-                    </aside>
-				</section>
-				<section>
-					<h3>Database Migrations: Phinx</h3>
-					<p><code>$ vendor/bin/phinx migrate</code></p>
-					<p><code>$ vendor/bin/phinx rollback</code></p>
-                    <aside class="notes">
-                        These are the commands you use to either migrate or rollback the changes to your database.
+                Example #2 is the type of migration we generally write. This example renames a DB column from bio to
+                biography.
+                The down() method undoes this change, renaming the column bio again. There would probably be a code
+                change to queries of the 'bio' data, and we would submit
+                those changes together with the migration, so the code was not in a broken state.
+            </aside>
+        </section>
+        <section>
+            <h3>Database Migrations: Phinx</h3>
+            <p><code>$ vendor/bin/phinx migrate</code></p>
+            <p><code>$ vendor/bin/phinx rollback</code></p>
+            <aside class="notes">
+                These are the commands you use to either migrate or rollback the changes to your database.
 
-                    </aside>
-				</section>
-				<section>
-					<h3>Configuration file</h3>
-					<ul>
-						<li><p>DB connections</p>
-						</li>
-						<li><p>Base URL </p>
-						</li>
-						<li><p>Set paths to twig templates</p>
-						</li>
-						<li><p>Customize Notice messages</p>
-						</li>
-						<li><p>Set config variables for services</p>
-						</li>
-					</ul>
-                    <aside class="notes">
-                        Another piece that allowed us to support the many environments: development, staging, production
-                        was a configuration file.  This was not version controlled.  But a template was.
-                        We could download that template and fill in our local DB connections, the base_url path
-                        We could set paths to twig templates, custom notice messages and temporary config variables for the
-                        services we implemented that we wanted flexibility for
-                    </aside>
-				</section>
-				<section>
+            </aside>
+        </section>
+        <section>
+            <h3>Configuration file</h3>
+            <ul>
+                <li><p>DB connections</p>
+                </li>
+                <li><p>Base URL </p>
+                </li>
+                <li><p>Set paths to twig templates</p>
+                </li>
+                <li><p>Customize Notice messages</p>
+                </li>
+                <li><p>Set config variables for services</p>
+                </li>
+            </ul>
+            <aside class="notes">
+                Another piece that allowed us to support the many environments: development, staging, production
+                was a configuration file. This was not version controlled. But a template was.
+                We could download that template and fill in our local DB connections, the base_url path
+                We could set paths to twig templates, custom notice messages and temporary config variables for the
+                services we implemented that we wanted flexibility for
+            </aside>
+        </section>
+        <section>
 					<pre><code>
-	&lt;?php
-    return array(
-    /* base url for path in the site */
-	&#39;app&#39; =&gt; array(
-	&#39;base_url&#39; =&gt; sprintf(&#39;http://localhost:%s/&#39;, isset($_SERVER[&#39;SERVER_PORT&#39;]) ? $_SERVER[&#39;SERVER_PORT&#39;] : &#39;&#39;),
-	&#39;index_page&#39; =&gt; &#39;index.php/&#39;,
-	&#39;debug&#39;    =&gt; FALSE
-	),
+                        &lt;?php
+                        return array(
+                        /* base url for path in the site */
+                        &#39;app&#39; =&gt; array(
+                        &#39;base_url&#39; =&gt; sprintf(&#39;http://localhost:%s/&#39;, isset($_SERVER[&#39;SERVER_PORT&#39;])
+                        ? $_SERVER[&#39;SERVER_PORT&#39;] : &#39;&#39;),
+                        &#39;index_page&#39; =&gt; &#39;index.php/&#39;,
+                        &#39;debug&#39; =&gt; FALSE
+                        ),
 
-    /* DB configuration */
-	&#39;db&#39; =&gt; array(
-	&#39;default&#39; =&gt; array(
-	&#39;hostname&#39; =&gt; &quot;local__server&quot;,
-	&#39;port&#39;     =&gt; &quot;3306&quot;,
-	&#39;username&#39; =&gt; &quot;uname&quot;,
-	&#39;password&#39; =&gt; &quot;pword&quot;,
-	&#39;database&#39; =&gt; &quot;db_name_&quot;
-	)
-	),
+                        /* DB configuration */
+                        &#39;db&#39; =&gt; array(
+                        &#39;default&#39; =&gt; array(
+                        &#39;hostname&#39; =&gt; &quot;local__server&quot;,
+                        &#39;port&#39; =&gt; &quot;3306&quot;,
+                        &#39;username&#39; =&gt; &quot;uname&quot;,
+                        &#39;password&#39; =&gt; &quot;pword&quot;,
+                        &#39;database&#39; =&gt; &quot;db_name_&quot;
+                        )
+                        ),
 
-	&#39;twig&#39; =&gt; array(
-	&#39;template_path&#39; =&gt; array(
-	__DIR__ . &#39;/templates&#39;,
-	__DIR__ . &#39;/templates/dashboard&#39;,
-	)
-	),
+                        &#39;twig&#39; =&gt; array(
+                        &#39;template_path&#39; =&gt; array(
+                        __DIR__ . &#39;/templates&#39;,
+                        __DIR__ . &#39;/templates/dashboard&#39;,
+                        )
+                        ),
 
-	&#39;authorization&#39; =&gt; array(
-	&#39;funding&#39; =&gt; array(&#39;elstamey&#39;, &#39;person2&#39;),
-	&#39;developers&#39; =&gt; array(&#39;elstamey&#39;),
-	&#39;coordinators&#39; =&gt; array(&#39;person3&#39;)
-	),
+                        &#39;authorization&#39; =&gt; array(
+                        &#39;funding&#39; =&gt; array(&#39;elstamey&#39;, &#39;person2&#39;),
+                        &#39;developers&#39; =&gt; array(&#39;elstamey&#39;),
+                        &#39;coordinators&#39; =&gt; array(&#39;person3&#39;)
+                        ),
 
-	&#39;notice&#39; =&gt; array(
-	&#39;enabled&#39; =&gt; false,
-	&#39;type&#39; =&gt; &#39;info&#39;,
-	&#39;headline&#39; =&gt; null,
-	&#39;message&#39; =&gt; null,
-	&#39;syslink&#39; =&gt; null
-	),
+                        &#39;notice&#39; =&gt; array(
+                        &#39;enabled&#39; =&gt; false,
+                        &#39;type&#39; =&gt; &#39;info&#39;,
+                        &#39;headline&#39; =&gt; null,
+                        &#39;message&#39; =&gt; null,
+                        &#39;syslink&#39; =&gt; null
+                        ),
 
-	&#39;errorHandling&#39; =&gt; array(
-	&#39;emailExceptions&#39; =&gt; false
-	),
+                        &#39;errorHandling&#39; =&gt; array(
+                        &#39;emailExceptions&#39; =&gt; false
+                        ),
 
-	&#39;awardLetters&#39; =&gt; array(
-	&#39;letterhead&#39; =&gt; &#39;_itecs/notification-samples/ncsu_coe_aa_letterhead.pdf&#39;,
-	&#39;academicYears&#39; =&gt; &#39;2015-2016&#39;,
-	&#39;respondByDate&#39; =&gt; &#39;May 11, 2015&#39;,
-	&#39;templates&#39; =&gt; array(
-	&#39;awardLetter&#39; =&gt; &#39;layouts/letters/award-letter.twig&#39;,
-	&#39;awardEmail&#39; =&gt; &#39;layouts/letters/award-email-body.twig&#39;
-	),
-	&#39;fixedAttachments&#39; =&gt; array(
-	&#39;_itecs/notification-samples/thank_you_template.pdf&#39;
-	),
-	&#39;signatureImagePath&#39; =&gt; &#39;_uploads/tmp/deans_signature.png&#39;,
-	&#39;outputPath&#39; =&gt; &#39;_uploads/awardLetters/&#39;
-	),
+                        &#39;awardLetters&#39; =&gt; array(
+                        &#39;letterhead&#39; =&gt; &#39;_itecs/notification-samples/ncsu_coe_aa_letterhead.pdf&#39;,
+                        &#39;academicYears&#39; =&gt; &#39;2015-2016&#39;,
+                        &#39;respondByDate&#39; =&gt; &#39;May 11, 2015&#39;,
+                        &#39;templates&#39; =&gt; array(
+                        &#39;awardLetter&#39; =&gt; &#39;layouts/letters/award-letter.twig&#39;,
+                        &#39;awardEmail&#39; =&gt; &#39;layouts/letters/award-email-body.twig&#39;
+                        ),
+                        &#39;fixedAttachments&#39; =&gt; array(
+                        &#39;_itecs/notification-samples/thank_you_template.pdf&#39;
+                        ),
+                        &#39;signatureImagePath&#39; =&gt; &#39;_uploads/tmp/deans_signature.png&#39;,
+                        &#39;outputPath&#39; =&gt; &#39;_uploads/awardLetters/&#39;
+                        ),
 
-	&#39;emailService&#39; =&gt; array(
-	&#39;sendLimit&#39; =&gt; 5,
-	&#39;retries&#39;      =&gt; 3,
-	&#39;throttleTime&#39; =&gt; 2, // seconds
-	&#39;fromAddress&#39;  =&gt; &#39;Scholarships Application &lt;engr-webmaster@ncsu.edu&gt;&#39;,
-	&#39;replyToAddress&#39;=&gt;&#39;College of Engineering &lt;engineering@ncsu.edu&gt;&#39;
-	)
-	);
+                        &#39;emailService&#39; =&gt; array(
+                        &#39;sendLimit&#39; =&gt; 5,
+                        &#39;retries&#39; =&gt; 3,
+                        &#39;throttleTime&#39; =&gt; 2, // seconds
+                        &#39;fromAddress&#39; =&gt; &#39;Scholarships Application &lt;engr-webmaster@ncsu.edu&gt;&#39;,
+                        &#39;replyToAddress&#39;=&gt;&#39;College of Engineering &lt;engineering@ncsu.edu&gt;&#39;
+                        )
+                        );
 
-	?&gt;</code></pre>
-                    <aside class="notes">
-                        in order to support local environment serving to a specific port and production application being in a vhost,
-                        setting the base_url was very helpful!
+                        ?&gt;</code></pre>
+            <aside class="notes">
+                in order to support local environment serving to a specific port and production application being in a
+                vhost,
+                setting the base_url was very helpful!
 
-                        Our project used two DBs and we were able to configure both using this config variable.  The
-                        parts of CodeIgniter that configured the DB could then pull in our config values for 'default' and
-                        'student_info' databases to allow our queries to continue working
+                Our project used two DBs and we were able to configure both using this config variable. The
+                parts of CodeIgniter that configured the DB could then pull in our config values for 'default' and
+                'student_info' databases to allow our queries to continue working
 
-                        Some other things we put into our config were paths to twig templates, which were then configured into
-                        CI like the DB connections were
+                Some other things we put into our config were paths to twig templates, which were then configured into
+                CI like the DB connections were
 
-                        We created an authorization array to limit access to the funding and coordinator portions of the app
-                        because this would give us flexibility to turn access on and off when we needed to control changes in the application
-                    </aside>
-				</section>
-                <section data-background="#f05b62">
-                    <h1 style="color: #fafafa;">Developing Adjacent</h1>
-                    <aside class="notes">
-                        Once we improved tooling of our project, we were able to begin work on the Scholarship application
-                        There was a great deal of risk with altering the database queries in the existing app as well as the code
-                        We decided to develop in a space adjacent to the old application.  This would allow us to create new controllers
-                        for the new functionality.  Our plan was to build new infrastructure using Domain Driven Design, creating
-                        bounded contexts for the Student, Selection, Foundation functionality, and as we were able to replace
-                        pieces of the old app, we would remove them in favor of the new.
-                    </aside>
-                </section>
-				<section>
-					<h3>Bootstrapping Scholarships: Filetree</h3>
-					<ul>
-						<li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
-					</ul>
-					<p><img src="img/FileTree.png" alt="File tree"></p>
-                    <aside class="notes">
+                We created an authorization array to limit access to the funding and coordinator portions of the app
+                because this would give us flexibility to turn access on and off when we needed to control changes in
+                the application
+            </aside>
+        </section>
+        <section data-background="#f05b62">
+            <h1 style="color: #fafafa;">The Good Stuff</h1>
+            <aside class="notes">
+                Once we improved tooling of our project, we were able to begin work on the Scholarship application
+                There was a great deal of risk with altering the database queries in the existing app as well as the
+                code
+                We decided to develop in a space adjacent to the old application. This would allow us to create new
+                controllers
+                for the new functionality. Our plan was to build new infrastructure using Domain Driven Design, creating
+                bounded contexts for the Student, Selection, Foundation functionality, and as we were able to replace
+                pieces of the old app, we would remove them in favor of the new.
+            </aside>
+        </section>
+        <section>
+            <h3>Bootstrapping Scholarships: Filetree</h3>
+            <ul>
+                <li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
+            </ul>
+            <p>
+                <img src="img/FileTree.png" alt="File tree">
+                <img src="img/FileTree-DDD.png" alt="DDD File tree">
+            </p>
+            <aside class="notes">
+                All of our new infrastructure was built using Domain Driven Design concepts, which was a challenge.
+                But you should be able to see the directories for our bounded contexts. This could just as easily have
+                been new Models and other code.
+                We wanted this src folder to be portable toward another framework or to run without a framework when we
+                were able
+                to replace the functionality in the given app. This was a LONG term goal.
+            </aside>
+        </section>
+        <section>
+            <h3>Bootstrapping Scholarships: Composer</h3>
+            <ul>
+                <li><p><code>/src</code> is given a namespace</p>
+                </li>
+                <li><p>namespaces are autoloaded in composer</p>
+                </li>
+            </ul>
+            <pre><code>
+{
+    "name": "itecs/scholarships",
+    "description": "Scholarships application for the College of Engineering.",
+...
+    "autoload": {
+        "psr-4": {
+        "ITECS\\Scholarships\\": [ "src/", "app/core/" ],
+        "Codeception\\Module\\": "src/",
+        "Tests\\Substitute\\": "tests/_helpers/"
+        }
+    }
+}
+            </code></pre>
+            <aside class="notes">
+                Composer allowed us to do this both with our interim structure AND our planned future structure. We used
+                it to load a lot of the tooling I
+                already mentioned as well as the autoloading of namespaced code in our source folder.
+            </aside>
+        </section>
+        <section>
+            <h3>Composer packages</h3>
+            <ul>
+                <li>Phinx for database migrations</li>
+                <li>Illuminate database</li>
+                <li>Twig templates</li>
+                <li>Testing packages (Codeception, PHPUnit, Mockery)</li>
+                <li>Moneyphp for handling currency</li>
+                <li>Pimple containers</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Full Composer</h3>
+            <pre><code>
+{
+    "name": "itecs/scholarships",
+    "description": "Scholarships application for the College of Engineering.",
+    "require": {
+        "php": ">=5.3.3",
+        "robmorgan/phinx": "*",
+        "pimple/pimple": "~3.0",
+        "symfony/http-foundation": "2.5.*",
+        "illuminate/database": "4.1.*",
+        "illuminate/support": "4.1.*",
+        "ncsu/auth": "dev-master",
+        "twig/twig": "~1.16",
+        "mathiasverraes/money": "v1.3.0",
+        "monolog/monolog": "~1.12",
+        "mpdf/mpdf": "dev-master"
+    },
+    "require-dev": {
+        "codeception/codeception": "2.0.*",
+        "codeception/specify": "*",
+        "codeception/verify": "*",
+        "fzaninotto/faker": "1.4.*",
+        "phpunit/phpunit": "4.1.*",
+        "mockery/mockery": "0.9.*",
+        "symfony/var-dumper": "~2.6",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ITECS\\Scholarships\\": [ "src/", "app/core/" ],
+            "Codeception\\Module\\": "src/",
+            "Tests\\Substitute\\": "tests/_helpers/"
+        }
+    }
+}
+            </code></pre>
+            <aside class="notes">
+            </aside>
+        </section>
 
-                    </aside>
-				</section>
-				<section>
-					<h3>Bootstrapping Scholarships: Composer</h3>
-					<ul>
-						<li><p><code>/src</code> is given a namespace</p>
-						</li>
-						<li><p>namespaces are autoloaded in composer</p>
-						</li>
-					</ul>
-					<p><img src="img/composer.json.png" alt="Composer File"></p>
+        <section>
+            <h3>Bootstrapping Scholarships: Connecting the Dots</h3>
+            <ul>
+                <li><p><code>/app/bindings.php</code>
+                    define containers for each of the new Services, Repositories, Projections</p>
+                </li>
+                <li><p><code>/app/controllers</code><br>new controllers for the new functionality</p>
+                </li>
+                <li><p><code>/app/services.php</code>
+                    defined and configured twig, database, et al</p>
+                </li>
+            </ul>
 
-				</section>
-				<section>
-					<h3>Composer packages</h3>
-					<ul>
-						<li>Phinx for database migrations</li>
-						<li>Illuminate database</li>
-						<li>Twig templates</li>
-						<li>Testing packages (Codeception, PHPUnit, Mockery)</li>
-						<li>Moneyphp for handling currency</li>
-						<li>Pimple containers</li>
-					</ul>
-
-				</section>
-				<section>
-					<h3>Bootstrapping Scholarships: Connecting the Dots</h3>
-					<ul>
-						<li><p><code>/app/bindings.php</code>
-							define containers for each of the new Services, Repositories, Projections</p>
-						</li>
-						<li><p><code>/app/controllers</code><br>new controllers for the new functionality</p>
-						</li>
-						<li><p><code>/app/services.php</code>
-							defined and configured twig, database, et al</p>
-						</li>
-					</ul>
-
-				</section>
-				<section data-background="#f05b62">
-					<h1 style="color: #fafafa;">Containers</h1>
-				</section>
-				<section>
-					<h3>Containers</h3>
-					<p><code>/app/bindings.php</code></p>
+        </section>
+        <section data-background="#f05b62">
+            <h1 style="color: #fafafa;">Containers</h1>
+        </section>
+        <section>
+            <h3>Containers</h3>
+            <p><code>/app/bindings.php</code></p>
 <pre><code>    &lt;?php
 
-	use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
+    use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
 
-	$container[&#39;/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;] = function($c) {
-	return new HybridSourcedScholarshipRepository(
-	$c[&#39;ScholarshipsSupportEventsEventStore&#39;],
-	$c[&#39;database&#39;],
-	$c[&#39;ScholarshipsCommonServicesDepartmentsService&#39;],
-	$c[&#39;ScholarshipsCommonServicesResidenciesService&#39;],
-	$c[&#39;ScholarshipsCommonServicesAcademicPlansService&#39;],
-	$c[&#39;Scholarships/Selection/Domain/CollaborationsService&#39;]
-	); };</code></pre>
+    $container[&#39;/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;] = function($c) {
+    return new HybridSourcedScholarshipRepository(
+    $c[&#39;ScholarshipsSupportEventsEventStore&#39;],
+    $c[&#39;database&#39;],
+    $c[&#39;ScholarshipsCommonServicesDepartmentsService&#39;],
+    $c[&#39;ScholarshipsCommonServicesResidenciesService&#39;],
+    $c[&#39;ScholarshipsCommonServicesAcademicPlansService&#39;],
+    $c[&#39;Scholarships/Selection/Domain/CollaborationsService&#39;]
+    ); };</code></pre>
 
-				</section>
-				<section data-background="#f05b62">
-					<h1 style="color: #fafafa;">Controllers</h1>
-				</section>
-				<section>
-					<h3>Controllers</h3>
-<pre><code>    class Selectionnext extends BaseController
-	{
-	public function Selectionnext()
-	{
-	parent::BaseController();
+        </section>
+        <section data-background="#f05b62">
+            <h1 style="color: #fafafa;">Controllers</h1>
+        </section>
+        <section>
+            <h3>Controllers</h3>
+<pre><code> class Selectionnext extends BaseController
+    {
+    public function Selectionnext()
+    {
+    parent::BaseController();
 
-	$this-&gt;scholarshipRepository = $this-&gt;container[&#39;Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;];
-	}
-	protected function scholarshipsDashboard($scholarshipId)
-	{
-	$committeeMember = $this-&gt;getCommitteeMember();
+    $this-&gt;scholarshipRepository = $this-&gt;container[&#39;Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;];
+    }
+    protected function scholarshipsDashboard($scholarshipId)
+    {
+    $committeeMember = $this-&gt;getCommitteeMember();
 
-	$scholDetails = $this-&gt;getScholarshipDashboard($scholarshipId);
+    $scholDetails = $this-&gt;getScholarshipDashboard($scholarshipId);
 
-	$this-&gt;render(&#39;pages/scholarship-details.twig&#39;, array(&quot;scholarship&quot; =&gt; $scholDetails)));
-	}
+    $this-&gt;render(&#39;pages/scholarship-details.twig&#39;, array(&quot;scholarship&quot; =&gt; $scholDetails)));
+    }
 
 
-	private function getScholarshipDashboard($scholarshipId,$keepItLight=false)
-	{
-	$committeeMember = $this-&gt;getCommitteeMember();
+    private function getScholarshipDashboard($scholarshipId,$keepItLight=false)
+    {
+    $committeeMember = $this-&gt;getCommitteeMember();
 
-	$presenter = new ScholarshipDashboardPresenter(
-	$committeeMember,
-	ScholarshipId::fromString($scholarshipId),
-	$this-&gt;events,
-	$this-&gt;scholarshipRepository,
-	$this-&gt;container[&#39;Scholarships/Selection/Domain/ApplicantQueryService&#39;]
-	);
+    $presenter = new ScholarshipDashboardPresenter(
+    $committeeMember,
+    ScholarshipId::fromString($scholarshipId),
+    $this-&gt;events,
+    $this-&gt;scholarshipRepository,
+    $this-&gt;container[&#39;Scholarships/Selection/Domain/ApplicantQueryService&#39;]
+    );
 
-	$scholDetails = $presenter-&gt;asArrayForJson();
-	$scholDetails[&#39;json_string&#39;] = json_encode($scholDetails);
+    $scholDetails = $presenter-&gt;asArrayForJson();
+    $scholDetails[&#39;json_string&#39;] = json_encode($scholDetails);
 
-	return $scholDetails;
-	}
-	?&gt;</code></pre>
+    return $scholDetails;
+    }
+    ?&gt;</code></pre>
 
-				</section>
-				<section>
-					<h3>Bootstrap the application</h3>
-					<p>Within CodeIgniter</p>
-					<ul>
-						<li><p>New Controllers for new functionality</p>
-						</li>
-						<li><p>Bindings for CodeIgniter to find the new code</p>
-						</li>
-						<li><p>New Twig templates beside the existing Views in <code>/app</code></p>
-						</li>
-					</ul>
+        </section>
+        <section>
+            <h3>Bootstrap the application</h3>
+            <p>Within CodeIgniter</p>
+            <ul>
+                <li><p>New Controllers for new functionality</p>
+                </li>
+                <li><p>Bindings for CodeIgniter to find the new code</p>
+                </li>
+                <li><p>New Twig templates beside the existing Views in <code>/app</code></p>
+                </li>
+            </ul>
 
-				</section>
-				<section>
-					<h3>Summary: Scholarship Wins!</h3>
-					<ul>
-						<li><p>Restored confidence in selection process!</p>
-						</li>
-						<li><p>Fewer awards were rejected!</p>
-						</li>
-						<li><p>More Scholarship Money was awarded than ever before!</p>
-						</li>
-					</ul>
-					<p><strong>By May 2015:  Approximately $1,074,394 Awarded for 2015-16</strong></p>
+        </section>
+        <section>
+            <h3>Summary: Scholarship Wins!</h3>
+            <ul>
+                <li><p>Restored confidence in selection process!</p>
+                </li>
+                <li><p>Fewer awards were rejected!</p>
+                </li>
+                <li><p>More Scholarship Money was awarded than ever before!</p>
+                </li>
+            </ul>
+            <p><strong>By May 2015: Approximately $1,074,394 Awarded for 2015-16</strong></p>
 
-				</section>
-				<section>
-					<h3>Summary: Lessons Learned</h3>
-					<ul>
-						<li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to complete</p>
-						</li>
-						<li><p>Over time we lost participation because we have too many other projects needing attention</p>
-						</li>
-						<li><p>Tight deadlines with un-scoped work, we created technical debt that we would have to address in the next academic year</p>
-						</li>
-					</ul>
+        </section>
+        <section>
+            <h3>Summary: Lessons Learned</h3>
+            <ul>
+                <li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to
+                    complete</p>
+                </li>
+                <li><p>Over time we lost participation because we have too many other projects needing attention</p>
+                </li>
+                <li><p>Tight deadlines with un-scoped work, we created technical debt that we would have to address in
+                    the next academic year</p>
+                </li>
+            </ul>
 
-				</section>
-				<section>
-					<h3>Summary: Was It Worth It?</h3>
-					<p><strong>University is replacing it this year</strong></p>
-					<ul>
-						<li>We learned a lot of new techniques<ul>
-							<li>bootstrap  </li>
-							<li>event sourcing</li>
-							<li>Domain-Driven Design</li>
-							<li>Command Query Response Segregation</li>
-							<li>managing projects</li>
-							<li>A LOT!</li>
-						</ul>
-						</li>
-					</ul>
+        </section>
+        <section>
+            <h3>Summary: Was It Worth It?</h3>
+            <p><strong>University is replacing it this year</strong></p>
+            <ul>
+                <li>We learned a lot of new techniques
+                    <ul>
+                        <li>bootstrap</li>
+                        <li>event sourcing</li>
+                        <li>Domain-Driven Design</li>
+                        <li>Command Query Response Segregation</li>
+                        <li>managing projects</li>
+                        <li>A LOT!</li>
+                    </ul>
+                </li>
+            </ul>
 
-				</section>
-				<section>
-					<h3>QUESTIONS?</h3>
-					<p>Emily Stamey
-						Application Developer @ NC State University</p>
-					<p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
-					<p>Blog with Bootstrapping details: <a href="http://www.elstamey.com/">elstamey.com</a></p>
+        </section>
+        <section>
+            <h3>QUESTIONS?</h3>
+            <p>Emily Stamey
+                Application Developer @ NC State University</p>
+            <p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
+            <p>Blog with Bootstrapping details: <a href="http://www.elstamey.com/">elstamey.com</a></p>
 
-				</section>
-				<section>
-					<div class="author">
-						<h1 class="name">Emily Stamey</h1>
-						<h3 class="twitter">
-							<a href="http://twitter.com/@elstamey">@elstamey</a>
-						</h3>
-						<h3 class="url">
-							<a href="http://elstamey.com">http://elstamey.com</a>
-						</h3>
-					</div>
+        </section>
+        <section>
+            <div class="author">
+                <h1 class="name">Emily Stamey</h1>
+                <h3 class="twitter">
+                    <a href="http://twitter.com/@elstamey">@elstamey</a>
+                </h3>
+                <h3 class="url">
+                    <a href="http://elstamey.com">http://elstamey.com</a>
+                </h3>
+            </div>
 
-				</section>
+        </section>
 
-			</div>
+    </div>
 
-		</div>
+</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
 
-		<script>
+<script>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: false,
-				progress: true,
-                slideNumber: true,
-                history: true,
-				center: false,
-                loop: false,
-                showNotes: false,
-                viewDistance: 3,
-				transition: 'none', // none/fade/slide/convex/concave/zoom
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: false,
+        progress: true,
+        slideNumber: true,
+        history: true,
+        center: false,
+        loop: false,
+        showNotes: false,
+        viewDistance: 3,
+        transition: 'none', // none/fade/slide/convex/concave/zoom
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true },
-                    { src: 'node_modules/socket.io/socket.io.js', async: true },
-                    { src: 'plugin/notes-server/client.js', async: true }
-				]
-			});
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true},
+            {src: 'node_modules/socket.io/socket.io.js', async: true},
+            {src: 'plugin/notes-server/client.js', async: true}
+        ]
+    });
 
-		</script>
+</script>
 
-	</body>
+</body>
 </html>
