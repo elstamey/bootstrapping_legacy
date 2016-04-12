@@ -840,13 +840,26 @@ use Phinx\Migration\AbstractMigration;
                         because this would give us flexibility to turn access on and off when we needed to control changes in the application
                     </aside>
 				</section>
+                <section data-background="#f05b62">
+                    <h1 style="color: #fafafa;">Developing Adjacent</h1>
+                    <aside class="notes">
+                        Once we improved tooling of our project, we were able to begin work on the Scholarship application
+                        There was a great deal of risk with altering the database queries in the existing app as well as the code
+                        We decided to develop in a space adjacent to the old application.  This would allow us to create new controllers
+                        for the new functionality.  Our plan was to build new infrastructure using Domain Driven Design, creating
+                        bounded contexts for the Student, Selection, Foundation functionality, and as we were able to replace
+                        pieces of the old app, we would remove them in favor of the new.
+                    </aside>
+                </section>
 				<section>
 					<h3>Bootstrapping Scholarships: Filetree</h3>
 					<ul>
 						<li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
 					</ul>
 					<p><img src="img/FileTree.png" alt="File tree"></p>
+                    <aside class="notes">
 
+                    </aside>
 				</section>
 				<section>
 					<h3>Bootstrapping Scholarships: Composer</h3>
