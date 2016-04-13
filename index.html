@@ -541,22 +541,19 @@
                     <p><strong>we didn&#39;t scope the work</strong></p></li>
             </ol>
             <aside class="notes">
-                Our plan with Scholarships was to put tasks in the order of the academic year, who would be accessing
-                the system
-                The goal was to leave the existing application alone as much as possible.
-                We would develop new features adjacent to the framework and connect that into the framework's routing
-                layer
-                We wanted to replace the application in pieces, but we didn't want to get stuck rebuilding all of the
-                crud components.
+                <li>That being said, when it came to planning work for Scholarships, we grouped features in logical sections, and scheduled them
+                    based on what would be used next</li>
+                <li>As I mentioned, the plan was to leave the existing application alone as much as possible.</li>
+                <li>We would develop new features adjacent to the framework and use Domain-Driven Design </li>
+                <li>We'd connect the new code into the framework's routing layer</li>
+                <li>We wanted to replace the application in pieces, but we didn't want to get stuck rebuilding the parts that worked.</li>
             </aside>
         </section>
         <section data-background="#f05b62">
             <h1 style="color: #fafafa;">Mitigate Risk</h1>
             <aside class="notes">
-                Before we could really get underway with development there were a lot of things we needed to do
-                to sure up our development process.
-
-                First of all, we were developing in production!
+                <li>Before we could begin development there were a lot of things we needed to do to improve our development process.</li>
+                <li>First of all, we were developing in production!</li>
             </aside>
         </section>
         <section>
@@ -568,31 +565,18 @@
                     <p><strong>No more developing in production!!!!</strong></p></li>
             </ul>
             <aside class="notes">
-                We needed to get the codebase into version control, first. Our department had just bought Github
-                Enterprise,
-                so the only hurdle we had to overcome was finding all of the PII data that was hidden in small scripts
-                and the code itself.
+                <li>We needed to use version control, first. Our department had just bought Github Enterprise, so we only
+                    had to find the private data that was hidden in small scripts before we committed it to the repo.</li>
+                <li>Next, we needed development environments that closely matched our production web servers.  This
+                    required a vagrant box and puppet configuration files that our group had begun building for the production servers.
+                    One of my coworkers was able to put these pieces together, and we perfected it during this project.
+                    This saved us from a lot of deployment issues, and we could run the application locally, which had been impossible using MAMP</li>
+                <li>Staging space was an easier problem to solve, we just created another vhost on the server. </li>
 
-                Next, we needed develpment environments that closely matched our production web servers. Staging space
-                was a fairly easy problem to resolve, we just created another vhost on the server. But the devlopment
-                environment
-                required a vagrant box and puppet configuration, which one of my coworkers was able to put together and
-                refine
 
-                This allowed us to develop changes and have fewer deployment issues than when we were developing using
-                MAMP.
+
             </aside>
         </section>
-        <!--<section>-->
-        <!--<h3>Control Risk Before Bootstrapping</h3>-->
-        <!--<ul>-->
-        <!--<li><p>Involve Users to work through the process</p>-->
-        <!--</li>-->
-        <!--<li><p>Keep the constant feedback loop</p>-->
-        <!--</li>-->
-        <!--</ul>-->
-
-        <!--</section>-->
         <section>
             <h3>Test Everything You Need</h3>
             <ul>
