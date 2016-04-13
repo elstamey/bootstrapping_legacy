@@ -712,8 +712,8 @@
                 </li>
             </ul>
             <aside class="notes">
-                We were building alongside an existing, untesting application. There were no "units", individual
-                classeses
+                We were building onto an existing, untested application. There were no "units", individual
+                classes
                 with behavior that we could test. But there was functionality we were expecting to keep working while we
                 implemented
                 new features and restructured how Selection would work.
@@ -725,10 +725,75 @@
                 application with minor tweaks around what was considered a complete application and questions asked
                 by some departments in the COE.
 
-                The new code we built had units, so We build unit and functional tests of those features using PHPUnit,
+                The new code we built had units, so We built unit and functional tests of those features using PHPUnit,
                 which was incredibly powerful
                 working as a team. We could ensure that we didn't break each other's code if we continued running the
                 full suite of tests before merging our pull requests.
+            </aside>
+        </section>
+        <section>
+            <h3>Composer packages</h3>
+            <ul>
+                <li>Testing packages (Codeception, PHPUnit, Mockery)</li>
+                <li>Twig templates</li>
+                <!--<li>Moneyphp for handling currency</li>-->
+                <li>Pimple containers</li>
+                <li>Illuminate database</li>
+                <li>Phinx for database migrations</li>
+            </ul>
+            <aside class="notes">
+                We used composer to bring in helpful packages, like the testing tools I just mentioned .
+                Twig templates gave us some really nice functionality for any of the new User Interfaces we built
+                <!--We used a package called MoneyPHP for handling the dollar amounts of the scholarships-->
+                Pimple containers were extremely useful for our bootstrapping, and I will explain them soon.
+                We used Illuminate DB to give us query builder and connect to our databases
+                And Phinx gave us the ability to migrate DB changes
+            </aside>
+        </section>
+        <section>
+            <h3>Full Composer</h3>
+            <pre><code>
+{
+    "name": "itecs/scholarships",
+    "description": "Scholarships application for the College of Engineering.",
+    "require": {
+        "php": ">=5.3.3",
+        "robmorgan/phinx": "*",
+        "pimple/pimple": "~3.0",
+        "symfony/http-foundation": "2.5.*",
+        "illuminate/database": "4.1.*",
+        "illuminate/support": "4.1.*",
+        "ncsu/auth": "dev-master",
+        "twig/twig": "~1.16",
+        "mathiasverraes/money": "v1.3.0",
+        "monolog/monolog": "~1.12",
+        "mpdf/mpdf": "dev-master"
+    },
+    "require-dev": {
+        "codeception/codeception": "2.0.*",
+        "codeception/specify": "*",
+        "codeception/verify": "*",
+        "fzaninotto/faker": "1.4.*",
+        "phpunit/phpunit": "4.1.*",
+        "mockery/mockery": "0.9.*",
+        "symfony/var-dumper": "~2.6",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ITECS\\Scholarships\\": [ "src/", "app/core/" ],
+            "Codeception\\Module\\": "src/",
+            "Tests\\Substitute\\": "tests/_helpers/"
+        }
+    }
+}
+            </code></pre>
+            <aside class="notes">
+                We were able to include these packages in the composer file.  The testing packages are only required in our development environment.
+                You can specify the packages and lock the version of the package.  We have a couple here that are using the dev-master, and the mpdf package we shouldn't be doing that.
+                And the autoload section we will look at more closely in a little while
+
+                Let's look at Database migrations...
             </aside>
         </section>
         <section>
@@ -739,33 +804,33 @@
                 <li><p>Gives you power to undo the change if there is a problem</p>
                 </li>
             </ul>
-            <p><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></p>
+            <pre><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></pre>
             <aside class="notes">
-                Another criticial tool for us was Phinx. This gave us the ability to alter our databases using a script.
+                A criticial tool for us was Phinx. This gave us the ability to alter our databases using a script.
                 Migrations give you the ability to do and undo these DB changes. Any change I made to my DB could
-                also be made across the team, and in staging or production environments. And if something unexpected
-                happened, it could be undone.
+                also be made across the team's development environments, in staging, or production environments.
+                If something unexpected happened, it could be undone.
                 It basically allowed us to version control DB changes. And although it isn't recommended, we did have to
-                use it extensively for data migrations in
-                addition to schema changes.
+                use it extensively for data migrations in addition to schema changes.
             </aside>
         </section>
         <section>
-<pre><code>&lt;?php
-    use Phinx\Migration\AbstractMigration;
+<pre><code>
+&lt;?php
+use Phinx\Migration\AbstractMigration;
 
-    class CreateUserLoginsTable extends AbstractMigration
-    {
+class CreateUserLoginsTable extends AbstractMigration
+{
     /**
     * Example One: Change
     */
     public function change()
     {
-    // create the table
-    $table = $this-&gt;table(&#39;user_logins&#39;);
-    $table-&gt;addColumn(&#39;user_id&#39;, &#39;integer&#39;)
-    -&gt;addColumn(&#39;created&#39;, &#39;datetime&#39;)
-    -&gt;create();
+        // create the table
+        $table = $this-&gt;table(&#39;user_logins&#39;);
+        $table-&gt;addColumn(&#39;user_id&#39;, &#39;integer&#39;)
+        -&gt;addColumn(&#39;created&#39;, &#39;datetime&#39;)
+        -&gt;create();
     }
 
     /**
@@ -773,8 +838,8 @@
     */
     public function up()
     {
-    $table = $this-&gt;table(&#39;users&#39;);
-    $table-&gt;renameColumn(&#39;bio&#39;, &#39;biography&#39;);
+        $table = $this-&gt;table(&#39;users&#39;);
+        $table-&gt;renameColumn(&#39;bio&#39;, &#39;biography&#39;);
     }
 
     /**
@@ -782,31 +847,29 @@
     */
     public function down()
     {
-    $table = $this-&gt;table(&#39;users&#39;);
-    $table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
+        $table = $this-&gt;table(&#39;users&#39;);
+        $table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
     }
-    }</code></pre>
+}
+</code></pre>
+
+            <pre><code>$ vendor/bin/phinx migrate</code></pre>
+            <pre><code>$ vendor/bin/phinx rollback</code></pre>
             <aside class="notes">
                 I've included two examples of a Phinx migration:
 
-                One is the change migration, which is a single function, and Phinx is supposed to know how to undo that
-                change, so you don't have to write a down migration.
-                However, we had many changes that the change() method wasn't as reliable for us.
+                One is the change migration, which is a single function. Phinx is supposed to know how to do AND undo that
+                change, so you don't have to write the undo query.
+                However, there are some changes that the change() method wasn't as reliable.
 
                 Example #2 is the type of migration we generally write. This example renames a DB column from bio to
                 biography.
                 The down() method undoes this change, renaming the column bio again. There would probably be a code
                 change to queries of the 'bio' data, and we would submit
-                those changes together with the migration, so the code was not in a broken state.
-            </aside>
-        </section>
-        <section>
-            <h3>Database Migrations: Phinx</h3>
-            <p><code>$ vendor/bin/phinx migrate</code></p>
-            <p><code>$ vendor/bin/phinx rollback</code></p>
-            <aside class="notes">
-                These are the commands you use to either migrate or rollback the changes to your database.
+                those changes in a single Pull Request with the migration, so the code was not in a broken state.
+                Tests run before and after the migration would pass, and that code could be merged.
 
+                These are the commands you use to either migrate or rollback the changes to your database.
             </aside>
         </section>
         <section>
@@ -955,7 +1018,7 @@
         <section>
             <h3>Bootstrapping Scholarships: Composer</h3>
             <ul>
-                <li><p><code>/src</code> is given a namespace</p>
+                <li><p><pre><code>/src</code></pre> is given a namespace</p>
                 </li>
                 <li><p>namespaces are autoloaded in composer</p>
                 </li>
@@ -980,68 +1043,18 @@
                 already mentioned as well as the autoloading of namespaced code in our source folder.
             </aside>
         </section>
-        <section>
-            <h3>Composer packages</h3>
-            <ul>
-                <li>Phinx for database migrations</li>
-                <li>Illuminate database</li>
-                <li>Twig templates</li>
-                <li>Testing packages (Codeception, PHPUnit, Mockery)</li>
-                <li>Moneyphp for handling currency</li>
-                <li>Pimple containers</li>
-            </ul>
-        </section>
-        <section>
-            <h3>Full Composer</h3>
-            <pre><code>
-{
-    "name": "itecs/scholarships",
-    "description": "Scholarships application for the College of Engineering.",
-    "require": {
-        "php": ">=5.3.3",
-        "robmorgan/phinx": "*",
-        "pimple/pimple": "~3.0",
-        "symfony/http-foundation": "2.5.*",
-        "illuminate/database": "4.1.*",
-        "illuminate/support": "4.1.*",
-        "ncsu/auth": "dev-master",
-        "twig/twig": "~1.16",
-        "mathiasverraes/money": "v1.3.0",
-        "monolog/monolog": "~1.12",
-        "mpdf/mpdf": "dev-master"
-    },
-    "require-dev": {
-        "codeception/codeception": "2.0.*",
-        "codeception/specify": "*",
-        "codeception/verify": "*",
-        "fzaninotto/faker": "1.4.*",
-        "phpunit/phpunit": "4.1.*",
-        "mockery/mockery": "0.9.*",
-        "symfony/var-dumper": "~2.6",
-        "squizlabs/php_codesniffer": "2.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "ITECS\\Scholarships\\": [ "src/", "app/core/" ],
-            "Codeception\\Module\\": "src/",
-            "Tests\\Substitute\\": "tests/_helpers/"
-        }
-    }
-}
-            </code></pre>
-            <aside class="notes">
-            </aside>
-        </section>
+
 
         <section>
             <h3>Bootstrapping Scholarships: Connecting the Dots</h3>
             <ul>
-                <li><p><code>/app/bindings.php</code>
+                <li><p><pre><code>/app/bindings.php</code></pre>
                     define containers for each of the new Services, Repositories, Projections</p>
                 </li>
-                <li><p><code>/app/controllers</code><br>new controllers for the new functionality</p>
+                <li><p><p><pre><code>/app/controllers</code></pre>
+                    <br>new controllers for the new functionality</p>
                 </li>
-                <li><p><code>/app/services.php</code>
+                <li><p><p><pre><code>/app/services.php</code></pre>
                     defined and configured twig, database, et al</p>
                 </li>
             </ul>
@@ -1052,8 +1065,9 @@
         </section>
         <section>
             <h3>Containers</h3>
-            <p><code>/app/bindings.php</code></p>
-<pre><code>    &lt;?php
+            <p><pre><code>/app/bindings.php</code></pre>
+<p><pre><code>
+&lt;?php
 
     use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
 
@@ -1073,40 +1087,42 @@
         </section>
         <section>
             <h3>Controllers</h3>
-<pre><code> class Selectionnext extends BaseController
-    {
+<pre><code>
+class Selectionnext extends BaseController
+{
     public function Selectionnext()
     {
-    parent::BaseController();
+        parent::BaseController();
 
-    $this-&gt;scholarshipRepository = $this-&gt;container[&#39;Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;];
+        $this-&gt;scholarshipRepository = $this-&gt;container[&#39;Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;];
     }
+
     protected function scholarshipsDashboard($scholarshipId)
     {
-    $committeeMember = $this-&gt;getCommitteeMember();
+        $committeeMember = $this-&gt;getCommitteeMember();
 
-    $scholDetails = $this-&gt;getScholarshipDashboard($scholarshipId);
+        $scholDetails = $this-&gt;getScholarshipDashboard($scholarshipId);
 
-    $this-&gt;render(&#39;pages/scholarship-details.twig&#39;, array(&quot;scholarship&quot; =&gt; $scholDetails)));
+        $this-&gt;render(&#39;pages/scholarship-details.twig&#39;, array(&quot;scholarship&quot; =&gt; $scholDetails)));
     }
 
 
     private function getScholarshipDashboard($scholarshipId,$keepItLight=false)
     {
-    $committeeMember = $this-&gt;getCommitteeMember();
+        $committeeMember = $this-&gt;getCommitteeMember();
 
-    $presenter = new ScholarshipDashboardPresenter(
-    $committeeMember,
-    ScholarshipId::fromString($scholarshipId),
-    $this-&gt;events,
-    $this-&gt;scholarshipRepository,
-    $this-&gt;container[&#39;Scholarships/Selection/Domain/ApplicantQueryService&#39;]
-    );
+        $presenter = new ScholarshipDashboardPresenter(
+        $committeeMember,
+        ScholarshipId::fromString($scholarshipId),
+        $this-&gt;events,
+        $this-&gt;scholarshipRepository,
+        $this-&gt;container[&#39;Scholarships/Selection/Domain/ApplicantQueryService&#39;]
+        );
 
-    $scholDetails = $presenter-&gt;asArrayForJson();
-    $scholDetails[&#39;json_string&#39;] = json_encode($scholDetails);
+        $scholDetails = $presenter-&gt;asArrayForJson();
+        $scholDetails[&#39;json_string&#39;] = json_encode($scholDetails);
 
-    return $scholDetails;
+        return $scholDetails;
     }
     ?&gt;</code></pre>
 
@@ -1119,7 +1135,7 @@
                 </li>
                 <li><p>Bindings for CodeIgniter to find the new code</p>
                 </li>
-                <li><p>New Twig templates beside the existing Views in <code>/app</code></p>
+                <li><p>New Twig templates beside the existing Views in <code>/app</code></pre>
                 </li>
             </ul>
 
