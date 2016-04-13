@@ -1097,10 +1097,11 @@ return array(
     };
         </code></pre>
             <aside class="notes">
-                We were bringing in large chunks of code.  Bringing in a Service might involve 5 or more dependencies, and
+                We were bringing in large chunks of code.  Importing  a Service might involve 5 or more dependencies, and
                 preserving those linkages was critical
                 We needed an injector to bring those dependencies into our CodeIgniter framework.  In order to do this, we
                 used Pimple containers that used the definitions we set in a file called `bindings.php`
+                The controller could then inject the service container and receive its dependencies.
             </aside>
         </section>
         <section data-background="#f05b62">
@@ -1115,38 +1116,64 @@ class Selectionnext extends BaseController
     {
         parent::BaseController();
 
-        $this-&gt;scholarshipRepository = $this-&gt;container[&#39;Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;];
+        $this->scholarshipRepository = $this->container['ITECS\Scholarships\Selection\Domain\Scholarship\ScholarshipRepository'];
+        $this->collaborationsService = $this->container['ITECS\Scholarships\Selection\Domain\CollaborationsService'];
+        $this->committeeService = $this->container['ITECS\Scholarships\Selection\Domain\CommitteeService'];
+        $this->authService = $this->container['ITECS\Scholarships\IdentityAccess\AuthenticationService'];
+        $this->awardsService = $this->container['ITECS\Scholarships\Selection\Domain\Scholarship\AwardsService'];
+        $this->events = $this->container['ITECS\Scholarships\Support\Events\EventStore'];
+    }
+
+    /*
+    * Displays the primary scholarship dashboard. If no ID parameter is present, control is passed
+    * to the committeeDashboard action. If a parameter is passed, control is passed to the
+    * scholarshipsDashboard controller.
+    */
+    public function scholarships($scholarshipId = null)
+    {
+        if (is_null($scholarshipId)) {
+            $this->committeeDashboard();
+        } else {
+            $this->scholarshipsDashboard($scholarshipId);
+        }
     }
 
     protected function scholarshipsDashboard($scholarshipId)
     {
-        $committeeMember = $this-&gt;getCommitteeMember();
+        $committeeMember = $this->getCommitteeMember();
 
-        $scholDetails = $this-&gt;getScholarshipDashboard($scholarshipId);
+        $scholDetails = $this->getScholarshipDashboard($scholarshipId);
+        $currentCommittee = $this->getCurrentlySelectedCommittee($committeeMember);
+        $currentScholarshipPeriod = $this->getCurrentlySelectedScholarshipPeriod();
 
-        $this-&gt;render(&#39;pages/scholarship-details.twig&#39;, array(&quot;scholarship&quot; =&gt; $scholDetails)));
+        $deptDetails = $this->getCommitteeDashboard($committeeMember);
+        $accessibleDepartments =  $this->getNavigationJsonFor($committeeMember);
+        // FIXME. This navigation and auth content "envelope" needs to be handled more consistently by the presenters; ideally the controller should just drop the json package into the render call, not compose new top-level new keys
+        $navigation = array( 'scholarshipPeriods'=> $this->determineScholarshipPeriods(), 'currentScholarshipPeriod' => $currentScholarshipPeriod['value'], 'currentDepartment' => $currentCommittee->abbreviation );
+
+        $this->render('pages/scholarship-details.twig', array("scholarship" => $scholDetails, "deptDetails" => $deptDetails, 'navigation'=>$navigation, 'auth' => array('accessibleDepartments'=>$accessibleDepartments)));
     }
-
 
     private function getScholarshipDashboard($scholarshipId,$keepItLight=false)
     {
-        $committeeMember = $this-&gt;getCommitteeMember();
+        $committeeMember = $this->getCommitteeMember();
 
         $presenter = new ScholarshipDashboardPresenter(
-        $committeeMember,
-        ScholarshipId::fromString($scholarshipId),
-        $this-&gt;events,
-        $this-&gt;scholarshipRepository,
-        $this-&gt;container[&#39;Scholarships/Selection/Domain/ApplicantQueryService&#39;]
+            $committeeMember,
+            ScholarshipId::fromString($scholarshipId),
+            $this->events,
+            $this->scholarshipRepository,
+            $this->container['ITECS\Scholarships\Selection\Domain\ApplicantQueryService'],
+            $keepItLight
         );
 
-        $scholDetails = $presenter-&gt;asArrayForJson();
-        $scholDetails[&#39;json_string&#39;] = json_encode($scholDetails);
+        $scholDetails = $presenter->asArrayForJson();
+        $scholDetails['json_string'] = json_encode($scholDetails);
 
         return $scholDetails;
     }
-    ?&gt;</code></pre>
-
+    ?&gt;
+</code></pre>
         </section>
         <section>
             <h3>Bootstrap the application</h3>
