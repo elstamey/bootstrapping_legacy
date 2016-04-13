@@ -296,7 +296,7 @@
             </ol>
             <aside class="notes">
                 In order to bootstrap an application like this, you have to be well organized. You need to complete a
-                full survery of users and functionality
+                full survey of users and functionality
                 And then you have to plan the work that's most necessary.
             </aside>
         </section>
@@ -491,7 +491,7 @@
             </ol>
             <aside class="notes">
                 Finally, you're going to have a lot of work to do just to fix the legacy, but there are always new
-                features requested. And you have to see how those fit in.
+                features requested.
             </aside>
         </section>
         <section>
@@ -972,6 +972,7 @@ return array(
 
 ?&gt;
             </code></pre>
+            <p>We passed this array into a <b>$config</b> variable that could be accessed as `$config['app']['base_url']`</p>
             <aside class="notes">
                 in order to support local environment serving to a specific port and production application being in a
                 vhost,
@@ -1015,9 +1016,8 @@ return array(
                 All of our new infrastructure was built using Domain Driven Design concepts, which was a challenge.
                 But you should be able to see the directories for our bounded contexts. This could just as easily have
                 been new Models and other code.
-                We wanted this src folder to be portable toward another framework or to run without a framework when we
-                were able
-                to replace the functionality in the given app. This was a LONG term goal.
+                We wanted this src folder to be moved to another framework or run without a framework when we
+                had replaced the old functionality. This was a LONG term goal.
             </aside>
         </section>
         <section>
@@ -1043,15 +1043,16 @@ return array(
 }
             </code></pre>
             <aside class="notes">
-                Composer allowed us to do this both with our interim structure AND our planned future structure. We used
+                Composer allowed us to build this structure. We used
                 it to load a lot of the tooling I
                 already mentioned as well as the autoloading of namespaced code in our source folder.
+                Here we are labeling the /src folder as the namespace ITECS/Scholarships
             </aside>
         </section>
 
 
         <section>
-            <h3>Bootstrapping:  Connecting the Dots</h3>
+            <h3>Bootstrapping:  Connecting to the Framework</h3>
             <ul>
                 <li><p>'/app/bindings.php'
                     define containers for each of the new Services, Repositories, Projections</p>
@@ -1063,7 +1064,9 @@ return array(
                     defined and configured twig, database, et al</p>
                 </li>
             </ul>
+            <aside class="notes">
 
+            </aside>
         </section>
         <section data-background="#f05b62">
             <h1 style="color: #fafafa;">Dependency Injection Containers</h1>
