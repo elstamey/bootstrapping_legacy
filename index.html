@@ -310,11 +310,13 @@
             <h3>User Feedback: Scholarship Process</h3>
             <p><strong>Process was inconsistent with the application</strong></p>
             <ul>
+                <li>Language of the customer and the application was entirely different</li>
                 <li><p>Selection Committee used a spreadsheet of available scholarship money </p></li>
                 <li><p>Selected Candidates were added to a spreadsheet Student ID and Amount and Term of award</p></li>
             </ul>
             <aside class="notes">
                 <li>The application was not consistent with their process</li>
+                <li>The application was forcing some terminology and behavior on them that didn't exist in the University</li>
                 <li>Applicants were displayed on the Scholarship page with a score</li>
                 <li>But there was no way to select that student for an award. </li>
                 <li>The Selection Committee received a spreadsheet of scholarships and available money.</li>
@@ -1056,12 +1058,34 @@ class Selectionnext extends BaseController
         <section>
             <h3>Summary: Scholarship Wins!</h3>
             <ul>
-                <li><p>Restored confidence in selection process!</p></li>
-                <li><p>Fewer awards were rejected!</p></li>
-                <li><p>More Scholarship Money was awarded than ever before!</p></li>
+                <li>Implemented multiple majors successfully</li>
+                <li>Eliminated unqualified candidates
+                    <ul><li>made the scoring easier to read</li>
+                        <li>reduced the manual review of candidates</li></ul>
+                </li>
+                <li>Selection process was entirely inside the application</li>
             </ul>
-            <p><strong>By May 2015: Approximately $1,074,394 Awarded for 2015-16</strong></p>
+            <aside class="notes">
+                <li>We implmented multiple majors successfully</li>
+                <li>By listing only Canddates who matched requirements, the scoring was simpler to understand and the selection committee had less manual review to choose the best match</li>
+                <li>The selection process was entirely within our application. </li>
 
+            </aside>
+        </section>
+        <section>
+            <h3>Summary: Scholarship Wins!</h3>
+            <ul>
+                <li>Restored confidence in selection process!</li>
+                <li>Fewer awards were rejected!</li>
+                <li>More Scholarship Money was awarded in the application than ever before!</li>
+            </ul>
+            <p><strong>By May 2015: Approximately $1,074,394 Awarded</strong></p>
+            <aside class="notes">
+                <li>We restored confidence in the application</li>
+                <li>We simplified the process tremendously!</li>
+                <li>The awards that were selected in our application had fewer rejections because the data was more up-to-date</li>
+                <li>And more money was awarded...  over $1 MILLION</li>
+            </aside>
         </section>
         <section>
             <h3>Summary: Lessons Learned</h3>
@@ -1072,23 +1096,36 @@ class Selectionnext extends BaseController
                 <li><p>Tight deadlines with un-scoped work, we created technical debt that we would have to address in
                     the next academic year</p></li>
             </ul>
+            <aside class="notes">
+
+            </aside>
+        </section>
+        <section>
+            <h3>Summary: Was It Worth It?</h3>
+            <ul>
+                <li>We learned a lot of new techniques
+                    <ul>
+                        <li>Bootstrapping Legacy Apps</li>
+                        <li>Event Sourcing</li>
+                        <li>Domain-Driven Design</li>
+                        <li>Command Query Response Segregation</li>
+                        <li>Project Management</li>
+                        <li>A LOT!</li>
+                    </ul></li>
+            </ul>
 
         </section>
         <section>
             <h3>Summary: Was It Worth It?</h3>
             <p><strong>University is replacing it this year</strong></p>
             <ul>
-                <li>We learned a lot of new techniques
-                    <ul>
-                        <li>bootstrap</li>
-                        <li>event sourcing</li>
-                        <li>Domain-Driven Design</li>
-                        <li>Command Query Response Segregation</li>
-                        <li>managing projects</li>
-                        <li>A LOT!</li>
-                    </ul></li>
+                <li>We changed it minimally this year to get them through a second Academic Year</li>
+                <li>We bought them two years of selection</li>
+                <li>We replaced the Student Application Process</li>
+                <li>We replaced the Legacy Selection Process</li>
+                <li>We added an event-driven distribution of scholarship money</li>
+                <li>All awards changed state via Events</li>
             </ul>
-
         </section>
         <section>
             <h3>QUESTIONS?</h3>
