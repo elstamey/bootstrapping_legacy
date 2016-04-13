@@ -1002,9 +1002,9 @@ class CreateUserLoginsTable extends AbstractMigration
             </aside>
         </section>
         <section>
-            <h3>Bootstrapping Scholarships: Filetree</h3>
+            <h3>Bootstrapping:  Filetree</h3>
             <ul>
-                <li>new code in <code>/src</code> alongside the <code>/app</code> directory</li>
+                <li>new code in '/src' alongside the '/app' directory</li>
             </ul>
             <p>
                 <img src="img/FileTree.png" alt="File tree">
@@ -1020,9 +1020,9 @@ class CreateUserLoginsTable extends AbstractMigration
             </aside>
         </section>
         <section>
-            <h3>Bootstrapping Scholarships: Composer</h3>
+            <h3>Bootstrapping:  Namespaces</h3>
             <ul>
-                <li><p><pre><code>/src</code></pre> is given a namespace</p>
+                <li><p>'/src' is given a namespace</p>
                 </li>
                 <li><p>namespaces are autoloaded in composer</p>
                 </li>
@@ -1050,41 +1050,57 @@ class CreateUserLoginsTable extends AbstractMigration
 
 
         <section>
-            <h3>Bootstrapping Scholarships: Connecting the Dots</h3>
+            <h3>Bootstrapping:  Connecting the Dots</h3>
             <ul>
-                <li><p><pre><code>/app/bindings.php</code></pre>
+                <li><p>'/app/bindings.php'
                     define containers for each of the new Services, Repositories, Projections</p>
                 </li>
-                <li><p><p><pre><code>/app/controllers</code></pre>
+                <li><p><p>'/app/controllers'
                     <br>new controllers for the new functionality</p>
                 </li>
-                <li><p><p><pre><code>/app/services.php</code></pre>
+                <li><p><p>'/app/services.php'
                     defined and configured twig, database, et al</p>
                 </li>
             </ul>
 
         </section>
         <section data-background="#f05b62">
-            <h1 style="color: #fafafa;">Containers</h1>
+            <h1 style="color: #fafafa;">Dependency Injection Containers</h1>
         </section>
         <section>
             <h3>Containers</h3>
-            <p><pre><code>/app/bindings.php</code></pre>
+            <p>'/app/bindings.php'
 <p><pre><code>
 &lt;?php
 
-    use /Scholarships/Selection/Infrastructure/Storage/HybridSourcedScholarshipRepository;
+    //example one
 
-    $container[&#39;/Scholarships/Selection/Domain/Scholarship/ScholarshipRepository&#39;] = function($c) {
-    return new HybridSourcedScholarshipRepository(
-    $c[&#39;ScholarshipsSupportEventsEventStore&#39;],
-    $c[&#39;database&#39;],
-    $c[&#39;ScholarshipsCommonServicesDepartmentsService&#39;],
-    $c[&#39;ScholarshipsCommonServicesResidenciesService&#39;],
-    $c[&#39;ScholarshipsCommonServicesAcademicPlansService&#39;],
-    $c[&#39;Scholarships/Selection/Domain/CollaborationsService&#39;]
-    ); };</code></pre>
+    use ITECS\Scholarships\Selection\Infrastructure\Services\IlluminateDatabaseGpaService;
 
+    $container['ITECS\Scholarships\Common\Services\GpaService'] = function($c) {
+    return new IlluminateDatabaseGpaService($c['database']);
+    };
+
+    //example two
+
+    use ITECS\Scholarships\Selection\Domain\ApplicantQueryService;
+
+    $container['ITECS\Scholarships\Selection\Domain\ApplicantQueryService'] = function($c) {
+    return new ApplicantQueryService(
+    $c['ITECS\Scholarships\StudentApplication\UseCases\StudentQueryService'],
+    $c['ITECS\Scholarships\Common\Services\ResidenciesService'],
+    $c['ITECS\Scholarships\Common\Services\GpaService'],
+    $c['ITECS\Scholarships\Common\Services\UnmetNeedService'],
+    $c['ITECS\Scholarships\Common\Services\CandidateQualificationService']
+    );
+    };
+        </code></pre>
+            <aside class="notes">
+                We were bringing in large chunks of code.  Bringing in a Service might involve 5 or more dependencies, and
+                preserving those linkages was critical
+                We needed an injector to bring those dependencies into our CodeIgniter framework.  In order to do this, we
+                used Pimple containers that used the definitions we set in a file called `bindings.php`
+            </aside>
         </section>
         <section data-background="#f05b62">
             <h1 style="color: #fafafa;">Controllers</h1>
