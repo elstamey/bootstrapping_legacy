@@ -751,11 +751,11 @@ class CreateUserLoginsTable extends AbstractMigration
                 <li><p>Set config variables for services</p></li>
             </ul>
             <aside class="notes">
-                Another piece that allowed us to support the many environments: development, staging, production
-                was a configuration file. This was not version controlled. But a template was.
-                We could download that template and fill in our local DB connections, the base_url path
-                We could set paths to twig templates, custom notice messages and temporary config variables for the
-                services we implemented that we wanted flexibility for
+                <li>Another piece that allowed us to support the many environments: development, staging, production was a configuration file. </li>
+                <li>This was not version controlled. But a template was.</li>
+                <li>We could download that template and fill in our local DB connections, the base_url path</li>
+                <li>We could set paths to twig templates, custom notice messages and temporary config variables for the
+                services we implemented that we needed flexibility for</li>
             </aside>
         </section>
         <section>
@@ -834,33 +834,27 @@ return array(
             </code></pre>
             <p>We passed this array into a <b>$config</b> variable that could be accessed as `$config['app']['base_url']`</p>
             <aside class="notes">
-                in order to support local environment serving to a specific port and production application being in a
-                vhost,
-                setting the base_url was very helpful!
-
-                Our project used two DBs and we were able to configure both using this config variable. The
+                <li>setting the base_url was very helpful in supporting paths to resources in both our local environment and production </li>
+                <li>Our project used two DBs and we were able to configure both using this config variables. The
                 parts of CodeIgniter that configured the DB could then pull in our config values for 'default' and
-                'student_info' databases to allow our queries to continue working
-
-                Some other things we put into our config were paths to twig templates, which were then configured into
-                CI like the DB connections were
-
-                We created an authorization array to limit access to the funding and coordinator portions of the app
-                because this would give us flexibility to turn access on and off when we needed to control changes in
-                the application
+                'student_info' databases to allow our queries to continue working regardless of the server</li>
+                <li>We also put paths to twig templates, which were then configured into the framework similarly to the DB connections</li>
+                <li>We created an authorization array to limit access to the portions of the app
+                because this would give us flexibility to turn access on and off when we needed to change
+                the application</li>
             </aside>
         </section>
         <section data-background="#f05b62">
             <h1 style="color: #fafafa;">The Good Stuff</h1>
             <aside class="notes">
-                Once we improved tooling of our project, we were able to begin work on the Scholarship application
-                There was a great deal of risk with altering the database queries in the existing app as well as the
-                code
-                We decided to develop in a space adjacent to the old application. This would allow us to create new
-                controllers
-                for the new functionality. Our plan was to build new infrastructure using Domain Driven Design, creating
+                <li>Once we improved tooling of our project, we were able to begin work on improvements</li>
+                <li>There was a great deal of risk with altering the database queries in the existing app as well as the
+                code</li>
+                <li>We wrote new code in a directory adjacent to the old application. This would allow us to create new
+                controllers that linked to the new functionality. </li>
+                <li>Our plan was to build new infrastructure using Domain Driven Design, creating
                 bounded contexts for the Student, Selection, Foundation functionality, and as we were able to replace
-                pieces of the old app, we would remove them in favor of the new.
+                pieces of the old application, we would remove them entirely.
             </aside>
         </section>
         <section>
@@ -873,11 +867,11 @@ return array(
                 <img src="img/FileTree-DDD.png" alt="DDD File tree">
             </p>
             <aside class="notes">
-                All of our new infrastructure was built using Domain Driven Design concepts, which was a challenge.
-                But you should be able to see the directories for our bounded contexts. This could just as easily have
-                been new Models and other code.
-                We wanted this src folder to be moved to another framework or run without a framework when we
-                had replaced the old functionality. This was a LONG term goal.
+                <li>All of our new infrastructure was built using DDD concepts, which was new to us all.</li>
+                <li>You should be able to see the directories for our bounded contexts. As well as Common and Infrastructure.
+                    This could just as easily have been new Models and other code formats.</li>
+                <li>We wanted to be able to move this src folder to another framework or run without a framework when we
+                had replaced the whole application. This was a LONG term goal.</li>
             </aside>
         </section>
         <section>
@@ -900,15 +894,13 @@ return array(
     }
 }
             </code></pre>
-            <aside class="notes">
-                Composer allowed us to build this structure. We used
-                it to load a lot of the tooling I
-                already mentioned as well as the autoloading of namespaced code in our source folder.
-                Here we are labeling the /src folder as the namespace ITECS/Scholarships
+            <li class="notes">
+                <li>Composer allowed us to build this independent structure. </li>
+                <li>We used it to load a lot of the tooling I already mentioned</li>
+                <li>And we used it to autoload the namespaced code in our source folder.</li>
+                <li>Here we label the /src folder as the namespace ITECS/Scholarships</li>
             </aside>
         </section>
-
-
         <section>
             <h3>Bootstrapping:  Connecting to the Framework</h3>
             <ul>
