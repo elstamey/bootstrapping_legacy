@@ -588,23 +588,20 @@
                 <li><p>Unit and Functional tests for everything you build</p></li>
             </ul>
             <aside class="notes">
-                We were building onto an existing, untested application. There were no "units", individual
-                classes
-                with behavior that we could test. But there was functionality we were expecting to keep working while we
-                implemented
-                new features and restructured how Selection would work.
-
-                Testing was critical in this process! We began with a set of Acceptance tests that would allow us to
-                verify that
-                the data displayed on the student application page remained unchanged. We changed the usability and user
-                interface of the
-                application with minor tweaks around what was considered a complete application and questions asked
-                by some departments in the COE.
-
-                The new code we built had units, so We built unit and functional tests of those features using PHPUnit,
-                which was incredibly powerful
-                working as a team. We could ensure that we didn't break each other's code if we continued running the
-                full suite of tests before merging our pull requests.
+                <li>We were building onto an untested application. There were no "units", muchless unit tests</li>
+                <li>These units are individual classes with testable behavior. </li>
+                <li>There WAS functionality we were expecting to keep working while we implemented new features.</li>
+                and restructured how Selection would work.
+                <li>Testing was critical in this process! </li>
+                <li>We began with a set of Acceptance tests for the Student Application.  We were only changing the templates, but
+                    wanted to verify the student data stayed the same</li>
+                <li>Acceptance tests let us test the content on the page</li>
+                <li>We changed the usability and user interface of the application </li>
+                <!--<li>We programmed flexibility to what was considered a complete application and improved the departmental questions asked-->
+                <!--by some departments in the COE.</li>-->
+                <li>The new code we built had units, which we tested using PHPUnit</li>
+                <li>We also built Services and other integrated features, which were tested with functional tests</li>
+                <li>Testing was crucial to our working as a team. We could ensure that we didn't break each other's code by running the full suite of tests before merging our pull requests.</li>
             </aside>
         </section>
         <section>
@@ -618,12 +615,12 @@
                 <li>Phinx for database migrations</li>
             </ul>
             <aside class="notes">
-                We used composer to bring in helpful packages, like the testing tools I just mentioned .
-                Twig templates gave us some really nice functionality for any of the new User Interfaces we built
+                <li>We used composer to bring in helpful packages, like the testing tools I just mentioned.</li>
+                <li>Twig templates gave us some really nice functionality for the new User Interfaces we built</li>
                 <!--We used a package called MoneyPHP for handling the dollar amounts of the scholarships-->
-                Pimple containers were extremely useful for our bootstrapping, and I will explain them soon.
-                We used Illuminate DB to give us query builder and connect to our databases
-                And Phinx gave us the ability to migrate DB changes
+                <li>Pimple containers were extremely useful for our bootstrapping, and I'll explain them soon.</li>
+                <li>We used Illuminate DB to give us query builder and DB connections</li>
+                <li>And Phinx gave us the ability to migrate DB changes</li>
             </aside>
         </section>
         <section>
@@ -665,11 +662,12 @@
 }
             </code></pre>
             <aside class="notes">
-                We were able to include these packages in the composer file.  The testing packages are only required in our development environment.
-                You can specify the packages and lock the version of the package.  We have a couple here that are using the dev-master, and the mpdf package we shouldn't be doing that.
-                And the autoload section we will look at more closely in a little while
+                <li>This is the composer file.  </li>
+                <li>The testing packages are only required in our development environment.</li>
+                <li>You can specify  packages and lock the version of the package.  We have a couple here that are using dev-master, but we shouldn't be doing that because mpdf, for example, is a code base we don't control</li>
+                <li>We will look at the autoload section in a little bit</li>
 
-                Let's look at Database migrations...
+                <li>Let's look at Database migrations...</li>
             </aside>
         </section>
         <section>
@@ -680,12 +678,12 @@
             </ul>
             <pre><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></pre>
             <aside class="notes">
-                A criticial tool for us was Phinx. This gave us the ability to alter our databases using a script.
-                Migrations give you the ability to do and undo these DB changes. Any change I made to my DB could
-                also be made across the team's development environments, in staging, or production environments.
-                If something unexpected happened, it could be undone.
-                It basically allowed us to version control DB changes. And although it isn't recommended, we did have to
-                use it extensively for data migrations in addition to schema changes.
+                <li>Phinx was a criticial tool for us. It gave us the ability to alter our databases using a script.</li>
+                <li>Migrations give you the ability to do and undo these DB changes. Any change I made to my DB could
+                also be made across the team's development environments, in staging, and production environments.</li>
+                <li>If something unexpected happened at any point, it could be undone.</li>
+                <li>It basically allowed us to version control DB changes. And although it isn't recommended, we did
+                use it extensively for data migrations in addition to schema changes.</li>
             </aside>
         </section>
         <section>
@@ -730,20 +728,17 @@ class CreateUserLoginsTable extends AbstractMigration
             <pre><code>$ vendor/bin/phinx migrate</code></pre>
             <pre><code>$ vendor/bin/phinx rollback</code></pre>
             <aside class="notes">
-                I've included two examples of a Phinx migration:
-
-                One is the change migration, which is a single function. Phinx is supposed to know how to do AND undo that
-                change, so you don't have to write the undo query.
-                However, there are some changes that the change() method wasn't as reliable.
-
-                Example #2 is the type of migration we generally write. This example renames a DB column from bio to
-                biography.
-                The down() method undoes this change, renaming the column bio again. There would probably be a code
-                change to queries of the 'bio' data, and we would submit
-                those changes in a single Pull Request with the migration, so the code was not in a broken state.
-                Tests run before and after the migration would pass, and that code could be merged.
-
-                These are the commands you use to either migrate or rollback the changes to your database.
+                <li>I've included two examples of a Phinx migration:</li>
+                <li>First is the change method, which is a single function. Phinx is supposed to know how to do AND undo that
+                change, so you don't have to write the undo query.</li>
+                <li>However, there are some queries that the change() method doesn't know how to undo.</li>
+                <li>Example #2 is the type of migration we generally write. This example renames a DB column from bio to
+                biography.</li>
+                <li>The down() method undoes this change, renaming the column bio again. Along with this migrations, there
+                    would probably be a code change to queries of the 'bio' data.  Those commits would be in a single Pull Request
+                    with this migration.  Otherwise the change would break the code</li>
+                <li>Tests run after the migration would now pass, and that code could be merged.</li>
+                <li>These are the commands you use to migrate or rollback the changes to your database.</li>
             </aside>
         </section>
         <section>
