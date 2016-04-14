@@ -31,6 +31,7 @@
         link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
@@ -51,9 +52,8 @@
                 Gibler</a></h5>
             <aside class="notes">
                 <li>We are going to talk about Bootstrapping strategies for Legacy PHP applications.</li>
-
-                <li>We are going to talk about the building onto an existing legacy application,
-                leaving parts of the application untouched until they can be refactored or replaced.</li>
+                <li>... about the building onto an existing legacy application,
+                leaving parts of it untouched until they can be refactored or replaced.</li>
                 <li>We'll talk about tools my team used and how they were helpful</li>
                 <li>And I'll try to include some of our development process</li>
             </aside>
@@ -84,10 +84,9 @@
                 involved starting with someone else's work</li>
                 <li>My group in the College of Engineering: includes 3 developers, a UX person, about 5 part-time student developers
                 and 3 managers</li>
-                <li>We manage a pile of PHP applications.</li>
-                <li>Many of these were student-built a while ago and are useful to the person or people they were buit for,
-                however they have only get attention when they have a problem or a new need.</li>
-                <li>We have a pile of legacy that we must support.</li>
+                <li>We support a pile of PHP applications.</li>
+                <li>Many of these were student-built a while ago... useful to the person or people they were buit for,</li>
+                <li>They only get attention when they have a problem or a new need.</li>
             </aside>
         </section>
         <section>
@@ -114,9 +113,9 @@
             </ul>
             <p><strong>Let&#39;s review some terminology... (source: wikipedia)</strong></p>
             <aside class="notes">
-                <li>Chances are good that  you are working with a legacy application.</li>
-                <li>Convincing managers to let us refactor code that isn't VISIBLY broken is hard</li>
-                <li>Learning to bootstrap the legacy codebase gives you options beyond replacing the whole thing.</li>
+                <!--<li>Chances are good that  you are working with a legacy application.</li>-->
+                <!--<li>Convincing managers to let us refactor code that isn't VISIBLY broken is hard</li>-->
+                <!--<li>Learning to bootstrap the legacy codebase gives you options beyond replacing the whole thing.</li>-->
                 <li>But before we begin, let's review these terms to make sure we're on the same page.</li>
             </aside>
         </section>
@@ -127,11 +126,12 @@
             <p>Often a pejorative term, referencing a system as &quot;legacy&quot; often implies that the system is out
                 of date or in need of replacement.</p>
             <aside class="notes">
-                <li>A legacy app was developed using older strategies and is probably very useful, meaning it needs to stay up</li>
-                <li>In the PHP world, this runs the gamut between:
+                <li>A legacy app was developed using older strategies </li>
+                <li>...is probably very important to its users</li>
+                <li>In PHP:
                     <ul>
-                        <li>spaghetti code that uses includes for functionality and styling of the page</li>
-                        <li>frameworks/cms that your team doesn't want to/is unable to support</li>
+                        <li>spaghetti code that uses includes ...</li>
+                        <li>frameworks/cms ...</li>
                     </ul>
                 </li>
             </aside>
@@ -165,7 +165,7 @@
             <aside class="notes">
                 <li>Refactoring is a term often misused. </li>
                 <li>You are changing the code without altering the application's behavior.</li>
-                <li>You can make your application more secure, improve a Database query, etc without altering what the user sees
+                <li>You can make improvements to the code, etc without altering what the user sees
                 and does.</li>
                 <li>Once you change behavior, it's not refactoring. </li>
                 <li>This is why managers don't really support it. There is no visible gain FOR THEM or the user.</li>
@@ -176,14 +176,15 @@
             <p>A metaphor referring to the eventual consequences of any system design, software architecture or software
                 development within a codebase.</p>
             <aside class="notes">
-                <li>Technical debt is the consequence from the design decisions we make when developing our apps</li>
-                <li>It is also the consequence of leaving a tool untouched for years</li>
-                <li>Our students develop many uni-task apps. They are simple tools for learning, and they help someone do their job.</li>
-                <li>There is an instant gratification about building a tool that helps someone do their job well</li>
-                <li>Our dept can't get enough of it!</li>
-                <li>But the developers know it will eventually bite us. That simple CRUD app that one person uses will one
+                <li>Technical debt is the consequence of the design decisions we make ...</li>
+                <li>It is also the consequence of leaving code unmaintained</li>
+                <li>Our students develop many simple apps. They are great tools for learning, and they help someone do their job.</li>
+                <!--<li>There is an instant gratification about building a tool that helps someone do their job well</li>-->
+                <!--<li>Our dept can't get enough of it!</li>-->
+                <li>But developers know it will eventually bite us. That simple CRUD app that one person uses will one
                 day break and need an urgent fix.</li>
-                <li>The student who built it won't be here anymore. These are our adventures!</li>
+                <li>The student who built it won't be here anymore. </li>
+                <li>Sometimes these apps grow </li>
                 <li>Unfortunately, this technical debt isn't limited to simple apps. We have larger applications,
                 as well, that began as simple apps and grew. </li>
                 <li>Even though they were student-built, they've grown too big to be student-maintained. And the
@@ -215,8 +216,8 @@
             <h1 style="color: #fafafa;">The Project: Scholarships</h1>
             <aside class="notes">
                 <li>I'm going to tell you about the Scholarships Project</li>
-                <li>It is a tool that organizes requirements for scholarships to be awarded to Students in the COE</li>
-                <li>When I was given this app to fix, all development was in production.</li>
+                <li>It organizes requirements for scholarships to be awarded to Students in the COE</li>
+                <li>All development was in production.</li>
                 <li>The codebase was an early version of Code Igniter. But that fact really doesn't mean much.
                 It was an MVC application implemented by a student who didn't really understand how to use MVC.</li>
                 <li>The application was used most of the Academic year, so that gave me a month at the end of the summer to
@@ -298,7 +299,7 @@
             <p><strong>Don’t rely on developer feedback</strong></p>
             <aside class="notes">
                 <li>Talking to the previous developer does NOT count as talking to your users.</li>
-                <li>When you speak to users, you want to know about their process</li>
+                <li>you want to know about their WHOLE process</li>
                 <li>does it match what they are doing in the application.</li>
                 <li>Identify pain points they have using the application</li>
                 <li>Finally, do they have concerns? Do they trust the app? Hate it?</li>
@@ -316,11 +317,9 @@
             </ul>
             <aside class="notes">
                 <li>The application was not consistent with their process</li>
-                <li>The application was forcing some terminology and behavior on them that didn't exist in the University</li>
-                <li>Applicants were displayed on the Scholarship page with a score</li>
-                <li>But there was no way to select that student for an award. </li>
+                <li>It was forcing some terminology and behavior on them that didn't exist in the College</li>
                 <li>The Selection Committee received a spreadsheet of scholarships and available money.</li>
-                <li>They used our tool to review the applicants and make selections but reported those awards in a spreadsheet </li>
+                <li>They used our tool to review the applicants and make selections but reported those awards in another spreadsheet </li>
                 <li>Each row was the scholarship account number, student id number, amount and when they should
                 receive the money.</li>
             </aside>
@@ -598,11 +597,11 @@
                 <li>We began with a set of Acceptance tests for the Student Application.  We were only changing the templates, but
                     wanted to verify the student data stayed the same</li>
                 <li>Acceptance tests let us test the content on the page</li>
-                <li>We changed the usability and user interface of the application </li>
+                <!--<li>We changed the usability and user interface of the application </li>-->
                 <!--<li>We programmed flexibility to what was considered a complete application and improved the departmental questions asked-->
                 <!--by some departments in the COE.</li>-->
                 <li>The new code we built had units, which we tested using PHPUnit</li>
-                <li>We also built Services and other integrated features, which were tested with functional tests</li>
+                <!--<li>We also built Services and other integrated features, which were tested with functional tests</li>-->
                 <li>Testing was crucial to our working as a team. We could ensure that we didn't break each other's code by running the full suite of tests before merging our pull requests.</li>
             </aside>
         </section>
@@ -852,11 +851,12 @@ return array(
                 <li>Once we improved tooling of our project, we were able to begin work on improvements</li>
                 <li>There was a great deal of risk with altering the database queries in the existing app as well as the
                 code</li>
-                <li>We wrote new code in a directory adjacent to the old application. This would allow us to create new
-                controllers that linked to the new functionality. </li>
+                <li>We wrote new code in a directory adjacent to the old application. </li>
+                <li>We created new controllers that linked to the new functionality. </li>
                 <li>Our plan was to build new infrastructure using Domain Driven Design, creating
                 bounded contexts for the Student, Selection, Foundation functionality, and as we were able to replace
-                pieces of the old application, we would remove them entirely.
+                pieces of the old application, we would remove them entirely.</li>
+                <li>Also Event-Sourced the state change of Scholarship Money and Awards</li>
             </aside>
         </section>
         <section>
@@ -896,7 +896,7 @@ return array(
     }
 }
             </code></pre>
-            <li class="notes">
+            <aside class="notes">
                 <li>Composer allowed us to build this independent structure. </li>
                 <li>We used it to load a lot of the tooling I already mentioned</li>
                 <li>And we used it to autoload the namespaced code in our source folder.</li>
