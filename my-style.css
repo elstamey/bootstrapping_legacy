@@ -58,6 +58,11 @@ h3.title {
 }
 
 
+h2.sectionblockbox {
+    color: #4e9ed4;
+    font-weight: bolder;
+}
+
 h3 {
     color: #f05b62 !important;
     font-weight: bold;
@@ -70,5 +75,11 @@ h3 {
 section.titleblock {
     margin-left: -300px;
     margin-top:300px;
+    background: rgba(255,255,2555,0.8);
+}
+
+section.sectionblock {
+    margin-left: 300px;
+    margin-top:460px;
     background: rgba(255,255,2555,0.8);
 }
