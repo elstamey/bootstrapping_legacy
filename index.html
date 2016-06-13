@@ -923,14 +923,23 @@ return array(
             </aside>
         </section>
         <section data-background="#f05b62">
-            <h1 style="color: #fafafa;">Dependency Injection Container</h1>
+            <h1 style="color: #fafafa;">Dependency Injection</h1>
             <aside class="notes">
+                <li>We positioned our codebase parallel to the framework</li>
+                <li>We needed to bring the full namespaced services into that framework</li>
+                <li>Dependency Injection allowed us to do that</li>
+                <li>We used Pimple to build our container and define the dependencies</li>
+            </aside>
+        </section>
+        <section>
+            <h3>Dependency Injection Container</h3>
+            <ul>
                 <li>Dependency injection is a software design pattern that implements inversion of control for resolving dependencies.</li>
                 <li>A dependency is an object that can be used (a service).</li>
                 <li>An injection is the passing of a dependency to a dependent object (a client) that would use it.</li>
                 <li>The Pimple Container helps us pass the Service or Object we need in the application along with all of its dependencies</li>
-		<li>We don't have to wait to let the dependencies resolve when the user accesses the object, we can ensure they are there ahead of time</li>
-            </aside>
+                <li>We don't have to wait to let the dependencies resolve when the user accesses the object, we can ensure they are there ahead of time</li>
+            </ul>
         </section>
         <section>
             <h3>Container</h3>
