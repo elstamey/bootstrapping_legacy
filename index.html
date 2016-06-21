@@ -727,26 +727,34 @@ class CreateUserLoginsTable extends AbstractMigration
         -&gt;create();
     }
 
-    /**
-    * Example Two: Up/Down with Migrate/Rollback
-    */
-    public function up()
-    {
-        $table = $this-&gt;table(&#39;users&#39;);
-        $table-&gt;renameColumn(&#39;bio&#39;, &#39;biography&#39;);
-    }
-
-    /**
-    * Migrate Down.
-    */
-    public function down()
-    {
-        $table = $this-&gt;table(&#39;users&#39;);
-        $table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
-    }
 }
 </code></pre>
+            <section>
+<pre><code>
+    &lt;?php
+    use Phinx\Migration\AbstractMigration;
 
+    class CreateUserLoginsTable extends AbstractMigration
+    {
+        /**
+        * Example Two: Up/Down with Migrate/Rollback
+        */
+        public function up()
+        {
+        $table = $this-&gt;table(&#39;users&#39;);
+        $table-&gt;renameColumn(&#39;bio&#39;, &#39;biography&#39;);
+        }
+
+        /**
+        * Migrate Down.
+        */
+        public function down()
+        {
+        $table = $this-&gt;table(&#39;users&#39;);
+        $table-&gt;renameColumn(&#39;biography&#39;, &#39;bio&#39;);
+        }
+    }
+</code></pre>
             <pre><code>$ vendor/bin/phinx migrate</code></pre>
             <pre><code>$ vendor/bin/phinx rollback</code></pre>
             <aside class="notes">
