@@ -101,7 +101,7 @@
             </aside>
         </section>
         <section data-background="#f05b62">
-            <h1 style="color: #fafafa;">Legacy</h1>
+            <h1 style="color: #fafafa;">Let's Talk Legacy</h1>
             <aside class="notes">
                 <li>Let's get down to business.. Legacy</li>
                 <li>Most of us don't want to work in someone else's code</li>
@@ -126,35 +126,32 @@
         <section>
             <h3>Why Bootstrapping is important</h3>
             <ul>
-                <li><p>A lot of web development work involves supporting <strong>legacy</strong> applications</p></li>
-                <li><p>It is HARD to justify <strong>refactoring</strong></p></li>
-                <li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p></li>
+                <li><p>Web development involves supporting <strong>legacy</strong> applications</p></li>
+                <li><p>It is HARD to update a <b>spaghetti</b> codebase</p></li>
+                <li><p>It is also HARD to rewrite a large legacy application</p></li>
+                <li><p><strong>Bootstrapping</strong> gives you flexibility to update your application </p></li>
             </ul>
             <p><strong>Let&#39;s review some terminology... (source: wikipedia)</strong></p>
             <aside class="notes">
-                <!--<li>Chances are good that  you are working with a legacy application.</li>-->
-                <!--<li>Convincing managers to let us refactor code that isn't VISIBLY broken is hard</li>-->
-                <!--<li>Learning to bootstrap the legacy codebase gives you options beyond replacing the whole thing.</li>-->
-                <li>READ THIS</li>
-                <li>But before we begin, let's review these terms to make sure we're on the same page.</li>
+                <li>As web developers we support and maintain a lot of legacy</li>
+                <li>It's tough to maintain that older application,</li>
+                <li>whether it is large enough or was developed a long time ago/by someone else, there are many things that make legacy challenging </li>
+                <li>In deciding replace or upgrade, you can actually choose both.</li>
+                <li>But before we begin, let's review some terms to make sure we're on the same page.</li>
             </aside>
         </section>
         <section>
             <h3>Legacy Software</h3>
             <p>Software developed using older technologies and practices. It can be difficult to replace because of its
                 wide use.</p>
-            <p>Often a pejorative term, referencing a system as &quot;legacy&quot; often implies that the system is out
+            <p>Often a pejorative term</p>
+            <p>Referencing a system as &quot;legacy&quot; often implies that the system is out
                 of date or in need of replacement.</p>
             <aside class="notes">
                 <li>A legacy app was developed using older strategies </li>
                 <li>Most developers use this term as if the code is disposable</li>
                 <li>...is probably very important to its users</li>
-                <li>
-                    <ul>
-                        <li>functional programming ...</li>
-                        <li>older frameworks/cms ...</li>
-                    </ul>
-                </li>
+                <li>...solving some problem; providing business value</li>
             </aside>
         </section>
         <section>
@@ -174,7 +171,7 @@
                 </li>
             </aside>
         </section>
-        <section>
+        <!--section>
             <h3>Lasagna code</h3>
             <p>Lasagna code is code that has way too many layers. </p>
             <p>In Object Oriented programming, this means code that has many really small classes when a few slightly
@@ -184,7 +181,7 @@
                 <li>Applies to unbalanced code with classes that are either too large or too small.</li>
                 <li>A good lasagna has balanced layers.</li>
             </aside>
-        </section>
+        </section-->
         <section>
             <h3>Refactor</h3>
             <p>Technique for restructuring an existing body of code, altering its internal structure <strong>without
@@ -203,19 +200,39 @@
             <p>A metaphor referring to the eventual consequences of any system design, software architecture or software
                 development within a codebase.</p>
             <aside class="notes">
-                <li>Technical debt is the consequence of the design decisions we make ...</li>
-                <li>... the consequence of leaving code unmaintained</li>
-                <li>Our students develop many simple apps. They are great tools for learning, and they help someone do their job.</li>
+                <li>This is the concept that mistakes we make today will be paid for with our time/money in the future</li>
+                <li>Some of this is unavoidable, but most of it can be predicted by our patterns/experience</li>
+                <li>Technical debt is the consequence of the design decisions we make.</li>
+            </aside>
+        </section>
+        <section>
+            <h3>Ways we make Technical Debt</h3>
+            <ul>
+                <li>Leaving a codebase untouched for a long time</li>
+                <li>Rushed Development</li>
+                <li>Inexperienced programmers built it</li>
+                <li>Multiple developers maintained it over time</li>
+            </ul>
+            <aside class="notes">
+                <li>Code that was left alone is often => orig. developer is gone; OR it may have grown into a spaghetti monster</li>
+                <li>Sometimes our application is built on a framework or uses a package that cannot be upgraded easily</li>
+                <li>Or maybe we find ourselves stuck on an old, unsupported version</li>
+
+                <li>When we are developing an application without a clear picture of the problem we are solving or under a tight deadline, we are creating technical debt</li>
+                <li>If we patch an application we don't "know" we are usually making tech debt</li>
+
+                <li>At State, Our students develop many simple apps. They are great for learning, and they help someone do their job.</li>
                 <li>There is an instant gratification about building a tool that helps someone do their job well</li>
                 <li>Our dept can't get enough of it!</li>
-                <li>But developers know it will eventually bite us. That simple CRUD app that one person uses will one
-                day break and need an urgent fix.</li>
+                <li>But developers know it will eventually bite us. That simple CRUD app that one person uses will eventually
+                    break and need an urgent fix.</li>
                 <li>The student who built it won't be here anymore. </li>
-		<li></li>
                 <li>Sometimes these apps grow </li>
-		<li>An app that grows through changes made by multiple inexperienced developers has a LARGE amount of debt the moment a new developer makes a change</li>
+
+                <li>An app that grows through changes made by multiple developers has a LARGE amount of debt the moment a new developer makes a change</li>
                 <li>Even though most of our applications were built by students, they've grown too big to be student-maintained. And the
                     users are too high on the org chart to let the app die.</li>
+                <li>code archeology</li>
             </aside>
         </section>
         <section>
@@ -223,6 +240,8 @@
             <p>In software this usually means, <strong>building onto an existing system</strong> for the purpose of
                 improvement with the least amount of sweat equity and development cost in the process.</p>
             <aside class="notes">
+                <li>In my experience, bootstrapping gives you options beyond the black and white rewrite or refactor</li>
+                <li>When do we get the opportunity to refactor an application without new features being needed?</li>
                 <li>Bootstrapping is a combination of refactoring and new features; </li>
                 <li>it allows you to modernize your legacy application without replacing the whole thing.</li>
             </aside>
@@ -235,8 +254,7 @@
                 <li><p><strong>Bootstrapping</strong> gives you flexibility to support your application</p></li>
             </ul>
             <aside class="notes">
-                Now with the definitions fresh in our heads, this statement makes a lot more sense.
-                READ IT
+                consider throwing this away
             </aside>
         </section>
         <section data-background="#f05b62">
@@ -287,7 +305,7 @@
                     but adding new code in adjacent space and later tying it into the CodeIgniter app</li>
             </aside>
         </section>
-        <section>
+        <!--section>
             <h3>How to Bootstrap</h3>
             <ol>
                 <li><p>Survey Your Application</p>
@@ -301,7 +319,7 @@
                 <li>You need to complete a full survey of users and functionality that is there</li>
                 <li>Then you have to plan the work that's most necessary.</li>
             </aside>
-        </section>
+        </section-->
         <section>
             <h3>Survey Your Application</h3>
             <ol>
@@ -651,7 +669,8 @@
             </aside>
         </section>
         <section>
-            <h3>Full Composer</h3>
+            <section>
+                <h3>Full Composer</h3>
 <pre><code>
 {
     "name": "itecs/scholarships",
@@ -688,14 +707,38 @@
     }
 }
 </code></pre>
-            <aside class="notes">
-                <li>This is the composer file.  </li>
-                <li>The testing packages are only required in our development environment.</li>
-                <li>You can specify  packages and lock the version of the package.  We have a couple here that are using dev-master, but we shouldn't be doing that because mpdf, for example, is a code base we don't control</li>
-                <li>We will look at the autoload section in a little bit</li>
+                <aside class="notes">
+                    <li>This is the composer file.  </li>
+                    <li>The testing packages are only required in our development environment.</li>
+                    <li>You can specify  packages and lock the version of the package.  We have a couple here that are using dev-master, but we shouldn't be doing that because mpdf, for example, is a code base we don't control</li>
+                    <li>We will look at the autoload section in a little bit</li>
 
-                <li>Let's look at Database migrations...</li>
-            </aside>
+                    <li>Let's look at Database migrations...</li>
+                </aside>
+            </section>
+            <section>
+                <h3>Composer Require</h3>
+<pre><code>
+{
+    "name": "itecs/scholarships",
+    "description": "Scholarships application for the College of Engineering.",
+    "require": {
+        "php": ">=5.3.3",
+        "robmorgan/phinx": "*",
+        "pimple/pimple": "~3.0",
+       "ncsu/auth": "dev-master"
+    },
+    "require-dev": {
+        "codeception/codeception": "2.0.*"
+    }
+    ...
+}
+</code></pre>
+                <aside class="notes">
+                    Package name = the vendor name and the project's name
+                    2.0.* of Codeception. This means any version in the 2.0 development branch. It is the equivalent of saying versions that match >=1.0 <1.1.
+                </aside>
+            </section>
         </section>
         <section>
             <h3>Database Migrations: Phinx</h3>
@@ -1314,7 +1357,7 @@ class BaseController extends \Controller {
 
                 </aside>
             </section>
-           
+
         </section>
         <!--<section>-->
             <!--<h3>Bootstrap the application</h3>-->
