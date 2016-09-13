@@ -674,6 +674,29 @@
         </section>
         <section>
             <section>
+                <h3>Composer Require</h3>
+                <pre><code>
+{
+    "name": "itecs/scholarships",
+    "description": "Scholarships application for the College of Engineering.",
+    "require": {
+        "php": ">=5.3.3",
+        "robmorgan/phinx": "*",
+        "pimple/pimple": "~3.0",
+       "ncsu/auth": "dev-master"
+    },
+    "require-dev": {
+        "codeception/codeception": "2.0.*"
+    }
+    ...
+}
+</code></pre>
+                <aside class="notes">
+                    Package name = the vendor name and the project's name
+                    2.0.* of Codeception. This means any version in the 2.0 development branch. It is the equivalent of saying versions that match >=1.0 <1.1.
+                </aside>
+            </section>
+            <section>
                 <h3>Full Composer</h3>
 <pre><code>
 {
@@ -718,29 +741,6 @@
                     <li>We will look at the autoload section in a little bit</li>
 
                     <li>Let's look at Database migrations...</li>
-                </aside>
-            </section>
-            <section>
-                <h3>Composer Require</h3>
-<pre><code>
-{
-    "name": "itecs/scholarships",
-    "description": "Scholarships application for the College of Engineering.",
-    "require": {
-        "php": ">=5.3.3",
-        "robmorgan/phinx": "*",
-        "pimple/pimple": "~3.0",
-       "ncsu/auth": "dev-master"
-    },
-    "require-dev": {
-        "codeception/codeception": "2.0.*"
-    }
-    ...
-}
-</code></pre>
-                <aside class="notes">
-                    Package name = the vendor name and the project's name
-                    2.0.* of Codeception. This means any version in the 2.0 development branch. It is the equivalent of saying versions that match >=1.0 <1.1.
                 </aside>
             </section>
         </section>
