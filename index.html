@@ -745,23 +745,24 @@
             </section>
         </section>
         <section>
-            <h3>Database Migrations: Phinx</h3>
-            <ul>
-                <li><p>Allows you to change DB across evironments</p></li>
-                <li><p>Gives you power to undo the change if there is a problem</p></li>
-            </ul>
-            <pre><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></pre>
-            <aside class="notes">
-                <li>Phinx was a criticial tool for us. It gave us the ability to alter our databases using a script.</li>
-                <li>Migrations give you the ability to do and undo these DB changes. Any change I made to my DB could
-                also be made across the team's development environments, in staging, and production environments.</li>
-                <li>If something unexpected happened at any point, it could be undone.</li>
-                <li>It basically allowed us to version control DB changes. And although it isn't recommended, we did
-                use it extensively for data migrations in addition to schema changes.</li>
-		<li>In this project, we couldn't alter our database until we had completely eliminated our dependency on the old codebase</li>
-            </aside>
-        </section>
-        <section>
+            <section>
+                <h3>Database Migrations: Phinx</h3>
+                <ul>
+                    <li><p>Allows you to change DB across evironments</p></li>
+                    <li><p>Gives you power to undo the change if there is a problem</p></li>
+                </ul>
+                <pre><code>$ vendor/bin/phinx create CreateUserLoginsTable</code></pre>
+                <aside class="notes">
+                    <li>Phinx was a criticial tool for us. It gave us the ability to alter our databases using a script.</li>
+                    <li>Migrations give you the ability to do and undo these DB changes. Any change I made to my DB could
+                    also be made across the team's development environments, in staging, and production environments.</li>
+                    <li>If something unexpected happened at any point, it could be undone.</li>
+                    <li>It basically allowed us to version control DB changes. And although it isn't recommended, we did
+                    use it extensively for data migrations in addition to schema changes.</li>
+            <li>In this project, we couldn't alter our database until we had completely eliminated our dependency on the old codebase</li>
+                </aside>
+            </section>
+            <section>
 <pre><code>
 &lt;?php
 use Phinx\Migration\AbstractMigration;
@@ -780,15 +781,15 @@ class CreateUserLoginsTable extends AbstractMigration
 
 }
 </code></pre>
-            <pre><code>$ vendor/bin/phinx migrate</code></pre>
-            <pre><code>$ vendor/bin/phinx rollback</code></pre>
-            <aside class="notes">
-                <li>I've included two examples of a Phinx migration:</li>
-                <li>First is the change method, which is a single function. Phinx is supposed to know how to do AND undo that
-                    change, so you don't have to write the undo query.</li>
-            </aside>
-        </section>
-        <section>
+                <pre><code>$ vendor/bin/phinx migrate</code></pre>
+                <pre><code>$ vendor/bin/phinx rollback</code></pre>
+                <aside class="notes">
+                    <li>I've included two examples of a Phinx migration:</li>
+                    <li>First is the change method, which is a single function. Phinx is supposed to know how to do AND undo that
+                        change, so you don't have to write the undo query.</li>
+                </aside>
+            </section>
+            <section>
 <pre><code>
 &lt;?php
 use Phinx\Migration\AbstractMigration;
@@ -809,34 +810,37 @@ class CreateUserLoginsTable extends AbstractMigration
     }
 }
 </code></pre>
-            <pre><code>$ vendor/bin/phinx migrate</code></pre>
-            <pre><code>$ vendor/bin/phinx rollback</code></pre>
-            <aside class="notes">
-                <li>However, there are some queries that the change() method doesn't know how to undo.</li>
-                <li>Example #2 is the type of migration we generally write. This example renames a DB column from bio to
-                biography.</li>
-                <li>The down() method undoes this change, renaming the column bio again. Along with this migrations, there
-                    would probably be a code change to queries of the 'bio' data.  Those commits would be in a single Pull Request
-                    with this migration.  Otherwise the change would break the code</li>
-                <li>Tests run after the migration would now pass, and that code could be merged.</li>
-            </aside>
+                <pre><code>$ vendor/bin/phinx migrate</code></pre>
+                <pre><code>$ vendor/bin/phinx rollback</code></pre>
+                <aside class="notes">
+                    <li>However, there are some queries that the change() method doesn't know how to undo.</li>
+                    <li>Example #2 is the type of migration we generally write. This example renames a DB column from bio to
+                    biography.</li>
+                    <li>The down() method undoes this change, renaming the column bio again. Along with this migrations, there
+                        would probably be a code change to queries of the 'bio' data.  Those commits would be in a single Pull Request
+                        with this migration.  Otherwise the change would break the code</li>
+                    <li>Tests run after the migration would now pass, and that code could be merged.</li>
+                </aside>
+            </section>
         </section>
         <section>
-            <h3>Configuration file</h3>
-            <ul>
-                <li><p>DB connections</p></li>
-                <li><p>Base URL </p></li>
-                <li><p>Set paths to twig templates</p></li>
-                <li><p>Customize Notice messages</p></li>
-                <li><p>Set config variables for services</p></li>
-            </ul>
-            <aside class="notes">
-                <li>Another piece that allowed us to support the many environments: development, staging, production was a configuration file. </li>
-                <li>This was not version controlled. But a template was.</li>
-                <li>We could download that template and fill in our local DB connections, the base_url path</li>
-                <li>We could set paths to twig templates, custom notice messages and temporary config variables for the
-                services we implemented that we needed flexibility for</li>
-            </aside>
+            <section>
+                <h3>Configuration file</h3>
+                <ul>
+                    <li><p>DB connections</p></li>
+                    <li><p>Base URL </p></li>
+                    <li><p>Set paths to twig templates</p></li>
+                    <li><p>Customize Notice messages</p></li>
+                    <li><p>Set config variables for services</p></li>
+                </ul>
+                <aside class="notes">
+                    <li>Another piece that allowed us to support the many environments: development, staging, production was a configuration file. </li>
+                    <li>This was not version controlled. But a template was.</li>
+                    <li>We could download that template and fill in our local DB connections, the base_url path</li>
+                    <li>We could set paths to twig templates, custom notice messages and temporary config variables for the
+                    services we implemented that we needed flexibility for</li>
+                </aside>
+            </section>
         </section>
         <section>
             <h3>Configuration file</h3>
