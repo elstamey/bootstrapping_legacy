@@ -70,7 +70,7 @@
         </section>
         <section>
             <h3>Emily Stamey</h3>
-            <p>Application Developer @ NC State University</p>
+            <p><img src="img/developer.png"><br>Application Developer @ NC State University</p>
             <p>Twitter: <a href="https://twitter.com/elstamey">@elstamey</a></p>
             <p>Blog: <a href="http://www.elstamey.com/">elstamey.com</a></p>
             <aside class="notes">
@@ -85,8 +85,8 @@
             <p>Application Developer @ NC State University</p>
             <ul>
                 <li>Developing PHP applications since 1999</li>
-                <li>Primarily supporting legacy applications</li>
-                <li>My department supports about 70 applications that support business processes of the College of
+                <li>Primarily maintaining legacy applications</li>
+                <li>We support about 70 applications that support business processes of the College of
                     Engineering</li>
             </ul>
             <aside class="notes">
@@ -270,16 +270,20 @@
             </aside>
         </section>
         <section>
-            <h3>The Project: Scholarships</h3>
-            <ul>
-                <li><p>Engineering <strong>Foundation</strong> receives money from donors to give to
-                    <strong>students</strong></p></li>
-                <li><p><strong>Students</strong> apply each year giving information about themselves</p></li>
-                <li><p><strong>Donors</strong> specify criteria/rules for students to receive money</p></li>
-                <li><p><strong>Selection Committee</strong> selects Candidates to receive money</p></li>
-                <li><p><strong>Scholarship Coordinator</strong> reports these Recipients to Financial Aid</p></li>
-                <li><p><strong>Financial Aid</strong> awards the money</p></li>
-            </ul>
+            <!--<h3>The Project: Scholarships</h3>-->
+            <img src="img/scholarships_diagram.jpg">
+        <!--</section>-->
+        <!--<section>-->
+            <!--<h3>The Project: Scholarships</h3>-->
+            <!--<ul>-->
+                <!--<li><p>Engineering <strong>Foundation</strong> receives money from donors to give to-->
+                    <!--<strong>students</strong></p></li>-->
+                <!--<li><p><strong>Students</strong> apply each year giving information about themselves</p></li>-->
+                <!--<li><p><strong>Donors</strong> specify criteria/rules for students to receive money</p></li>-->
+                <!--<li><p><strong>Selection Committee</strong> selects Candidates to receive money</p></li>-->
+                <!--<li><p><strong>Scholarship Coordinator</strong> reports these Recipients to Financial Aid</p></li>-->
+                <!--<li><p><strong>Financial Aid</strong> awards the money</p></li>-->
+            <!--</ul>-->
             <aside class="notes">
                 <li>The Scholarship cycle went a little like this</li>
                 <li>Fall, students began applying for the NEXT academic year.</li>
@@ -298,10 +302,11 @@
             </aside>
         </section>
         <section data-background="#f05b62">
-            <h1 style="color: #fafafa;">Bootstrapping Scholarships</h1>
+            <h1 style="color: #fafafa;">Planning</h1>
             <aside class="notes">
                 <li>We're going to talk about Bootstrapping this application by leaving that code in place
                     but adding new code in adjacent space and later tying it into the CodeIgniter app</li>
+                <li>Dealing with legacy code requires a lot of organization and planning</li>
             </aside>
         </section>
         <!--section>
@@ -448,7 +453,7 @@
         <section>
             <h3>Codebase of Scholarship</h3>
             <ul>
-                <li><p>Student data was a single row in table</p>
+                <li><p>Student application data was a single row in table</p>
                     <ul>
                         <li><p>Academic information wasn’t updated when it changed</p></li>
                         <li><p>Major was a single column in that row</p></li>
