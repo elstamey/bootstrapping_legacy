@@ -841,11 +841,10 @@ class CreateUserLoginsTable extends AbstractMigration
                     services we implemented that we needed flexibility for</li>
                 </aside>
             </section>
-        </section>
-        <section>
-            <h3>Configuration file</h3>
-            <p>'/app/config.php'
-            <pre><code>
+            <section>
+                <h3>Configuration file</h3>
+                <p>'/app/config.php'
+<pre><code>
 &lt;?php
 return array(
     /* base url for path in the site */
@@ -917,18 +916,19 @@ return array(
 );
 
 ?&gt;
-            </code></pre>
-            <p>We passed this array into a <b>$config</b> variable that could be accessed as `$config['app']['base_url']`</p>
-            <aside class="notes">
-                <li>setting the base_url was very helpful in supporting paths to resources in both our local environment and production </li>
-                <li>Our project used two DBs and we were able to configure both using this config variables. The
-                parts of CodeIgniter that configured the DB could then pull in our config values for 'default' and
-                'student_info' databases to allow our queries to continue working regardless of the server</li>
-                <li>We also put paths to twig templates, which were then configured into the framework similarly to the DB connections</li>
-                <li>We created an authorization array to limit access to the portions of the app
-                because this would give us flexibility to turn access on and off when we needed to change
-                the application</li>
-            </aside>
+</code></pre>
+                <p>We passed this array into a <b>$config</b> variable that could be accessed as `$config['app']['base_url']`</p>
+                <aside class="notes">
+                    <li>setting the base_url was very helpful in supporting paths to resources in both our local environment and production </li>
+                    <li>Our project used two DBs and we were able to configure both using this config variables. The
+                    parts of CodeIgniter that configured the DB could then pull in our config values for 'default' and
+                    'student_info' databases to allow our queries to continue working regardless of the server</li>
+                    <li>We also put paths to twig templates, which were then configured into the framework similarly to the DB connections</li>
+                    <li>We created an authorization array to limit access to the portions of the app
+                    because this would give us flexibility to turn access on and off when we needed to change
+                    the application</li>
+                </aside>
+            </section>
         </section>
         <section data-background="#f05b62">
             <h1 style="color: #fafafa;">The Good Stuff</h1>
