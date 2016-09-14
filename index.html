@@ -328,18 +328,30 @@
             </aside>
         </section-->
         <section>
-            <h3>Survey Your Application</h3>
-            <ol>
-                <li><p><mark>Talk to users of the application</mark></p></li>
-                <li><p>Study the codebase</p></li>
-                <li><p>Examine the new feature requests</p></li>
-            </ol>
-            <aside class="notes">
-                For your survey,
-                <li>you want to talk to the users</li>
-                <li>study the code</li>
-                <li>and since there are always new features, you need to see how those might fit in. </li>
-            </aside>
+            <section>
+                <h3>Survey Your Application</h3>
+                <ol>
+                    <li><p>Talk to users of the application</p></li>
+                    <li><p>Study the codebase</p></li>
+                    <li><p>Examine the new feature requests</p></li>
+                </ol>
+                <aside class="notes">
+                    For your survey,
+                    <li>you want to talk to the users</li>
+                    <li>study the code</li>
+                    <li>and since there are always new features, you need to see how those might fit in. </li>
+                </aside>
+            </section>
+            <section>
+                <h3>Survey Your Application</h3>
+                <ol>
+                    <li><p><mark>Talk to users of the application</mark></p></li>
+                    <li><p>Study the codebase</p></li>
+                    <li><p>Examine the new feature requests</p></li>
+                </ol>
+                <aside class="notes">
+                </aside>
+            </section>
         </section>
         <section>
             <h3>Talk to Users of the Application</h3>
@@ -519,7 +531,7 @@
             </aside>
         </section-->
         <section>
-            <h3>Decision Time</h3>
+            <h3>Before you start</h3>
             <ul>
                 <li><p>Is there another application that can do what it does? Is it better?</p></li>
                 <li><p>Is this a worthwhile investment?</p></li>
@@ -535,15 +547,16 @@
             </aside>
         </section>
         <section>
-            <h3>Build Trust with Users</h3>
+            <h3>Include Customers/Users in Decisions</h3>
             <ul>
                 <li><p>Explain why this work is necessary</p></li>
                 <li><p>Be open about errors in the application</p></li>
+                <li><p>Build trust from the beginning</p></li>
             </ul>
             <aside class="notes">
                 <li>It's a good idea to include customers in your decisions about the value of features.</li>
                 <li>Make sure that your priorities are consistent with their needs</li>
-                <li>Be open about errors in the application because this helps them understant the choices. </li>
+                <li>Be open about errors in the application because this helps them understand the choices. </li>
             </aside>
         </section>
         <section>
@@ -583,16 +596,25 @@
                 informed of what you're agreeing to work on and why. It can help with the feature creep.</li>
             </aside>
         </section>
+        <section data-background="#f05b62">
+            <h1 style="color: #fafafa;">Planning for Scholarships</h1>
+        </section>
+        <section>
+            <img src="img/scholarships_diagram.jpg">
+        </section>
+        <section>
+            <img src="img/bounded_contexts.jpg">
+        </section>
+        <section>
+            <img src="img/scholarships_timeline_full.jpg">
+        <!--</section>-->
+        <!--<section>-->
+            <img src="img/scholarships_plan.jpg">
+        </section>
         <section>
             <h3>Planning Work for Scholarships</h3>
             <p>Divided the application based on timeline</p>
-            <ol>
-                <li><p>Student Application</p></li>
-                <li><p>Funding</p></li>
-                <li><p>Selection</p></li>
-                <li><p>Reports for Funding and Scholarship Coordinator</p>
-                    <p><strong>we didn&#39;t scope the work</strong></p></li>
-            </ol>
+                    <p><strong>we didn&#39;t scope the work</strong></p>
             <aside class="notes">
                 <li>That being said, when it came to planning work for Scholarships, we grouped features in logical sections, and scheduled them
                     based on what would be used next</li>
@@ -601,6 +623,9 @@
                 <li>We'd connect the new code into the framework's routing layer</li>
                 <li>We wanted to replace the application in pieces, but we didn't want to get stuck rebuilding the parts that worked.</li>
             </aside>
+        </section>
+        <section>
+            <img src="img/scholarships_objectives.jpg">
         </section>
         <section data-background="#f05b62">
             <h1 style="color: #fafafa;">Mitigate Risk</h1>
@@ -624,13 +649,10 @@
                     One of my coworkers was able to put these pieces together, and we perfected it during this project.
                     This saved us from a lot of deployment issues, and we could run the application locally, which had been impossible using MAMP</li>
                 <li>We also created Staging space on the server. </li>
-
-
-
             </aside>
         </section>
         <section>
-            <h3>Test Everything You Need</h3>
+            <h3>Test Everything You Need to Keep</h3>
             <ul>
                 <li><p>Acceptance tests stabilize functionality you need</p>
                     <ul>
@@ -952,6 +974,17 @@ return array(
             <img src="img/bounded_contexts.jpg">
         </section>
         <section>
+            <h3>Events</h3>
+            <ul>
+                <li><p>Student Submitted Application</p></li>
+                <li><p>Budget Allocated To Scholarship</p></li>
+                <li><p>Award Was Given To Student</p></li>
+            </ul>
+            <aside class="notes">
+                <p>Events were created when an Event happened in our system, but they were also helpful in notifying another bounded context</p>
+            </aside>
+        </section>
+        <section>
             <h3>Bootstrapping:  Filetree</h3>
             <ul>
                 <li>new code in '/src' alongside the '/app' directory</li>
@@ -1015,8 +1048,8 @@ return array(
         <section data-background="#f05b62">
             <h1 style="color: #fafafa;">Dependency Injection</h1>
             <aside class="notes">
-                <li>We positioned our codebase parallel to the framework</li>
-                <li>We needed to bring the full namespaced services into that framework</li>
+                <li>We positioned our new code adjacent to the framework</li>
+                <li>We needed to bring the fully namespaced services into that framework</li>
                 <li>Dependency Injection allowed us to do that</li>
                 <li>We used Pimple to build our container and define the dependencies</li>
             </aside>
@@ -1024,9 +1057,9 @@ return array(
         <section>
             <h3>Dependency Injection Container</h3>
             <ul>
-                <li>Dependency injection is a software design pattern that implements inversion of control for resolving dependencies.</li>
-                <li>A dependency is an object that can be used (a service).</li>
-                <li>An injection is the passing of a dependency to a dependent object (a client) that would use it.</li>
+                <!--<li>Dependency injection is a software design pattern that implements inversion of control for resolving dependencies.</li>-->
+                <!--<li>A dependency is an object that can be used (a service).</li>-->
+                <!--<li>An injection is the passing of a dependency to a dependent object (a client) that would use it.</li>-->
                 <li>The Pimple Container helps us pass the Service or Object we need in the application along with all of its dependencies</li>
                 <li>We don't have to wait to let the dependencies resolve when the user accesses the object, we can ensure they are there ahead of time</li>
             </ul>
@@ -1420,15 +1453,19 @@ class BaseController extends \Controller {
         </section>
         <section>
             <h3>Summary: Lessons Learned</h3>
+            <img src="img/lessons_learned.jpg">
             <ul>
-                <li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to
-                    complete</p></li>
-                <li><p>Over time we lost team participation because we have too many other projects needing attention</p></li>
                 <li><p>Tight deadlines with un-scoped work, we created technical debt that we would have to address in
                     the next academic year</p></li>
             </ul>
             <aside class="notes">
-
+                <ul>
+                    <li><p>Huge time investment (approx. 9 months to complete selection) With more work over the summer to
+                        complete</p></li>
+                    <li><p>Over time we lost team participation because we have too many other projects needing attention</p></li>
+                    <li><p>Tight deadlines with un-scoped work, we created technical debt that we would have to address in
+                        the next academic year</p></li>
+                </ul>
             </aside>
         </section>
         <section>
@@ -1456,9 +1493,11 @@ class BaseController extends \Controller {
                 </ul>
             </section>
             <section>
+                <h3>Old Selection Interface</h3>
                 <img src="img/selection-old.png">
             </section>
             <section>
+                <h3>New Selection Interface</h3>
                 <img src="img/selection-new.png">
             </section>
         </section>
@@ -1466,7 +1505,7 @@ class BaseController extends \Controller {
             <h3>Planning: Year Two</h3>
             <ul>
                 <li>Rollover between Academic years</li>
-                <li>The Scholarship CRUD application</li>
+                <li>The Scholarship CRUD</li>
                 <li>Beginning of the year Fund allocations</li>
                 <li>Increase/Decrease of Funds</li>
             </ul>
