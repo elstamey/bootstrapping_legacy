@@ -18,6 +18,11 @@ blockquote.style4 {
     text-indent: 23px;
 }
 
+div.slide-background.titleblock.present {
+    background-size: contain;
+    background-position-x: left;
+}
+
 .example {
     background-color: rgba(240, 91, 98, 0.45);
 }
@@ -47,6 +52,10 @@ img {
     width: auto;
 }
 
+h5.attrib {
+    font-size: large;
+}
+
 h5.attrib a,
 h5.attrib a:hover {
     color: black;
@@ -73,8 +82,8 @@ h3 {
 }
 
 section.titleblock {
-    margin-left: -100px;
-    margin-top:300px;
+    margin-left: 100px;
+    margin-top: 450px;
     background: rgba(255,255,2555,0.8);
 }
 
