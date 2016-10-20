@@ -133,7 +133,7 @@
             <aside class="notes">
                 <li>As web developers we support and maintain a lot of legacy</li>
                 <li>It's tough to maintain that older application,</li>
-                <li>whether it is large enough or was developed a long time ago/by someone else, there are many things that make legacy challenging </li>
+                <li>many things that make legacy challenging</li>
                 <li>In deciding replace or upgrade, you can actually choose both.</li>
                 <li>But before we begin, let's review some terms to make sure we're on the same page.</li>
             </aside>
@@ -159,12 +159,12 @@
             <aside class="notes">
                 <li>Spaghetti code is when the code is tangled with itself</li>
                 <li>It's tough to change without causing ripples throughout your app</li>
-                <li>older PHP with the includes is spaghetti because the html, style, php, and DB queries are mixed </li>
-                <li>This also applies to code that doesn't meet the Single Responsibility principle.</li>
+                <li>This also applies to models that don't meet the Single Responsibility principle.</li>
                 <li>In PHP:
                     <ul>
                         <li>spaghetti code that uses includes ...</li>
-                        <li>frameworks/cms ...</li>
+                        <li>older PHP with includes is spaghetti because the html, style, php, and DB queries are mixed </li>
+                        <li>older frameworks/cms ...</li>
                     </ul>
                 </li>
             </aside>
@@ -187,10 +187,9 @@
             <aside class="notes">
                 <li>Refactoring is a term often misused. </li>
                 <li>You are changing the code without altering the application's behavior.</li>
-                <li>You can make improvements to the code, etc without altering what the user sees
-                and does.</li>
+                <li>... without altering what the user sees and does.</li>
                 <li>Once you change behavior, it's not refactoring. </li>
-                <li>This is why managers don't really support it. There is no visible gain FOR THEM or the user.</li>
+                <li>This is why managers don't support it. There is no visible gain FOR THEM or the user.</li>
             </aside>
         </section>
         <section>
@@ -198,8 +197,8 @@
             <p>A metaphor referring to the eventual consequences of any system design, software architecture or software
                 development within a codebase.</p>
             <aside class="notes">
-                <li>This is the concept that mistakes we make today will be paid for with our time/money in the future</li>
-                <li>Some of this is unavoidable, but most of it can be predicted by our patterns/experience</li>
+                <li>The mistakes we make today will be paid for with our time/money in the future</li>
+                <li>Some is unavoidable, but most of it can be predicted by our patterns/past experience</li>
                 <li>Technical debt is the consequence of the design decisions we make.</li>
             </aside>
         </section>
@@ -212,25 +211,24 @@
                 <li>Multiple developers maintained it over time</li>
             </ul>
             <aside class="notes">
-                <li>Code that was left alone is often => orig. developer is gone; OR it may have grown into a spaghetti monster</li>
+                <li>Code that was left alone </li>
                 <li>Sometimes our application is built on a framework or uses a package that cannot be upgraded easily</li>
-                <li>Or maybe we find ourselves stuck on an old, unsupported version</li>
-
-                <li>When we are developing an application without a clear picture of the problem we are solving or under a tight deadline, we are creating technical debt</li>
+                <li>We touch it as little as possible; treat it as fragile</li>
+                <p>&nbsp;</p>
+                <li>When we are developing an application without a clear picture of the problem or under a tight deadline, we are creating technical debt</li>
                 <li>If we patch an application we don't "know" we are usually making tech debt</li>
-
-                <li>At State, Our students develop many simple apps. They are great for learning, and they help someone do their job.</li>
-                <li>There is an instant gratification about building a tool that helps someone do their job well</li>
-                <li>Our dept can't get enough of it!</li>
-                <li>But developers know it will eventually bite us. That simple CRUD app that one person uses will eventually
-                    break and need an urgent fix.</li>
+                <p>&nbsp;</p>
+                <li>At State, our students develop many simple apps. They are great for learning/teaching.</li>
+                <li>Our dept can't get enough of the instant gratification of building a tool that helps someone do their job.</li>
+                <li>But does it help our whole organization?</li>
+                <li>Prof developers know it will eventually bite us. That simple app that one person uses will
+                    break and need an urgent fix, when we're working on something else.</li>
                 <li>The student who built it won't be here anymore. </li>
-                <li>Sometimes these apps grow </li>
-
-                <li>An app that grows through changes made by multiple developers has a LARGE amount of debt the moment a new developer makes a change</li>
-                <li>Even though most of our applications were built by students, they've grown too big to be student-maintained. And the
-                    users are too high on the org chart to let the app die.</li>
-                <li>code archeology</li>
+                <p>&nbsp;</p>
+                <li>Sometimes apps that began in this way GROW </li>
+                <li>many developers have touched the code => archaeology => a spaghetti monster</li>
+                <li>Many of these apps have grown too big to be maintained by students. The
+                    users are too high on the org chart to risk failure or let the app die.</li>
             </aside>
         </section>
         <section>
@@ -278,18 +276,16 @@
                     <li>The Scholarship cycle went a little like this</li>
                     <li>Fall, students began applying for the NEXT academic year.</li>
                     <li>Their application shared details that would help them match for scholarships</li>
-                    <li>Donors specify the type of student they want to receive the money, based on majors, gpa, and sometimes clubs</li>
-                    <li>We call this Scholarship criteria. Some is required and some is optional</li>
                 </aside>
             </section>
             <section>
                 <img src="img/jan_foundation.png">
                 <aside class="notes">
+                    <li>The Engineering Foundation maintains relationships with donors and manages the money</li>
                     <li>Donors specify the type of student they want to receive the money, based on majors, gpa, and sometimes clubs</li>
                     <li>We call this Scholarship criteria. Some is required and some is optional</li>
                     <li>Spring, Foundation figures out the money that is available for each Scholarship</li>
-                    <li>Selection committee finds candidates to receive that money.</li>
-                    <li>Scholarship Coordinator gives the information to Financial Aid.  Each award is the amount of money, the recipient, and when the money will be given, the following Fall and/or Spring.</li>
+                    <li>They let the Selection Committee know how much money is available to be awarded</li>
                 </aside>
             </section>
             <section>
@@ -308,6 +304,8 @@
             <section>
                 <img src="img/fall_money.png">
                 <aside class="notes">
+                    <li>After reporting the awards to Financial Aid, a letter is sent to the students telling them the aid they will receive next year.</li>
+                    <li>At the beginning of the semester, they will receive the money</li>
                 </aside>
             </section>
         </section>
@@ -316,8 +314,8 @@
             <img src="img/scholarships_diagram.png">
             <aside class="notes">
                 <ul>
-                    <li>We also recognized that although this cycle revolved around Scholarships, the scholarship meant different things to different people.</li>
-                    <li>There was a separation of concerns both from and ethical and a fairness perspective.</li>
+                    <li>Although this cycle revolved around Scholarships, the scholarship meant different things to different people.</li>
+                    <li>There was a separation of concerns: ethical and fairness perspective.</li>
                     <li>While the foundation cared about the criteria being met for a scholarship, they didn't want to be involved in choosing recipients.</li>
                 </ul>
             </aside>
@@ -401,7 +399,7 @@
                 <li>The application was not consistent with their process</li>
                 <li>It was forcing some terminology and behavior on them that didn't exist in the College</li>
                 <li>The Selection Committee received a spreadsheet of scholarships and available money.</li>
-                <li>They used our tool to review the applicants and make selections but reported those awards in another spreadsheet </li>
+                <li>They used our tool to review the applicants and make selections but reported those selections in another spreadsheet </li>
                 <li>Each row was the scholarship account number, student id number, amount and when they should
                 receive the money.</li>
             </aside>
@@ -421,6 +419,7 @@
         <section>
             <h3>User Feedback: Scholarship Concerns</h3>
             <ul>
+                <li><p>Many awards were rejected by Financial Aid</p></li>
                 <li><p>They didn’t trust that Selection Committee was choosing the best candidates</p></li>
                 <li><p>The Scoring algorithm was not clear/effective</p></li>
                 <li><p>Multiple majors weren&#39;t allowed by our system</p></li>
@@ -430,14 +429,19 @@
             <aside class="notes">
                 <li>We also learned they didn't trust the application or that selection committee was choosing valid
                 applicants</li>
+                <li>Financial Aid would reject a lot of awards: could have been the student unenrolled, co-oping, etc</li>
                 <li>An award could be rejected if a student's enrollment, major, or GPA changed between selection and disbursement Aug/Jan</li>
-                <li>When FA rejected the awards, it created mistrust of the selection committee and of the app, even though there was no way the app could predict what students would later do</li>
+                <li>When FA rejected the awards, it created mistrust of the selection committee and of the app,
+                    even though there was no way the app could predict what students would later do</li>
+                <p>&nbsp;</p>
                 <li>Our scoring algorithm had a problem. Early on, they didn't want to exclude applicants, even if they didn't match requirements.</li>
                 <li>This meant that a student who matched 2 required and 1 optional criteria, had the same score as
                 match against 3 required criteria.</li>
                 <li>A selection committee member had to scrutinize the candidates or could choose a bad match.</li>
+                <p>&nbsp;</p>
                 <li>It didn't allow multiple majors, and this was causing inconsistent probems.</li>
                 <li>Some students, would get their non-COE majors and they couldn't match for dept scholarships</li>
+                <p>&nbsp;</p>
                 <li>One year, there was a lot of money that had been left ungiven</li>
                 <li>Donors were upset</li>
                 <li>This had to be fixed!</li>
@@ -557,7 +561,7 @@
             </ul>
             <aside class="notes">
                 <li>Be sure you aren't re-inventing the wheel.</li>
-                <li>Before starting this huge project, we heard that Financial Aid might be buying a tool for the University scholarships. </li>
+                <li>Before starting this huge project, we heard the University might be buying a tool for the University scholarships. </li>
                 <li>It claimed to do all the work our application did and more. </li>
                 <li>We met with them, but they didn't have enough of the colleges' support to justify the expense.  </li>
                 <li>We decided we needed to improve the accuracy of our selections and reduce the number of
@@ -712,7 +716,7 @@
                 <li>Phinx for database migrations</li>
             </ul>
             <aside class="notes">
-                <li>We used composer to bring in helpful packages, like the testing tools I just mentioned.</li>
+                <li>In order to use those testing packages, we used composer</li>
                 <li>Twig templates gave us some really nice functionality for the new User Interfaces we built</li>
                 <!--We used a package called MoneyPHP for handling the dollar amounts of the scholarships-->
                 <li>Pimple container was extremely useful for our bootstrapping, and I'll explain them soon.</li>
@@ -740,7 +744,10 @@
 }
 </code></pre>
                 <aside class="notes">
-                    Package name = the vendor name and the project's name
+                    In your composer.json file, you specify the packages and the versions you will accept.
+                    <br>Package name = the vendor name and the project's name
+                    <br>`composer install` puts all of those packages into your vendor folder, and specifies the installed version in a composer.lock file
+                    <br>we checked in our composer.json and composer.lock files but .gitignored the vendor folder
                     2.0.* of Codeception. This means any version in the 2.0 development branch. It is the equivalent of saying versions that match >=1.0 <1.1.
                 </aside>
             </section>
